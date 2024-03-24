@@ -15,6 +15,13 @@ public abstract class Menu {
     private double price;
     private double materialCost;
 
+    public enum Topping {
+        chashu,
+        wakame,
+        tamago,
+        seaweed,
+    }
+
     public Menu(String size) {
         this.size = size; // error handling
     }
