@@ -16,7 +16,7 @@ public class Store {
     private String name;
     private String ownerName;
     private String location;
-    private ArrayList<Employee> employees;
+//    private ArrayList<Employee> employees;
     private int numberOfChair;
     private double rent;
     private int occupancyRateLower;
