@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Menu {
     public static final double COST_FOR_CHASHU = 0.5;
-    public static final double COST_FOR_WAKAME = 0.1;
+    public static final double COST_FOR_CORN = 0.1;
     public static final double COST_FOR_TAMAGO = 0.3;
     public static final double COST_FOR_SEAWEED = 0.1;
     private double costForRamen;
@@ -17,7 +17,7 @@ public abstract class Menu {
 
     public enum Topping {
         chashu,
-        wakame,
+        corn,
         tamago,
         seaweed,
     }
