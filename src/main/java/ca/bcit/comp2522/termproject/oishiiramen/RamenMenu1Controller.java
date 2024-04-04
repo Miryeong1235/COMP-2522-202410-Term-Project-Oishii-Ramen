@@ -20,16 +20,39 @@ public class RamenMenu1Controller {
 
     @FXML
     ToggleGroup flavour;
+    @FXML
+    ToggleGroup size;
 
     public void switchRamenMenu2(ActionEvent event) throws IOException {
 
-//        RadioButton selectedRadioButton = (RadioButton) flavour.getSelectedToggle();
-//        String ramenFlavour = selectedRadioButton.getText();
-//        System.out.println("Selected Option: " + ramenFlavour);
+//        Choose flavour
+        RadioButton selectedFlavourRadioButton = (RadioButton) flavour.getSelectedToggle();
+        String ramenFlavour = selectedFlavourRadioButton.getText();
+        System.out.println("Selected Option: " + ramenFlavour);
+
+        RadioButton selectedSizeRadioButton = (RadioButton) size.getSelectedToggle();
+        String ramenSize = selectedSizeRadioButton.getText();
+        System.out.println("Selected Option: " + ramenSize);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu2.fxml"));
         root = loader.load();
 
+        if (ramenFlavour.equals("Shio ramen")) {
+            Menu yourRamen = new Shio(ramenSize);
+            System.out.println(yourRamen.getName() + "w as instantiated");
+        } else if (ramenFlavour.equals("Shoyu ramen")) {
+            Menu yourRamen = new Shoyu(ramenSize);
+            System.out.println(yourRamen.getName() + " was instantiated");
+        } else if (ramenFlavour.equals("Tonkotsu ramen")) {
+            Menu yourRamen = new Tonkotsu(ramenSize);
+            System.out.println(yourRamen.getName() + " was instantiated");
+        } else if (ramenFlavour.equals("Miso ramen")) {
+            Menu yourRamen = new Miso(ramenSize);
+            System.out.println(yourRamen.getName() + " was instantiated");
+        }
+
+
+//        Menu yourRamen = new
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

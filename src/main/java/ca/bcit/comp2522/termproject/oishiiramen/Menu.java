@@ -44,6 +44,7 @@ public abstract class Menu {
             this.costForRamen = getCostForRamen();
         }
 
+        this.name = this.getClass().getName() + this.getSize();
     }
 
     public double getCostForRamen() {
@@ -74,8 +75,8 @@ public abstract class Menu {
         return materialCost;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String newName) {
+        this.name = newName;
     }
 
     //今のままだとtoppingを一度addしたら変えられないかも
@@ -101,7 +102,7 @@ public abstract class Menu {
         this.materialCost += addingCost;
     };
 
-    public void setPrice(double price) {
-        this.price = price; // Add some logic
+    public void setPrice(double newPrice) {
+        this.price = newPrice; // Add some logic
     }
 }
