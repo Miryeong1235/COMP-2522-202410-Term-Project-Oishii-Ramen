@@ -50,7 +50,6 @@ public class StoreSettingController {
         Store yourStore = new Store(storename, username, storeLocation, numberOfChair);
         System.out.println(yourStore.getName());
 
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

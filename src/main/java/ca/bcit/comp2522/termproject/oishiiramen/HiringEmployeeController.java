@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,12 +23,18 @@ public class HiringEmployeeController {
     @FXML
     Label ownerNameLabel;
 
+    @FXML
+    TextField employeeNameTextField;
+
     public void displayName(String username) {
-        ownerNameLabel.setText("Hello, owner " + username);
+        ownerNameLabel.setText("Hello, " + username);
     }
 
-
     public void switchRamenMenu1(ActionEvent event) throws IOException {
+
+        String employeeName = employeeNameTextField.getText();
+        int employeeLevel = 1;
+        Employee yourEmployee = new Employee(employeeName, employeeLevel);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu1.fxml"));
         root = loader.load();
