@@ -23,9 +23,9 @@ public class RamenMenu1Controller {
 
     public void switchRamenMenu2(ActionEvent event) throws IOException {
 
-        RadioButton selectedRadioButton = (RadioButton) flavour.getSelectedToggle();
-        String ramenFlavour = selectedRadioButton.getText();
-        System.out.println("Selected Option: " + ramenFlavour);
+//        RadioButton selectedRadioButton = (RadioButton) flavour.getSelectedToggle();
+//        String ramenFlavour = selectedRadioButton.getText();
+//        System.out.println("Selected Option: " + ramenFlavour);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu2.fxml"));
         root = loader.load();
