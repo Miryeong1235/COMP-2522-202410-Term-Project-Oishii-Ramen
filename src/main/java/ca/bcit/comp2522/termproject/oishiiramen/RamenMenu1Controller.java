@@ -38,18 +38,23 @@ public class RamenMenu1Controller {
         root = loader.load();
 
         Menu yourRamen;
-        if (ramenFlavour.equals("Shio ramen")) {
-            yourRamen = new Shio(ramenSize);
-            System.out.println(yourRamen.getName() + "w as instantiated");
-        } else if (ramenFlavour.equals("Shoyu ramen")) {
-            yourRamen = new Shoyu(ramenSize);
-            System.out.println(yourRamen.getName() + " was instantiated");
-        } else if (ramenFlavour.equals("Tonkotsu ramen")) {
-            yourRamen = new Tonkotsu(ramenSize);
-            System.out.println(yourRamen.getName() + " was instantiated");
-        } else {
-            yourRamen = new Miso(ramenSize);
-            System.out.println(yourRamen.getName() + " was instantiated");
+        switch (ramenFlavour) {
+            case "Shio ramen" -> {
+                yourRamen = new Shio(ramenSize);
+                System.out.println(yourRamen.getName() + "w as instantiated");
+            }
+            case "Shoyu ramen" -> {
+                yourRamen = new Shoyu(ramenSize);
+                System.out.println(yourRamen.getName() + " was instantiated");
+            }
+            case "Tonkotsu ramen" -> {
+                yourRamen = new Tonkotsu(ramenSize);
+                System.out.println(yourRamen.getName() + " was instantiated");
+            }
+            default -> {
+                yourRamen = new Miso(ramenSize);
+                System.out.println(yourRamen.getName() + " was instantiated");
+            }
         }
 
         RamenMenu2Controller ramenMenu2Controller = loader.getController();
