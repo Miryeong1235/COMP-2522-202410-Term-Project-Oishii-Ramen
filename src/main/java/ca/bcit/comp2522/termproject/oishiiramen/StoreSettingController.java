@@ -35,9 +35,10 @@ public class StoreSettingController {
 
         String username = ownerNameTextField.getText();
         String storename = storeNameTextField.getText();
+        int numberOfChair = Integer.parseInt(numberOfChairTextField.getText());
 
         RadioButton selectedRadioButton = (RadioButton) locationToggle.getSelectedToggle();
-        String storeLocation = selectedRadioButton.getText();
+        Store.Location storeLocation = Store.Location.valueOf(selectedRadioButton.getText());
         System.out.println("Selected Option: " + storeLocation);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hiringEmployee.fxml"));
@@ -45,6 +46,9 @@ public class StoreSettingController {
 
         HiringEmployeeController hiringEmployeeController = loader.getController();
         hiringEmployeeController.displayName(username);
+
+        Store yourStore = new Store(storename, username, storeLocation, numberOfChair);
+        System.out.println(yourStore.getName());
 
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
