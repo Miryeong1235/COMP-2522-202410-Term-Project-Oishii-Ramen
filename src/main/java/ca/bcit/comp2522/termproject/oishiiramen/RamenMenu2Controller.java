@@ -12,15 +12,16 @@ public class RamenMenu2Controller {
     private Scene scene;
     private Parent root;
 
-    @FXML
-    Label flavour;
+//    @FXML
+//    Label flavour;
 
-//    public void displayMaterialPrice(Label flavour) {
-//        if (flavour = "miso") {
-//
-//        }
-//        flavour.setText("Hello, owner " + username);
-//    }
+    @FXML
+    Label materialFeeLabel;
+
+    public void displayMaterialPrice(Menu yourRamen) {
+        String materialCostString = Double.toString(yourRamen.getMaterialCost());
+        materialFeeLabel.setText(materialCostString);
+    }
 }
 
 

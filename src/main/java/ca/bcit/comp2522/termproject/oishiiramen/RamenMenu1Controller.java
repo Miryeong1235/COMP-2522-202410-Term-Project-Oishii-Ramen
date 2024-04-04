@@ -37,22 +37,23 @@ public class RamenMenu1Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu2.fxml"));
         root = loader.load();
 
+        Menu yourRamen;
         if (ramenFlavour.equals("Shio ramen")) {
-            Menu yourRamen = new Shio(ramenSize);
+            yourRamen = new Shio(ramenSize);
             System.out.println(yourRamen.getName() + "w as instantiated");
         } else if (ramenFlavour.equals("Shoyu ramen")) {
-            Menu yourRamen = new Shoyu(ramenSize);
+            yourRamen = new Shoyu(ramenSize);
             System.out.println(yourRamen.getName() + " was instantiated");
         } else if (ramenFlavour.equals("Tonkotsu ramen")) {
-            Menu yourRamen = new Tonkotsu(ramenSize);
+            yourRamen = new Tonkotsu(ramenSize);
             System.out.println(yourRamen.getName() + " was instantiated");
-        } else if (ramenFlavour.equals("Miso ramen")) {
-            Menu yourRamen = new Miso(ramenSize);
+        } else {
+            yourRamen = new Miso(ramenSize);
             System.out.println(yourRamen.getName() + " was instantiated");
         }
 
-
-//        Menu yourRamen = new
+        RamenMenu2Controller ramenMenu2Controller = loader.getController();
+        ramenMenu2Controller.displayMaterialPrice(yourRamen);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
