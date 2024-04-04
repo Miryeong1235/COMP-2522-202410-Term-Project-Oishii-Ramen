@@ -49,7 +49,7 @@ public class Employee {
     }
 
     public void setName(String newName) {
-        this.name = name;
+        this.name = newName;
     }
 
     public void setLevel(int newLevel) {
