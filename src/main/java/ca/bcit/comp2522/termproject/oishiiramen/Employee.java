@@ -4,8 +4,10 @@ public class Employee {
     public final double LEVEL1_HOURLY_WAGE = 20; // do we need several levels?
     public final double LEVEL2_HOURLY_WAGE = 25;
     public final double LEVEL3_HOURLY_WAGE = 30;
+    public final int MAX_LEVEL = 3;
+    public final int MIN_LEVEL = 1;
 
-    private int employeeID;
+    private final int employeeID;
     private String name;
     private int level;
     private double hourlyWage;
@@ -15,6 +17,13 @@ public class Employee {
     public Employee(final String name, final int level) {
         this.name = name;
         this.level = level;
+        if (this.level == 1) {
+            this.hourlyWage = LEVEL1_HOURLY_WAGE;
+        } else if (this.level == 2) {
+            this.hourlyWage = LEVEL2_HOURLY_WAGE;
+        } else {
+            this.hourlyWage = LEVEL3_HOURLY_WAGE;
+        }
         totalEmployeeNumber++;
         this.employeeID = totalEmployeeNumber;
     }
@@ -44,15 +53,23 @@ public class Employee {
     }
 
     public void setLevel(int newLevel) {
-        if (level >= 1 && level <= 3) {
+        if (newLevel >= MIN_LEVEL && newLevel <= MAX_LEVEL) {
             this.level = newLevel;
-            if (this.level == 1) {
-                this.hourlyWage = LEVEL1_HOURLY_WAGE;
-            } else if (this.level == 2) {
-                this.hourlyWage = LEVEL2_HOURLY_WAGE;
-            } else {
-                this.hourlyWage = LEVEL3_HOURLY_WAGE;
-            }
+        } else if (newLevel < MIN_LEVEL) {
+            this.level = MIN_LEVEL;
+        } else {
+            this.level = MAX_LEVEL;
+        }
+        setHourlyWage();
+    }
+
+    private void setHourlyWage() {
+        if (this.level == 1) {
+            this.hourlyWage = LEVEL1_HOURLY_WAGE;
+        } else if (this.level == 2) {
+            this.hourlyWage = LEVEL2_HOURLY_WAGE;
+        } else {
+            this.hourlyWage = LEVEL3_HOURLY_WAGE;
         }
     }
 
