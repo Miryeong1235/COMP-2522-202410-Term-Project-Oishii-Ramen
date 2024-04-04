@@ -61,5 +61,4 @@ public class RamenMenu1Controller {
         stage.show();
     }
 
-
 }

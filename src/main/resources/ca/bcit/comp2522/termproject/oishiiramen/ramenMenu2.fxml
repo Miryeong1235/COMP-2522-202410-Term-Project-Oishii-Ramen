@@ -1,20 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.RamenMenu2Controller">
    <children>
-      <Label layoutX="72.0" layoutY="68.0" text="Ramen Meterial Fee: $">
+      <Label layoutX="72.0" layoutY="66.0" text="Ramen Meterial Fee: $">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="materialFeeLabel" layoutX="424.0" layoutY="68.0" text="price">
+      <Label fx:id="materialFeeLabel" layoutX="408.0" layoutY="66.0" text="price">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
+      <Label layoutX="72.0" layoutY="144.0" text="Toppings (option):">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="chashu" layoutX="232.0" layoutY="143.0" mnemonicParsing="false" text="chashu">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="corn" layoutX="232.0" layoutY="196.0" mnemonicParsing="false" text="corn">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="tamago" layoutX="232.0" layoutY="246.0" mnemonicParsing="false" text="tamago">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="seaweed" layoutX="232.0" layoutY="298.0" mnemonicParsing="false" text="seaweed">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <ImageView fitHeight="51.0" fitWidth="100.0" layoutX="375.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@food_ramen_topping6_corn.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="100.0" layoutX="376.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@food_ramen_topping4_nori.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="100.0" layoutX="377.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@food_ramen_topping5_cha-syu.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="100.0" layoutX="379.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@food_ramen_topping1_tamago.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="nextButton" layoutX="232.0" layoutY="353.0" mnemonicParsing="false" text="Next" />
    </children>
 </AnchorPane>
