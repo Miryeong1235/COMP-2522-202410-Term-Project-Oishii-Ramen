@@ -17,6 +17,7 @@ public class StoreSettingController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    public static Store yourStore;
 
     @FXML
     TextField ownerNameTextField;
@@ -47,7 +48,7 @@ public class StoreSettingController {
         HiringEmployeeController hiringEmployeeController = loader.getController();
         hiringEmployeeController.displayName(username);
 
-        Store yourStore = new Store(storename, username, storeLocation, numberOfChair);
+        yourStore = new Store(storename, username, storeLocation, numberOfChair);
         System.out.println(yourStore.getName());
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
