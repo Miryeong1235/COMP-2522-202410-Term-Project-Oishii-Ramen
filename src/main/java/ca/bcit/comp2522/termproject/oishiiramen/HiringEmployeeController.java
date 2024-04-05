@@ -35,7 +35,7 @@ public class HiringEmployeeController {
         String employeeName = employeeNameTextField.getText();
         int employeeLevel = 1;
         Employee yourEmployee = new Employee(employeeName, employeeLevel);
-        yourStore.hireEmployee(yourEmployee);
+//        yourStore.hireEmployee(yourEmployee);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu1.fxml"));
         root = loader.load();
