@@ -11,10 +11,12 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
+import static ca.bcit.comp2522.termproject.oishiiramen.RamenMenu1Controller.numberOfMenu;
+
 public class RunBusinessController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+//    private Stage stage;
+//    private Scene scene;
+//    private Parent root;
     @FXML
     private ImageView yugiri;
 
@@ -41,6 +43,10 @@ public class RunBusinessController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("businessResult.fxml"));
             Parent root = loader.load(); // FXMLファイルのルート要素を取得
+
+            // display result
+            BusinessResultController businessResultController = loader.getController();
+            businessResultController.displayResult(HelloApplication.yourStore);
 
             Scene scene = yugiri.getScene();
             Scene nextScene = new Scene(root);
