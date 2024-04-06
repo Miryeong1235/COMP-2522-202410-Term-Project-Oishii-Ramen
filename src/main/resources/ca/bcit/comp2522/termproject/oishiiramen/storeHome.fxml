@@ -43,6 +43,6 @@
       <Label layoutX="212.0" layoutY="305.0" text="Duration:" />
       <Label layoutX="339.0" layoutY="305.0" text="days" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffda1f6a" height="91.0" layoutX="311.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Label layoutX="333.0" layoutY="185.0" prefHeight="69.0" prefWidth="184.0" text="Menu" />
+      <Label fx:id="menuListLabel" layoutX="333.0" layoutY="185.0" prefHeight="69.0" prefWidth="184.0" text="Menu" />
    </children>
 </AnchorPane>
