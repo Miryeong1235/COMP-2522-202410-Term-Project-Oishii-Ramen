@@ -6,11 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class RamenMenu2Controller {
 
@@ -21,6 +23,15 @@ public class RamenMenu2Controller {
     @FXML
     Label materialFeeLabel;
 
+    @FXML
+    private CheckBox chashu;
+    @FXML
+    private CheckBox corn;
+    @FXML
+    private CheckBox tamago;
+    @FXML
+    private CheckBox seaweed;
+
     public void displayMaterialPrice(Menu yourRamen) {
         String materialCostString = Double.toString(yourRamen.getMaterialCost());
         materialFeeLabel.setText(materialCostString);
@@ -28,6 +39,27 @@ public class RamenMenu2Controller {
 
 
     public void switchRamenMenu3(ActionEvent event) throws IOException {
+        StringBuilder selectedItems = new StringBuilder();
+        ArrayList<Menu.Topping> toppingList = new ArrayList<>();
+        if (chashu.isSelected()) {
+            toppingList.add(Menu.Topping.chashu);
+            System.out.println("Selected Items: chashu");
+        }
+        if (tamago.isSelected()) {
+            toppingList.add(Menu.Topping.tamago);
+            System.out.println("Selected Items: tamago");
+        }
+        if (corn.isSelected()) {
+            toppingList.add(Menu.Topping.corn);
+            System.out.println("Selected Items: corn");
+        }
+        if (seaweed.isSelected()) {
+            toppingList.add(Menu.Topping.seaweed);
+            System.out.println("Selected Items: seaweed");
+        }
+
+        RamenMenu1Controller.yourRamen.setToppings(toppingList);
+        System.out.println(RamenMenu1Controller.yourRamen.getToppings());
 
 //        RadioButton selectedFlavourRadioButton = (RadioButton) flavour.getSelectedToggle();
 //        String ramenFlavour = selectedFlavourRadioButton.getText();

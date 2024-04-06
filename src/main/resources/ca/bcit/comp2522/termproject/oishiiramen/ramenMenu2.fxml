@@ -65,6 +65,6 @@
             <Image url="@food_ramen_topping1_tamago.png" />
          </image>
       </ImageView>
-      <Button fx:id="nextButton" layoutX="232.0" layoutY="353.0" mnemonicParsing="false" text="Next" />
+      <Button fx:id="nextButton" layoutX="232.0" layoutY="353.0" mnemonicParsing="false" onAction="#switchRamenMenu3" text="Next" />
    </children>
 </AnchorPane>
