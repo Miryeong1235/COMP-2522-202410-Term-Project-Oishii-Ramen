@@ -120,6 +120,10 @@ public class Store {
         return this.accumulatedSales;
     }
 
+    public double getAccumulatedRevenue() {
+        return this.accumulatedSales - this.accumulatedCost;
+    }
+
     public void setName(String newName) {
         if (newName == null || newName.isBlank()) {
             throw new IllegalArgumentException("The store name cannot be null.");
@@ -179,12 +183,11 @@ public class Store {
         return false;
     }
 
-    public boolean addMenu(Menu newMenu) {
+    public void addMenu(Menu newMenu) {
         if (newMenu == null) {
-            return false;
+            throw new IllegalArgumentException("Menu was not inputted.");
         } else {
             menu.add(newMenu);
-            return true;
         }
     }
 
