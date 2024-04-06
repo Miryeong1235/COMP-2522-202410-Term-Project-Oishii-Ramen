@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static ca.bcit.comp2522.termproject.oishiiramen.RamenMenu1Controller.numberOfMenu;
+
 public class RamenMenu2Controller {
 
     private Stage stage;
@@ -58,8 +60,8 @@ public class RamenMenu2Controller {
             System.out.println("Selected Items: seaweed");
         }
 
-        HelloApplication.yourStore.getMenu().get(0).setToppings(toppingList); // change index depending
-        System.out.println(HelloApplication.yourStore.getMenu().get(0).getToppings());
+        HelloApplication.yourStore.getMenu().get(numberOfMenu).setToppings(toppingList); // change index depending
+        System.out.println(HelloApplication.yourStore.getMenu().get(numberOfMenu).getToppings());
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("storeHome.fxml")); //ほんとはもう1ページ

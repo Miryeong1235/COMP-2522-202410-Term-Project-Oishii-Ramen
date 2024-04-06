@@ -20,6 +20,7 @@ public class RamenMenu1Controller {
 
 //    public static Menu yourRamen;
     private Menu yourRamen;
+    public static int numberOfMenu = 0;
 
     @FXML
     ToggleGroup flavour;
@@ -44,18 +45,22 @@ public class RamenMenu1Controller {
         switch (ramenFlavour) {
             case "Shio ramen" -> {
                 yourRamen = new Shio(ramenSize);
+                numberOfMenu++;
                 System.out.println(yourRamen.getName() + "w as instantiated");
             }
             case "Shoyu ramen" -> {
                 yourRamen = new Shoyu(ramenSize);
+                numberOfMenu++;
                 System.out.println(yourRamen.getName() + " was instantiated");
             }
             case "Tonkotsu ramen" -> {
                 yourRamen = new Tonkotsu(ramenSize);
+                numberOfMenu++;
                 System.out.println(yourRamen.getName() + " was instantiated");
             }
             default -> {
                 yourRamen = new Miso(ramenSize);
+                numberOfMenu++;
                 System.out.println(yourRamen.getName() + " was instantiated");
             }
         }
