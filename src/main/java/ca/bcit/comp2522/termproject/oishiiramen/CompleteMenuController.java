@@ -20,7 +20,7 @@ public class CompleteMenuController {
     private Parent root;
 
     @FXML
-    ToggleGroup addMenuToggle;
+    private ToggleGroup addMenuToggle;
 
     public void switchStoreHome(ActionEvent event) throws IOException {
 

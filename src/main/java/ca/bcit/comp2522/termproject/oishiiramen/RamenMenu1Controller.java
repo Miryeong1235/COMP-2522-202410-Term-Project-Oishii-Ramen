@@ -23,9 +23,9 @@ public class RamenMenu1Controller {
     public static int numberOfMenu = 0;
 
     @FXML
-    ToggleGroup flavour;
+    private ToggleGroup flavour;
     @FXML
-    ToggleGroup size;
+    private ToggleGroup size;
 
     public void switchRamenMenu2(ActionEvent event) throws IOException {
 

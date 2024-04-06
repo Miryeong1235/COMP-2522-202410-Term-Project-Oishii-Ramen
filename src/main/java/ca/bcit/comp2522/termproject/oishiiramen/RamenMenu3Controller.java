@@ -21,12 +21,12 @@ public class RamenMenu3Controller {
     private Parent root;
 
     @FXML
-    Label materialFeeWithToppingLabel;
+    private Label materialFeeWithToppingLabel;
 
     @FXML
-    TextField ramenPriceTextField;
+    private TextField ramenPriceTextField;
     @FXML
-    TextField ramenNameTextField;
+    private TextField ramenNameTextField;
 
     public void displayMaterialPrice(Menu yourRamen) {
         String materialCostString = Double.toString(yourRamen.getMaterialCost());

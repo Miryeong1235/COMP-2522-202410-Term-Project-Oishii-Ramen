@@ -21,10 +21,10 @@ public class HiringEmployeeController {
 
     // hiringEmployee
     @FXML
-    Label ownerNameLabel;
+    private Label ownerNameLabel;
 
     @FXML
-    TextField employeeNameTextField;
+    private TextField employeeNameTextField;
 
     public void displayName(String username) {
         ownerNameLabel.setText("Hello, " + username);

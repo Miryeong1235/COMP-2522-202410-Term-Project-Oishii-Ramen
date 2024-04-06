@@ -19,16 +19,16 @@ public class StoreSettingController {
     private Parent root;
 
     @FXML
-    TextField ownerNameTextField;
+    private TextField ownerNameTextField;
 
     @FXML
-    TextField storeNameTextField;
+    private TextField storeNameTextField;
 
     @FXML
-    ToggleGroup locationToggle;
+    private ToggleGroup locationToggle;
 
     @FXML
-    TextField numberOfChairTextField;
+    private TextField numberOfChairTextField;
 
 
     public void switchToHiringEmployee(ActionEvent event) throws IOException {
