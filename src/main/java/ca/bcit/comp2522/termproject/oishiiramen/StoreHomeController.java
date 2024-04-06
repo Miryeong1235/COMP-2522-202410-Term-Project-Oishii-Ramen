@@ -24,22 +24,21 @@ public class StoreHomeController {
     @FXML
     Label menuListLabel;
 
-    public void displayStoreName(String storename) {
-        storeNameText.setText(storename);
+    public void displayStoreName(String storeName) {
+        storeNameText.setText(storeName);
     }
     public void displayStoreMenu(Store yourStore) {
         StringBuilder menuText = new StringBuilder();
         ArrayList<Menu> menu =  yourStore.getMenu();
 
         for (Menu yourmenu : menu) {
-            String name = "Name: " + yourmenu.getName() + "\n";
-            String size = "Size: " + yourmenu.getSize() + "\n";
-            String price = "Price: " + yourmenu.getPrice() + "\n";
-            String materialCost = "Material cost: " + yourmenu.getMaterialCost() + "\n\n";
+            String name = yourmenu.getName() + ": ";
+            String size = yourmenu.getSize() + ", ";
+            String price = "$" + yourmenu.getPrice() + "\n";
+            menuText.append("- ");
             menuText.append(name);
             menuText.append(size);
             menuText.append(price);
-            menuText.append(materialCost);
         }
 
         String result = menuText.toString();
