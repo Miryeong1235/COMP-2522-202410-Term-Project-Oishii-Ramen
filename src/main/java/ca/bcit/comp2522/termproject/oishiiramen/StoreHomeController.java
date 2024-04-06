@@ -7,11 +7,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static ca.bcit.comp2522.termproject.oishiiramen.Menu.numberOfMenu;
 
 public class StoreHomeController {
     private Stage stage;
@@ -23,6 +26,9 @@ public class StoreHomeController {
 
     @FXML
     Label menuListLabel;
+
+    @FXML
+    TextField businessDuration;
 
     public void displayStoreName(String storeName) {
         storeNameText.setText(storeName);
@@ -48,6 +54,11 @@ public class StoreHomeController {
     public void switchRunBusiness(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("runBusiness.fxml"));
         root = loader.load();
+
+        int durationToRunBusiness = Integer.parseInt(businessDuration.getText());
+        HelloApplication.yourStore.runBusiness(durationToRunBusiness);
+        System.out.println(HelloApplication.yourStore.getOwnerName() + " has run business for "
+                + durationToRunBusiness + " days");
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

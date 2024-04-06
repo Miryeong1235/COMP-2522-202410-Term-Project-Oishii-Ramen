@@ -20,13 +20,13 @@
          <toggleGroup>
             <ToggleGroup fx:id="addMenuToggle" />
          </toggleGroup></RadioButton>
-      <RadioButton layoutX="333.0" layoutY="294.0" mnemonicParsing="false" text="No" toggleGroup="$addMenuToggle" />
+      <RadioButton layoutX="333.0" layoutY="294.0" mnemonicParsing="false" selected="true" text="No" toggleGroup="$addMenuToggle" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="201.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@ramen_tonkotsu.png" />
          </image>
       </ImageView>
       <Label layoutX="82.0" layoutY="294.0" text="Add more menu?: " />
-      <Button id="nextpageButton" layoutX="244.0" layoutY="348.0" mnemonicParsing="false" onAction="#switchStoreHome" text="Next Page" />
+      <Button id="nextpageButton" layoutX="256.0" layoutY="347.0" mnemonicParsing="false" onAction="#switchStoreHome" text="Next Page" />
    </children>
 </AnchorPane>
