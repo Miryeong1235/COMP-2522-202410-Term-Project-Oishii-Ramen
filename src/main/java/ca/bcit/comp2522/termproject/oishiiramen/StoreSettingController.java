@@ -17,7 +17,6 @@ public class StoreSettingController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public static Store yourStore;
 
     @FXML
     TextField ownerNameTextField;
@@ -30,6 +29,7 @@ public class StoreSettingController {
 
     @FXML
     TextField numberOfChairTextField;
+
 
     public void switchToHiringEmployee(ActionEvent event) throws IOException {
 //        root = FXMLLoader.load(getClass().getResource("hiringEmployee.fxml"));
@@ -48,13 +48,13 @@ public class StoreSettingController {
         HiringEmployeeController hiringEmployeeController = loader.getController();
         hiringEmployeeController.displayName(username);
 
-        yourStore = new Store(storename, username, storeLocation, numberOfChair);
-        System.out.println(yourStore.getName());
+        HelloApplication.initializeStore(storename, username, storeLocation, numberOfChair);
+//        System.out.println(yourStore.getName());
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
+
 }

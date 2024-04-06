@@ -26,8 +26,6 @@ public class HelloController {
     private Parent root;
 
 
-
-
     public void switchToStoreSetting(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("storeSetting.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("sample.fxml"));

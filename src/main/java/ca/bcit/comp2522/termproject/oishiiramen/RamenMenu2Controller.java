@@ -58,23 +58,16 @@ public class RamenMenu2Controller {
             System.out.println("Selected Items: seaweed");
         }
 
-        RamenMenu1Controller.yourRamen.setToppings(toppingList);
-        System.out.println(RamenMenu1Controller.yourRamen.getToppings());
+        HelloApplication.yourStore.getMenu().get(0).setToppings(toppingList); // change index depending
+        System.out.println(HelloApplication.yourStore.getMenu().get(0).getToppings());
 
-//        RadioButton selectedFlavourRadioButton = (RadioButton) flavour.getSelectedToggle();
-//        String ramenFlavour = selectedFlavourRadioButton.getText();
-//        System.out.println("Selected Option: " + ramenFlavour);
-//
-//        RadioButton selectedSizeRadioButton = (RadioButton) size.getSelectedToggle();
-//        String ramenSize = selectedSizeRadioButton.getText();
-//        System.out.println("Selected Option: " + ramenSize);
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu3.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("storeHome.fxml")); //ほんとはもう1ページ
         root = loader.load();
 
-//
-//        RamenMenu2Controller ramenMenu2Controller = loader.getController();
-//        ramenMenu2Controller.displayMaterialPrice(yourRamen);
+        //仮で置いている確認用function
+        StoreHomeController storeHomeController = loader.getController();
+        storeHomeController.displayStoreName(HelloApplication.yourStore.getName());
+
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

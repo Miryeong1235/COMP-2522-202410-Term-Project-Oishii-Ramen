@@ -18,7 +18,8 @@ public class RamenMenu1Controller {
     private Scene scene;
     private Parent root;
 
-    public static Menu yourRamen;
+//    public static Menu yourRamen;
+    private Menu yourRamen;
 
     @FXML
     ToggleGroup flavour;
@@ -39,37 +40,6 @@ public class RamenMenu1Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu2.fxml"));
         root = loader.load();
 
-        yourRamen = initialize(ramenFlavour, ramenSize);
-//        Menu yourRamen;
-//        switch (ramenFlavour) {
-//            case "Shio ramen" -> {
-//                yourRamen = new Shio(ramenSize);
-//                System.out.println(yourRamen.getName() + "w as instantiated");
-//            }
-//            case "Shoyu ramen" -> {
-//                yourRamen = new Shoyu(ramenSize);
-//                System.out.println(yourRamen.getName() + " was instantiated");
-//            }
-//            case "Tonkotsu ramen" -> {
-//                yourRamen = new Tonkotsu(ramenSize);
-//                System.out.println(yourRamen.getName() + " was instantiated");
-//            }
-//            default -> {
-//                yourRamen = new Miso(ramenSize);
-//                System.out.println(yourRamen.getName() + " was instantiated");
-//            }
-//        }
-
-        RamenMenu2Controller ramenMenu2Controller = loader.getController();
-        ramenMenu2Controller.displayMaterialPrice(yourRamen);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public Menu initialize(String ramenFlavour, String ramenSize) {
         Menu yourRamen;
         switch (ramenFlavour) {
             case "Shio ramen" -> {
@@ -89,6 +59,17 @@ public class RamenMenu1Controller {
                 System.out.println(yourRamen.getName() + " was instantiated");
             }
         }
-        return yourRamen;
+
+        HelloApplication.yourStore.addMenu(yourRamen);
+
+        RamenMenu2Controller ramenMenu2Controller = loader.getController();
+        ramenMenu2Controller.displayMaterialPrice(yourRamen);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
+
+
 }

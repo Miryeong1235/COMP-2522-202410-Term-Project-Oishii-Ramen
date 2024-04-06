@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.StoreHomeController">
    <children>
       <ImageView fitHeight="165.0" fitWidth="148.0" layoutX="94.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
@@ -29,12 +28,12 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffda1f6a" height="51.0" layoutX="311.0" layoutY="105.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-      <Text layoutX="319.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your store" wrappingWidth="97.21630859375">
+      <Text layoutX="376.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your store name" wrappingWidth="97.21630859375">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Label layoutX="107.0" layoutY="260.0" prefHeight="17.0" prefWidth="228.0" text="Let's get the business going!">
+      <Label layoutX="212.0" layoutY="278.0" prefHeight="17.0" prefWidth="228.0" text="Let's get the business going!">
          <font>
             <Font size="14.0" />
          </font>
@@ -44,5 +43,6 @@
       <Label layoutX="212.0" layoutY="305.0" text="Duration:" />
       <Label layoutX="339.0" layoutY="305.0" text="days" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffda1f6a" height="91.0" layoutX="311.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
+      <Label layoutX="333.0" layoutY="185.0" prefHeight="69.0" prefWidth="184.0" text="Menu" />
    </children>
 </AnchorPane>
