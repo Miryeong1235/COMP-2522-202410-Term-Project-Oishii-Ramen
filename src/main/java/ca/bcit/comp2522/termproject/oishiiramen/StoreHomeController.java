@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class StoreHomeController {
@@ -13,9 +14,9 @@ public class StoreHomeController {
     private Parent root;
 
     @FXML
-    Label storeNameLabel;
+    Text storeNameText;
 
     public void displayStoreName(String storename) {
-        storeNameLabel.setText(storename);
+        storeNameText.setText(storename);
     }
 }

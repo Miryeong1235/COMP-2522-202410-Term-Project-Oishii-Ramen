@@ -61,6 +61,7 @@ public class RamenMenu2Controller {
         HelloApplication.yourStore.getMenu().get(0).setToppings(toppingList); // change index depending
         System.out.println(HelloApplication.yourStore.getMenu().get(0).getToppings());
 
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("storeHome.fxml")); //ほんとはもう1ページ
         root = loader.load();
 
