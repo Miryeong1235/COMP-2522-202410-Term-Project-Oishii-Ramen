@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Store {
-    public static final double EVENT_GOOD_POSSIBILITY = 0.05;
-    public static final double EVENT_BAD_POSSIBILITY = 0.04;
+//    public static final double EVENT_GOOD_POSSIBILITY = 0.05;
+//    public static final double EVENT_BAD_POSSIBILITY = 0.04;
     public static final double DOWNTOWN_RENT = 10000.00;
     public static final double RICHMOND_RENT = 9000.00;
     public static final double METROTOWN_RENT = 8000.00;
@@ -13,8 +13,8 @@ public class Store {
     public static final int MAX_NUMBER_OF_CHAIR = 30;
     public static final int OPERATION_HOURS = 8;
 
-    private double effectAmountGood;
-    private double effectAmountBad;
+//    private double effectAmountGood;
+//    private double effectAmountBad;
     private String name;
     private final String ownerName;
     private String location;
@@ -111,9 +111,6 @@ public class Store {
         return menu;
     }
 
-//    public void event() {
-//        pass;
-//    }
 
     public double getAccumulatedCost() {
         return this.accumulatedCost;
@@ -205,7 +202,7 @@ public class Store {
 
 
     private double calculateLabourCost(int days) {
-        // calculate labour cost and sum it up
+
         double labourCost = 0.0;
         for (Employee employee : employees) {
             labourCost += employee.getHourlyWage() * OPERATION_HOURS * days;
@@ -213,39 +210,50 @@ public class Store {
         return labourCost;
     }
 
-    public double runBusiness(int days) {
-        // calculate the sales and cost during the days
-        double sales = 0.0;
-        double cost = 0.0;
-
-        cost += calculateLabourCost(days);
-
-        // calculate rent
+    private double calculateRent(int days) {
+        double rentForDays = 0.0;
         if (location.equals("Downtown")) {
-            cost += DOWNTOWN_RENT * days / 30;
+            rentForDays += DOWNTOWN_RENT * days / 30;
         } else if (location.equals("Richmond")) {
-            cost += RICHMOND_RENT * days / 30;
+            rentForDays += RICHMOND_RENT * days / 30;
         } else {
-            cost += METROTOWN_RENT * days / 30;
+            rentForDays += METROTOWN_RENT * days / 30;
         }
+        return rentForDays;
+    }
 
-        // 頼まれやすさ = orderRate
-        double orderRate = 0.0;
-        int numberOfMenu = menu.size();
-        double sumOfPrice = 0;
-        for (Menu ramen: menu ) {
-            orderRate += 1/ramen.getPrice();
-            sumOfPrice+= ramen.getPrice();
-        }
-        double averagePrice = sumOfPrice/numberOfMenu;
-
-        //　set coefficient based on Average price
+    private double setCustomerCoefficient(double averagePrice) {
         double customerCoefficient = 1.0;
         if (averagePrice > 30) {
             customerCoefficient = 0.7;
         } else if (averagePrice > 25) {
             customerCoefficient = 0.8;
         }
+        return customerCoefficient;
+    }
+
+    public double runBusiness(int days) {
+        // calculate the sales and cost during the days
+        double sales = 0.0;
+        double cost = 0.0;
+
+        // calculate labour cost and sum it up
+        cost += calculateLabourCost(days);
+
+        // calculate rent
+        cost += calculateRent(days);
+
+        // calculate sum of orderRate
+        double orderRateSum = 0.0;
+        double sumOfPrice = 0; // to get average to calculate coefficient
+        for (Menu ramen: menu ) {
+            orderRateSum += 1 / ramen.getPrice();
+            sumOfPrice+= ramen.getPrice();
+        }
+
+        //　set coefficient based on Average price
+        double averagePrice = sumOfPrice/ menu.size();
+        double customerCoefficient = setCustomerCoefficient(averagePrice);
 
         // calculate by days user want to run business for
         for (int i = 0; i < days; i++) {
@@ -253,19 +261,18 @@ public class Store {
             // number of customers in a day
             int numberOfCustomers = (int) (occupancy * numberOfChair * OPERATION_HOURS * customerCoefficient);
 
-            // 商品の価格平均によって稼働率を調整する
-
-            // 各商品の頼まれやすさの割合＝頼まれやすさ / 頼まれやすさの合計
-            // 頼まれやすさの合計は、「1/各メニューの価格」　の総和
-
+            // Adjust the rate of order based on the averate price
+            // The rate for order for each ramen ＝ (1 / each menu's price) / orderRateSum
             for (Menu ramen: menu) {
-                sales += numberOfCustomers * ramen.getPrice() * ( 1 / ramen.getPrice() / orderRate);
-                cost += numberOfCustomers * ramen.getMaterialCost() * ( 1 / ramen.getPrice() / orderRate);
+                double orderRateForEachRamen = 1 / ramen.getPrice() / orderRateSum;
+                sales += numberOfCustomers * ramen.getPrice() * orderRateForEachRamen;
+                cost += numberOfCustomers * ramen.getMaterialCost() * orderRateForEachRamen;
             }
         }
-
         this.accumulatedCost += cost;
         this.accumulatedSales += sales;
+
+        // return the profit, which is the difference of sales and cost
         return sales-cost;
     }
 }
