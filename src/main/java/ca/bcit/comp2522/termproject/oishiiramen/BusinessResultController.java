@@ -29,9 +29,6 @@ public class BusinessResultController {
     @FXML
     private Label detailsLabel;
 
-    @FXML
-    private Button goHomeButton;
-
     public void displayResult(Store yourStore) {
         double revenue = yourStore.getAccumulatedRevenue();
         double cost = yourStore.getAccumulatedCost();
