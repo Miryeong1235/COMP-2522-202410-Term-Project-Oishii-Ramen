@@ -60,8 +60,8 @@ public class RamenMenu2Controller {
             System.out.println("Selected Items: seaweed");
         }
 
-        HelloApplication.yourStore.getMenu().get(numberOfMenu).setToppings(toppingList); // change index depending
-        System.out.println(HelloApplication.yourStore.getMenu().get(numberOfMenu).getToppings());
+        HelloApplication.yourStore.getMenu().get(numberOfMenu-1).setToppings(toppingList); // change index depending
+        System.out.println(HelloApplication.yourStore.getMenu().get(numberOfMenu - 1).getToppings());
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu3.fxml"));

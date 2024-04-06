@@ -13,10 +13,10 @@ public class CompleteMenuController {
     private Scene scene;
     private Parent root;
 
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("storeHome.fxml")); //ほんとはもう1ページ
-    root = loader.load();
-
-    //仮で置いている確認用function
-    StoreHomeController storeHomeController = loader.getController();
-        storeHomeController.displayStoreName(HelloApplication.yourStore.getName());
+//    FXMLLoader loader = new FXMLLoader(getClass().getResource("storeHome.fxml")); //ほんとはもう1ページ
+//    root = loader.load();
+//
+//    //仮で置いている確認用function
+//    StoreHomeController storeHomeController = loader.getController();
+//        storeHomeController.displayStoreName(HelloApplication.yourStore.getName());
 }

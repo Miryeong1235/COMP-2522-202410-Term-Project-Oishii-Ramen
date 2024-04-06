@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ca.bcit.comp2522.termproject.oishiiramen.RamenMenu3Controller"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.RamenMenu3Controller">
+   <children>
+       <Label layoutX="72.0" layoutY="66.0" text="Ramen Meterial Fee: $">
+           <font>
+               <Font size="36.0" />
+           </font>
+       </Label>
+       <Label fx:id="materialFeeWithToppingLabel" layoutX="408.0" layoutY="66.0" text="priceWithTopping">
+           <font>
+               <Font size="36.0" />
+           </font>
+       </Label>
+      <Label layoutX="80.0" layoutY="189.0" text="Set price for ramen">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ramenPriceTextField" layoutX="281.0" layoutY="187.0" prefHeight="17.0" prefWidth="113.0" />
+      <ImageView fitHeight="117.0" fitWidth="124.0" layoutX="440.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ramen_donburi.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="78.0" layoutY="241.0" text="Set name for ramen">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ramenNameTextField" layoutX="282.0" layoutY="239.0" prefHeight="17.0" prefWidth="113.0" />
+      <Button fx:id="finishRamenMenuButton" layoutX="266.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchCompleteMenu" text="Decided" />
+   </children>
 </AnchorPane>
