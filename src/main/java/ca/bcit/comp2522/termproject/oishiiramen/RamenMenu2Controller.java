@@ -64,12 +64,8 @@ public class RamenMenu2Controller {
         System.out.println(HelloApplication.yourStore.getMenu().get(numberOfMenu).getToppings());
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("storeHome.fxml")); //ほんとはもう1ページ
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu3.fxml"));
         root = loader.load();
-
-        //仮で置いている確認用function
-        StoreHomeController storeHomeController = loader.getController();
-        storeHomeController.displayStoreName(HelloApplication.yourStore.getName());
 
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
