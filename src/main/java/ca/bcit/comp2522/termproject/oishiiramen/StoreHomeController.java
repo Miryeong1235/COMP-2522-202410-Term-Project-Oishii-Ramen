@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -22,13 +23,21 @@ public class StoreHomeController {
     private Parent root;
 
     @FXML
-    Text storeNameText;
+    private Text storeNameText;
 
     @FXML
-    Label menuListLabel;
+    private Label menuListLabel;
 
     @FXML
-    TextField businessDuration;
+    private TextField businessDuration;
+
+    @FXML
+    private Button exitButton;
+
+    public void finishGame(){
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
+    }
 
     public void displayStoreName(String storeName) {
         storeNameText.setText(storeName);
