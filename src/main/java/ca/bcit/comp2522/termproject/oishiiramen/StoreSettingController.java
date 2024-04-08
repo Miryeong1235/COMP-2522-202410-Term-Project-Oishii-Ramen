@@ -13,6 +13,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Store setting controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class StoreSettingController {
     private Stage stage;
     private Scene scene;
@@ -36,6 +42,13 @@ public class StoreSettingController {
 
         String username = ownerNameTextField.getText();
         String storename = storeNameTextField.getText();
+
+        int numberOfChair = 0;
+        try {
+            numberOfChair = Integer.parseInt(numberOfChairTextField.getText());
+        } catch (NumberFormatException e){
+            System.out.println("We could not convert to integer" + e.getMessage());
+        }
         int numberOfChair = Integer.parseInt(numberOfChairTextField.getText());
 
         RadioButton selectedRadioButton = (RadioButton) locationToggle.getSelectedToggle();
