@@ -129,54 +129,107 @@ public class Store {
         random = new Random();
     }
 
+    /**
+     * The Location enum represents the possible locations where a store can be situated.
+     * It provides three options: Downtown, Richmond, and Metrotown.
+     */
     public enum Location {
         Downtown,
         Richmond,
         Metrotown
     }
 
+    /**
+     * Returns the name of this store as a String.
+     *
+     * @return the name of this store as a String
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Returns the name of the store owner as a String.
+     *
+     * @return the name of the store owner as a String
+     */
     public String getOwnerName() {
         return this.ownerName;
     }
 
+    /**
+     * Returns the location of the store as a Location.
+     *
+     * @return the location of the store as a Location
+     */
     public String getLocation() {
         return this.location;
     }
 
+    /**
+     * Returns the number of the chair in the store as an int.
+     *
+     * @return the number of the chair in the store as an int
+     */
     public int getNumberOfChair() {
         return this.numberOfChair;
     }
 
+    /**
+     * Returns the rent of the store as a double.
+     *
+     * @return the rent of the store as a double
+     */
     public double getRent() {
         return this.rent;
     }
 
+    /**
+     * Returns the list of employees working at the store as an ArrayList.
+     *
+     * @return the list of employees working at the store as an ArrayList
+     */
     public ArrayList<Employee> getEmployees() {
         return employees;
     }
 
+    /**
+     * Returns the list of menu of the store as an ArrayList.
+     *
+     * @return the list of menu of the store as an ArrayList
+     */
     public ArrayList<Menu> getMenu() {
         return menu;
     }
 
-
+    /**
+     * Returns the accumulated cost of the store as a double.
+     *
+     * @return the accumulated cost of the store as a double
+     */
     public double getAccumulatedCost() {
         return this.accumulatedCost;
     }
 
+    /**
+     * Returns the accumulated sales of the store as a double.
+     *
+     * @return the accumulated sales of the store as a double
+     */
     public double getAccumulatedSales() {
         return this.accumulatedSales;
     }
 
+    /**
+     * Returns the accumulated revenue of the store as a double.
+     *
+     * @return the accumulated revenue of the store as a double
+     */
     public double getAccumulatedRevenue() {
         return this.accumulatedSales - this.accumulatedCost;
     }
 
-    public void setName(String newName) {
+    public void setName(final String newName) {
         if (newName == null || newName.isBlank()) {
             throw new IllegalArgumentException("The store name cannot be null.");
         } else {
@@ -185,10 +238,10 @@ public class Store {
         }
     }
 
-    public void setLocation(Location newLocation) {
+    public void setLocation(final Location newLocation) {
         if (newLocation == null) {
-            throw new IllegalArgumentException("Invalid location value. Valid values are Downtown, Richmond, " +
-                    "and Metrotown");
+            throw new IllegalArgumentException("Invalid location value. Valid values are Downtown, Richmond, "
+                    + "and Metrotown");
         }
         this.location = newLocation.name();
 
@@ -208,13 +261,13 @@ public class Store {
         }
     }
 
-    public void setNumberOfChair(int newNumberOfChair) {
+    public void setNumberOfChair(final int newNumberOfChair) {
         if (newNumberOfChair < MINIMUM_NUMBER_OF_CHAIR) {
             this.numberOfChair = MINIMUM_NUMBER_OF_CHAIR;
         } else this.numberOfChair = Math.min(newNumberOfChair, MAX_NUMBER_OF_CHAIR);
     }
 
-    public boolean hireEmployee(Employee newEmployee) {
+    public boolean hireEmployee(final Employee newEmployee) {
         if (newEmployee == null) {
             return false;
         } else {
@@ -223,7 +276,7 @@ public class Store {
         }
     }
 
-    public boolean fireEmployee(Employee firedEmployee) {
+    public boolean fireEmployee(final Employee firedEmployee) {
         if (firedEmployee != null) {
             for (Employee currentEmployee : employees) {
                 if (currentEmployee.equals(firedEmployee)) {
@@ -235,7 +288,7 @@ public class Store {
         return false;
     }
 
-    public void addMenu(Menu newMenu) {
+    public void addMenu(final Menu newMenu) {
         if (newMenu == null) {
             throw new IllegalArgumentException("Menu was not inputted.");
         } else {
@@ -243,7 +296,7 @@ public class Store {
         }
     }
 
-    public boolean removeMenu(Menu discontinueMenu) {
+    public boolean removeMenu(final Menu discontinueMenu) {
         if (discontinueMenu != null) {
             for (Menu currentMenu : menu) {
                 if (currentMenu.equals(discontinueMenu)) {
@@ -256,7 +309,7 @@ public class Store {
     }
 
 
-    private double calculateLabourCost(int days) {
+    private double calculateLabourCost(final int days) {
 
         double labourCost = 0.0;
         for (Employee employee : employees) {
@@ -265,7 +318,7 @@ public class Store {
         return labourCost;
     }
 
-    private double calculateRent(int days) {
+    private double calculateRent(final int days) {
         double rentForDays = 0.0;
         if (location.equals("Downtown")) {
             rentForDays += DOWNTOWN_RENT * days / 30;
@@ -277,17 +330,21 @@ public class Store {
         return rentForDays;
     }
 
-    private double setCustomerCoefficient(double averagePrice) {
+    private double setCustomerCoefficient(final double averagePrice) {
         double customerCoefficient = 1.0;
-        if (averagePrice > 30) {
-            customerCoefficient = 0.7;
-        } else if (averagePrice > 25) {
-            customerCoefficient = 0.8;
+        final int expensiveAveragePrice = 30;
+        final int moderateAveragePrice = 25;
+        final double expensiveAveragePriceCoefficient = 0.7;
+        final double moderateAveragePriceCoefficient = 0.8;
+        if (averagePrice > expensiveAveragePrice) {
+            customerCoefficient = expensiveAveragePriceCoefficient;
+        } else if (averagePrice > moderateAveragePrice) {
+            customerCoefficient = moderateAveragePriceCoefficient;
         }
         return customerCoefficient;
     }
 
-    public double runBusiness(int days) {
+    public double runBusiness(final int days) {
         // calculate the sales and cost during the days
         double sales = 0.0;
         double cost = 0.0;
@@ -301,13 +358,13 @@ public class Store {
         // calculate sum of orderRate
         double orderRateSum = 0.0;
         double sumOfPrice = 0; // to get average to calculate coefficient
-        for (Menu ramen: menu ) {
+        for (Menu ramen: menu) {
             orderRateSum += 1 / ramen.getPrice();
-            sumOfPrice+= ramen.getPrice();
+            sumOfPrice += ramen.getPrice();
         }
 
         //　set coefficient based on Average price
-        double averagePrice = sumOfPrice/ menu.size();
+        double averagePrice = sumOfPrice / menu.size();
         double customerCoefficient = setCustomerCoefficient(averagePrice);
 
         // calculate by days user want to run business for
@@ -328,6 +385,6 @@ public class Store {
         this.accumulatedSales += sales;
 
         // return the profit, which is the difference of sales and cost
-        return sales-cost;
+        return sales - cost;
     }
 }
