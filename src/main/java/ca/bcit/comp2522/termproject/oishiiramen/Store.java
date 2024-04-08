@@ -65,6 +65,15 @@ public class Store {
 
     private final Random random;
 
+    /**
+     * Constructs a Store object.
+     *
+     * @param name a String
+     * @param ownerName a String
+     * @param location a Location
+     * @param numberOfChair an int
+     * @throws IllegalArgumentException if the location is null
+     */
     public Store(final String name, final String ownerName, final Location location, final int numberOfChair) {
         if (name == null || name.isBlank()) {
             this.name = DEFAULT_STORE_NAME;
@@ -80,28 +89,36 @@ public class Store {
         }
 
         if (location == null) {
-            throw new IllegalArgumentException("Invalid location value. Valid values are Downtown, Richmond, " +
-                    "and Metrotown");
+            throw new IllegalArgumentException("Invalid location value. Valid values are Downtown, Richmond, "
+                    + "and Metrotown");
         }
         this.location = location.name();
 
         if (this.location.equals("Downtown")) {
+            final double occupancyRateLowerDowntown = 0.8;
+            final double occupancyRateUpperDowntown = 1.4;
             this.rent = DOWNTOWN_RENT;
-            this.occupancyRateLower = 0.8;
-            this.occupancyRateUpper = 1.4;
+            this.occupancyRateLower = occupancyRateLowerDowntown;
+            this.occupancyRateUpper = occupancyRateUpperDowntown;
         } else if (this.location.equals("Richmond")) {
+            final double occupancyRateLowerRichmond = 0.7;
+            final double occupancyRateUpperRichmond = 1.3;
             this.rent = RICHMOND_RENT;
-            this.occupancyRateLower = 0.7;
-            this.occupancyRateUpper = 1.3;
+            this.occupancyRateLower = occupancyRateLowerRichmond;
+            this.occupancyRateUpper = occupancyRateUpperRichmond;
         } else {
+            final double occupancyRateLowerMetrotown = 0.65;
+            final double occupancyRateUpperMetrotown = 1.2;
             this.rent = METROTOWN_RENT;
-            this.occupancyRateLower = 0.65;
-            this.occupancyRateUpper = 1.2;
+            this.occupancyRateLower = occupancyRateLowerMetrotown;
+            this.occupancyRateUpper = occupancyRateUpperMetrotown;
         }
 
         if (numberOfChair < MINIMUM_NUMBER_OF_CHAIR) {
             this.numberOfChair = MINIMUM_NUMBER_OF_CHAIR;
-        } else this.numberOfChair = Math.min(numberOfChair, MAX_NUMBER_OF_CHAIR);
+        } else {
+            this.numberOfChair = Math.min(numberOfChair, MAX_NUMBER_OF_CHAIR);
+        }
 
         this.menu = new ArrayList<>();
         this.employees = new ArrayList<>();
