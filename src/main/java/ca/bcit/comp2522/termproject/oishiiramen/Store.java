@@ -27,6 +27,35 @@ public class Store {
     public static final double METROTOWN_RENT = 8000.00;
 
     /**
+     * Lower bound of occupancy rate for Downtown.
+     */
+    public static final double OCCUPANCY_RATE_LOWER_DOWNTOWN = 0.8;
+
+    /**
+     * Upper bound of occupancy rate for Downtown.
+     */
+    public static final double OCCUPANCY_RATE_UPPER_DOWNTOWN = 1.4;
+
+    /**
+     * Lower bound of occupancy rate for Richmond.
+     */
+    public static final double OCCUPANCY_RATE_LOWER_RICHMOND = 0.7;
+
+    /**
+     * Upper bound of occupancy rate for Richmond.
+     */
+    public static final double OCCUPANCY_RATE_UPPER_RICHMOND = 1.3;
+
+    /**
+     * Lower bound of occupancy rate for Metrotown.
+     */
+    public static final double OCCUPANCY_RATE_LOWER_METROTOWN = 0.65;
+
+    /**
+     * Upper bound of occupancy rate for Metrotown.
+     */
+    public static final double OCCUPANCY_RATE_UPPER_METROTOWN = 1.2;
+    /**
      * Minimum number of chair.
      */
     public static final int MINIMUM_NUMBER_OF_CHAIR = 5;
@@ -78,8 +107,7 @@ public class Store {
         if (name == null || name.isBlank()) {
             this.name = DEFAULT_STORE_NAME;
         } else {
-            this.name = name.strip().substring(0, 1).toUpperCase()
-                    + name.strip().substring(1).toLowerCase();
+            this.name = name.strip().substring(0, 1).toUpperCase() + name.strip().substring(1).toLowerCase();
         }
 
         if (ownerName == null || ownerName.isBlank()) {
@@ -95,23 +123,17 @@ public class Store {
         this.location = location.name();
 
         if (this.location.equals("Downtown")) {
-            final double occupancyRateLowerDowntown = 0.8;
-            final double occupancyRateUpperDowntown = 1.4;
             this.rent = DOWNTOWN_RENT;
-            this.occupancyRateLower = occupancyRateLowerDowntown;
-            this.occupancyRateUpper = occupancyRateUpperDowntown;
+            this.occupancyRateLower = OCCUPANCY_RATE_LOWER_DOWNTOWN;
+            this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_DOWNTOWN;
         } else if (this.location.equals("Richmond")) {
-            final double occupancyRateLowerRichmond = 0.7;
-            final double occupancyRateUpperRichmond = 1.3;
             this.rent = RICHMOND_RENT;
-            this.occupancyRateLower = occupancyRateLowerRichmond;
-            this.occupancyRateUpper = occupancyRateUpperRichmond;
+            this.occupancyRateLower = OCCUPANCY_RATE_LOWER_RICHMOND;
+            this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_RICHMOND;
         } else {
-            final double occupancyRateLowerMetrotown = 0.65;
-            final double occupancyRateUpperMetrotown = 1.2;
             this.rent = METROTOWN_RENT;
-            this.occupancyRateLower = occupancyRateLowerMetrotown;
-            this.occupancyRateUpper = occupancyRateUpperMetrotown;
+            this.occupancyRateLower = OCCUPANCY_RATE_LOWER_METROTOWN;
+            this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_METROTOWN;
         }
 
         if (numberOfChair < MINIMUM_NUMBER_OF_CHAIR) {
@@ -229,15 +251,24 @@ public class Store {
         return this.accumulatedSales - this.accumulatedCost;
     }
 
+    /**
+     * Sets the new store name if newName is valid.
+     *
+     * @param newName newName as a String
+     */
     public void setName(final String newName) {
-        if (newName == null || newName.isBlank()) {
-            throw new IllegalArgumentException("The store name cannot be null.");
-        } else {
+        if (newName != null && !newName.isBlank()) {
             this.name = newName.strip().substring(0, 1).toUpperCase()
                     + newName.strip().substring(1).toLowerCase();
         }
     }
 
+    /**
+     * Sets the new location if newLocation is valid.
+     *
+     * @param newLocation newLocation as a Location
+     * @throws IllegalArgumentException if newLocation is null
+     */
     public void setLocation(final Location newLocation) {
         if (newLocation == null) {
             throw new IllegalArgumentException("Invalid location value. Valid values are Downtown, Richmond, "
@@ -248,25 +279,39 @@ public class Store {
         // the rent will be changed as the location is changed
         if (this.location.equals("Downtown")) {
             this.rent = DOWNTOWN_RENT;
-            this.occupancyRateLower = 0.8;
-            this.occupancyRateUpper = 1.4;
+            this.occupancyRateLower = OCCUPANCY_RATE_LOWER_DOWNTOWN;
+            this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_DOWNTOWN;
         } else if (this.location.equals("Richmond")) {
             this.rent = RICHMOND_RENT;
-            this.occupancyRateLower = 0.7;
-            this.occupancyRateUpper = 1.3;
+            this.occupancyRateLower = OCCUPANCY_RATE_LOWER_RICHMOND;
+            this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_RICHMOND;
         } else {
             this.rent = METROTOWN_RENT;
-            this.occupancyRateLower = 0.65;
-            this.occupancyRateUpper = 1.2;
+            this.occupancyRateLower = OCCUPANCY_RATE_LOWER_METROTOWN;
+            this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_METROTOWN;
         }
     }
 
+    /**
+     * Sets the new number of chair if newNumberOfChair is valid.
+     * Ensures that the new number of chair stays within the valid range.
+     *
+     * @param newNumberOfChair newNumberOfChair as an int
+     */
     public void setNumberOfChair(final int newNumberOfChair) {
         if (newNumberOfChair < MINIMUM_NUMBER_OF_CHAIR) {
             this.numberOfChair = MINIMUM_NUMBER_OF_CHAIR;
-        } else this.numberOfChair = Math.min(newNumberOfChair, MAX_NUMBER_OF_CHAIR);
+        } else {
+            this.numberOfChair = Math.min(newNumberOfChair, MAX_NUMBER_OF_CHAIR);
+        }
     }
 
+    /**
+     * Adds a fish to the pool.
+     *
+     * @param newEmployee the employee to be added to the Store as an Employee.
+     * @return True if the employee was added successfully, false if the input fish is null.
+     */
     public boolean hireEmployee(final Employee newEmployee) {
         if (newEmployee == null) {
             return false;
@@ -276,6 +321,12 @@ public class Store {
         }
     }
 
+    /**
+     * Removes employee from the Store.
+     *
+     * @param firedEmployee the employee to be removed to the Store as an Employee.
+     * @return True if the employee was removed successfully, false if the input employee is null.
+     */
     public boolean fireEmployee(final Employee firedEmployee) {
         if (firedEmployee != null) {
             for (Employee currentEmployee : employees) {
@@ -320,12 +371,13 @@ public class Store {
 
     private double calculateRent(final int days) {
         double rentForDays = 0.0;
+        final int daysPerMonth = 30;
         if (location.equals("Downtown")) {
-            rentForDays += DOWNTOWN_RENT * days / 30;
+            rentForDays += DOWNTOWN_RENT * days / daysPerMonth;
         } else if (location.equals("Richmond")) {
-            rentForDays += RICHMOND_RENT * days / 30;
+            rentForDays += RICHMOND_RENT * days / daysPerMonth;
         } else {
-            rentForDays += METROTOWN_RENT * days / 30;
+            rentForDays += METROTOWN_RENT * days / daysPerMonth;
         }
         return rentForDays;
     }
@@ -373,7 +425,7 @@ public class Store {
             // number of customers in a day
             int numberOfCustomers = (int) (occupancy * numberOfChair * OPERATION_HOURS * customerCoefficient);
 
-            // Adjust the rate of order based on the averate price
+            // Adjust the rate of order based on the average price
             // The rate for order for each ramen ＝ (1 / each menu's price) / orderRateSum
             for (Menu ramen: menu) {
                 double orderRateForEachRamen = 1 / ramen.getPrice() / orderRateSum;
