@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static ca.bcit.comp2522.termproject.oishiiramen.Menu.numberOfMenu;
-
 public class StoreHomeController {
     private Stage stage;
     private Scene scene;
@@ -65,8 +63,8 @@ public class StoreHomeController {
         root = loader.load();
 
         int durationToRunBusiness = Integer.parseInt(businessDuration.getText());
-        HelloApplication.yourStore.runBusiness(durationToRunBusiness);
-        System.out.println(HelloApplication.yourStore.getOwnerName() + " has run business for "
+        GameApplication.yourStore.runBusiness(durationToRunBusiness);
+        System.out.println(GameApplication.yourStore.getOwnerName() + " has run business for "
                 + durationToRunBusiness + " days");
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

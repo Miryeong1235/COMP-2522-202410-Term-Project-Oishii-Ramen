@@ -6,17 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.Locale;
 
 
+/**
+ * Business result controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class BusinessResultController {
 
     private Stage stage;
@@ -52,10 +55,10 @@ public class BusinessResultController {
 
         // display store name
         StoreHomeController storeHomeController = loader.getController();
-        storeHomeController.displayStoreName(HelloApplication.yourStore.getName());
+        storeHomeController.displayStoreName(GameApplication.yourStore.getName());
 
         // display store menu
-        storeHomeController.displayStoreMenu(HelloApplication.yourStore);
+        storeHomeController.displayStoreMenu(GameApplication.yourStore);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

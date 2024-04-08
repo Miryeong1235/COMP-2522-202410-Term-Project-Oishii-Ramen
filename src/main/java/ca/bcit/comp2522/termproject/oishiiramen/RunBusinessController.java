@@ -11,8 +11,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-import static ca.bcit.comp2522.termproject.oishiiramen.RamenMenu1Controller.numberOfMenu;
-
 public class RunBusinessController {
 //    private Stage stage;
 //    private Scene scene;
@@ -46,7 +44,7 @@ public class RunBusinessController {
 
             // display result
             BusinessResultController businessResultController = loader.getController();
-            businessResultController.displayResult(HelloApplication.yourStore);
+            businessResultController.displayResult(GameApplication.yourStore);
 
             Scene scene = yugiri.getScene();
             Scene nextScene = new Scene(root);

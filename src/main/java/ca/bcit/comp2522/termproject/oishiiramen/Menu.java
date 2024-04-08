@@ -2,6 +2,12 @@ package ca.bcit.comp2522.termproject.oishiiramen;
 
 import java.util.ArrayList;
 
+/**
+ * Menu class.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public abstract class Menu {
     public static final double COST_FOR_CHASHU = 0.5;
     public static final double COST_FOR_CORN = 0.1;

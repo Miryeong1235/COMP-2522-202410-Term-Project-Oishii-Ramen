@@ -48,7 +48,7 @@ public class StoreSettingController {
         HiringEmployeeController hiringEmployeeController = loader.getController();
         hiringEmployeeController.displayName(username);
 
-        HelloApplication.initializeStore(storename, username, storeLocation, numberOfChair);
+        GameApplication.initializeStore(storename, username, storeLocation, numberOfChair);
 //        System.out.println(yourStore.getName());
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

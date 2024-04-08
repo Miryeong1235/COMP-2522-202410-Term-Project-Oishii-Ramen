@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static ca.bcit.comp2522.termproject.oishiiramen.RamenMenu1Controller.numberOfMenu;
 
@@ -36,12 +35,12 @@ public class RamenMenu3Controller {
     public void switchCompleteMenu(ActionEvent event) throws IOException {
 //        StringBuilder selectedItems = new StringBuilder();
         int price = Integer.parseInt(ramenPriceTextField.getText());
-        HelloApplication.yourStore.getMenu().get(numberOfMenu - 1).setPrice(price);
-        System.out.println("Ramen price was set as $" + HelloApplication.yourStore.getMenu().get(numberOfMenu - 1).getPrice());
+        GameApplication.yourStore.getMenu().get(numberOfMenu - 1).setPrice(price);
+        System.out.println("Ramen price was set as $" + GameApplication.yourStore.getMenu().get(numberOfMenu - 1).getPrice());
 
         String menuName = ramenNameTextField.getText();
-        HelloApplication.yourStore.getMenu().get(numberOfMenu - 1).setName(menuName);
-        System.out.println("Ramen name was set as " + HelloApplication.yourStore.getMenu().get(numberOfMenu - 1).getName());
+        GameApplication.yourStore.getMenu().get(numberOfMenu - 1).setName(menuName);
+        System.out.println("Ramen name was set as " + GameApplication.yourStore.getMenu().get(numberOfMenu - 1).getName());
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("completeMenu.fxml"));

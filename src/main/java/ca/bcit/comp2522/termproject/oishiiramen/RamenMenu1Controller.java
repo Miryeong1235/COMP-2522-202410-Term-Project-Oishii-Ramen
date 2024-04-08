@@ -6,7 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
@@ -65,7 +64,7 @@ public class RamenMenu1Controller {
             }
         }
 
-        HelloApplication.yourStore.addMenu(yourRamen);
+        GameApplication.yourStore.addMenu(yourRamen);
 
         RamenMenu2Controller ramenMenu2Controller = loader.getController();
         ramenMenu2Controller.displayMaterialPrice(yourRamen);

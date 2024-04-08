@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -37,7 +36,7 @@ public class HiringEmployeeController {
         Employee yourEmployee = new Employee(employeeName, employeeLevel);
 //        yourStore.hireEmployee(yourEmployee);
 
-        System.out.println(HelloApplication.yourStore.getName() +" "+ HelloApplication.yourStore.getOwnerName());
+        System.out.println(GameApplication.yourStore.getName() +" "+ GameApplication.yourStore.getOwnerName());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu1.fxml"));
         root = loader.load();

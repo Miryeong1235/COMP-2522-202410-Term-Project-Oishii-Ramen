@@ -1,5 +1,11 @@
 package ca.bcit.comp2522.termproject.oishiiramen;
 
+/**
+ * Employee class.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class Employee {
     public final double LEVEL1_HOURLY_WAGE = 20; // do we need several levels?
     public final double LEVEL2_HOURLY_WAGE = 25;

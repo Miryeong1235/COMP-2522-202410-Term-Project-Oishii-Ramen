@@ -13,6 +13,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
+/**
+ * Complete menu controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class CompleteMenuController {
 
     private Stage stage;
@@ -37,10 +43,10 @@ public class CompleteMenuController {
 
             // display store name
             StoreHomeController storeHomeController = loader.getController();
-            storeHomeController.displayStoreName(HelloApplication.yourStore.getName());
+            storeHomeController.displayStoreName(GameApplication.yourStore.getName());
 
             // display store menu
-            storeHomeController.displayStoreMenu(HelloApplication.yourStore);
+            storeHomeController.displayStoreMenu(GameApplication.yourStore);
         }
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

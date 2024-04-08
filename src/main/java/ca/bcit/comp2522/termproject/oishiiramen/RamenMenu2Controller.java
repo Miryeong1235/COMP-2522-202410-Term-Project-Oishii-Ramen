@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -60,15 +59,15 @@ public class RamenMenu2Controller {
             System.out.println("Selected Items: seaweed");
         }
 
-        HelloApplication.yourStore.getMenu().get(numberOfMenu-1).setToppings(toppingList); // change index depending
-        System.out.println(HelloApplication.yourStore.getMenu().get(numberOfMenu - 1).getToppings());
+        GameApplication.yourStore.getMenu().get(numberOfMenu-1).setToppings(toppingList); // change index depending
+        System.out.println(GameApplication.yourStore.getMenu().get(numberOfMenu - 1).getToppings());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu3.fxml"));
         root = loader.load();
 
         // display new material price in RamenMenu3 page
         RamenMenu3Controller ramenMenu3Controller = loader.getController();
-        ramenMenu3Controller.displayMaterialPrice(HelloApplication.yourStore.getMenu().get(numberOfMenu - 1));
+        ramenMenu3Controller.displayMaterialPrice(GameApplication.yourStore.getMenu().get(numberOfMenu - 1));
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
