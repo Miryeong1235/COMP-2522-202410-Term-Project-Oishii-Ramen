@@ -11,21 +11,26 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Welcome controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class WelcomeController {
     @FXML
     private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-
-    public void switchToStoreSetting(ActionEvent event) throws IOException {
+    /**
+     * Moves to store setting page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void switchToStoreSetting(final ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("storeSetting.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -33,6 +38,4 @@ public class WelcomeController {
         stage.show();
 
     }
-
-
 }

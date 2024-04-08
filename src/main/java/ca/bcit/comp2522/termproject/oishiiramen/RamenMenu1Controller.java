@@ -11,59 +11,65 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Ramen menu 1 controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class RamenMenu1Controller {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-//    public static Menu yourRamen;
-    private Menu yourRamen;
-    public static int numberOfMenu = 0;
-
+    private static int numberOfMenu = 0;
     @FXML
     private ToggleGroup flavour;
     @FXML
     private ToggleGroup size;
 
-    public void switchRamenMenu2(ActionEvent event) throws IOException {
+    private Menu instantiateMenu(final String newFlavour, final String newSize) {
+        Menu yourRamen;
 
-//        Choose flavour
+        switch (newFlavour) {
+            case "Shio ramen" -> {
+                yourRamen = new Shio(newSize);
+                numberOfMenu++;
+            }
+            case "Shoyu ramen" -> {
+                yourRamen = new Shoyu(newSize);
+                numberOfMenu++;
+            }
+            case "Tonkotsu ramen" -> {
+                yourRamen = new Tonkotsu(newSize);
+                numberOfMenu++;
+            }
+            default -> {
+                yourRamen = new Miso(newSize);
+                numberOfMenu++;
+            }
+        }
+        return yourRamen;
+    }
+
+    /**
+     * Moves to ramen menu 2 page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void switchRamenMenu2(final ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
+
+        // Choose flavour
         RadioButton selectedFlavourRadioButton = (RadioButton) flavour.getSelectedToggle();
         String ramenFlavour = selectedFlavourRadioButton.getText();
-        System.out.println("Selected Option: " + ramenFlavour);
 
         RadioButton selectedSizeRadioButton = (RadioButton) size.getSelectedToggle();
         String ramenSize = selectedSizeRadioButton.getText();
-        System.out.println("Selected Option: " + ramenSize);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu2.fxml"));
         root = loader.load();
 
-        Menu yourRamen;
-        switch (ramenFlavour) {
-            case "Shio ramen" -> {
-                yourRamen = new Shio(ramenSize);
-                numberOfMenu++;
-                System.out.println(yourRamen.getName() + "w as instantiated");
-            }
-            case "Shoyu ramen" -> {
-                yourRamen = new Shoyu(ramenSize);
-                numberOfMenu++;
-                System.out.println(yourRamen.getName() + " was instantiated");
-            }
-            case "Tonkotsu ramen" -> {
-                yourRamen = new Tonkotsu(ramenSize);
-                numberOfMenu++;
-                System.out.println(yourRamen.getName() + " was instantiated");
-            }
-            default -> {
-                yourRamen = new Miso(ramenSize);
-                numberOfMenu++;
-                System.out.println(yourRamen.getName() + " was instantiated");
-            }
-        }
-
+        Menu yourRamen = instantiateMenu(ramenFlavour, ramenSize);
         GameApplication.yourStore.addMenu(yourRamen);
 
         RamenMenu2Controller ramenMenu2Controller = loader.getController();
@@ -75,5 +81,12 @@ public class RamenMenu1Controller {
         stage.show();
     }
 
-
+    /**
+     * Returns the number of menu as an int.
+     *
+     * @return numberOfMenu as an int
+     */
+    public static int getNumberOfMenu() {
+        return numberOfMenu;
+    }
 }

@@ -6,12 +6,27 @@ package ca.bcit.comp2522.termproject.oishiiramen;
  * @author Atsuko Uemura, Misuzu Taniguchi
  * @version 12-April-2024
  */
-public class Shio extends Menu{
+public class Shio extends Menu {
+
+    /**
+     * Material cost for Shio ramen.
+     */
     public static final double COST_FOR_SHIO = 3.00;
-    public Shio(String size) {
+
+    /**
+     * Constructs an object of Shio with a parameter.
+     *
+     * @param size as a String
+     */
+    public Shio(final String size) {
         super(size);
     }
 
+    /**
+     * Returns a cost for a Shio ramen.
+     *
+     * @return COST_FOR_SHIO as a double
+     */
     public double getCostForRamen() {
         return COST_FOR_SHIO;
     }

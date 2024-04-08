@@ -15,6 +15,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Store home controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class StoreHomeController {
     private Stage stage;
     private Scene scene;
@@ -58,7 +64,13 @@ public class StoreHomeController {
         menuListLabel.setText(result);
     }
 
-    public void switchRunBusiness(ActionEvent event) throws IOException {
+    /**
+     * Moves to run business page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void switchRunBusiness(final ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("runBusiness.fxml"));
         root = loader.load();
 

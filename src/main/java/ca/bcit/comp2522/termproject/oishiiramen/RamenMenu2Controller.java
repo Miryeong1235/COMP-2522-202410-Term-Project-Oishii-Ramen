@@ -15,15 +15,15 @@ import java.util.ArrayList;
 
 import static ca.bcit.comp2522.termproject.oishiiramen.RamenMenu1Controller.numberOfMenu;
 
+/**
+ * Ramen menu 2 controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class RamenMenu2Controller {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
-    Label materialFeeLabel;
-
+    private Label materialFeeLabel;
     @FXML
     private CheckBox chashu;
     @FXML
@@ -33,33 +33,42 @@ public class RamenMenu2Controller {
     @FXML
     private CheckBox seaweed;
 
+    /**
+     * Displays the material price.
+     *
+     * @param yourRamen as Menu
+     */
     public void displayMaterialPrice(Menu yourRamen) {
         String materialCostString = Double.toString(yourRamen.getMaterialCost());
         materialFeeLabel.setText(materialCostString);
     }
 
+    /**
+     * Moves to ramen menu 3 page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void switchRamenMenu3(final ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
 
-    public void switchRamenMenu3(ActionEvent event) throws IOException {
-        StringBuilder selectedItems = new StringBuilder();
         ArrayList<Menu.Topping> toppingList = new ArrayList<>();
         if (chashu.isSelected()) {
             toppingList.add(Menu.Topping.chashu);
-            System.out.println("Selected Items: chashu");
         }
         if (tamago.isSelected()) {
             toppingList.add(Menu.Topping.tamago);
-            System.out.println("Selected Items: tamago");
         }
         if (corn.isSelected()) {
             toppingList.add(Menu.Topping.corn);
-            System.out.println("Selected Items: corn");
         }
         if (seaweed.isSelected()) {
             toppingList.add(Menu.Topping.seaweed);
-            System.out.println("Selected Items: seaweed");
         }
 
-        GameApplication.yourStore.getMenu().get(numberOfMenu-1).setToppings(toppingList); // change index depending
+        GameApplication.yourStore.getMenu().get(numberOfMenu - 1).setToppings(toppingList); // change index depending
         System.out.println(GameApplication.yourStore.getMenu().get(numberOfMenu - 1).getToppings());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu3.fxml"));

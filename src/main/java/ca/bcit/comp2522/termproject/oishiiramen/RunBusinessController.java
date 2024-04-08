@@ -11,36 +11,60 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
+/**
+ * Run business controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class RunBusinessController {
-//    private Stage stage;
-//    private Scene scene;
-//    private Parent root;
+    /**
+     * Duration per single movement.
+     */
+    public static final double MOVE_DURATION_IN_SECOND = 0.5;
+
+    /**
+     * Duration per single movement.
+     */
+    public static final double MOVE_DISTANCE_IN_PIXCEL = 30.0;
+
+    /**
+     * Duration per single movement.
+     */
+    public static final int NUMBER_OF_MOVEMENT = 6;
+
+
     @FXML
     private ImageView yugiri;
 
+    /**
+     * Initializes the page.
+     */
     public void initialize() {
-
-        // ImageViewを左右に動かすアニメーションを作成
-        double durationSeconds = 0.5;
-        double distance = 30.0;
+        // move an ImageView to the right and the left
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.ZERO, e -> yugiri.setTranslateX(0)), // 初期位置
-                new KeyFrame(Duration.seconds(durationSeconds), e -> yugiri.setTranslateX(distance)) // 右に移動
+                new KeyFrame(Duration.ZERO, e -> yugiri.setTranslateX(0)), // initial position
+                new KeyFrame(Duration.seconds(MOVE_DURATION_IN_SECOND), e -> yugiri.setTranslateX(MOVE_DISTANCE_IN_PIXCEL)) // move right
         );
-        timeline.setAutoReverse(true); // 往復するように設定
-        timeline.setCycleCount(6); // 往復を2回行う
+        timeline.setAutoReverse(true); // go back to left
+        timeline.setCycleCount(NUMBER_OF_MOVEMENT);
+
+        // after finished the movement, load new fxml
         timeline.setOnFinished(event -> {
-            // FXMLのロードと画面遷移
             System.out.println("Run Finished");
             loadNextFXML();
         });
-        timeline.play(); // start animation
+
+        timeline.play();
     }
 
-    private void loadNextFXML() {
+    /**
+     * Moves to business result page on our JavaFX UI.
+     */
+    public void loadNextFXML() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("businessResult.fxml"));
-            Parent root = loader.load(); // FXMLファイルのルート要素を取得
+            Parent root = loader.load();
 
             // display result
             BusinessResultController businessResultController = loader.getController();

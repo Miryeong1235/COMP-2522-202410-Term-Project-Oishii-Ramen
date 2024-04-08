@@ -12,6 +12,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Hiring employee controller.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class HiringEmployeeController {
 
     private Stage stage;
