@@ -3,18 +3,53 @@ package ca.bcit.comp2522.termproject.oishiiramen;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Store class.
+ *
+ * @author Atsuko Uemura, Misuzu Taniguchi
+ * @version 12-April-2024
+ */
 public class Store {
-//    public static final double EVENT_GOOD_POSSIBILITY = 0.05;
-//    public static final double EVENT_BAD_POSSIBILITY = 0.04;
+
+    /**
+     * Monthly Downtown rent.
+     */
     public static final double DOWNTOWN_RENT = 10000.00;
+
+    /**
+     * Monthly Richmond rent.
+     */
     public static final double RICHMOND_RENT = 9000.00;
+
+    /**
+     * Monthly Metrotown rent.
+     */
     public static final double METROTOWN_RENT = 8000.00;
+
+    /**
+     * Minimum number of chair.
+     */
     public static final int MINIMUM_NUMBER_OF_CHAIR = 5;
+
+    /**
+     * Maximum number of chair.
+     */
     public static final int MAX_NUMBER_OF_CHAIR = 30;
+
+    /**
+     * Operation hours.
+     */
     public static final int OPERATION_HOURS = 8;
 
-//    private double effectAmountGood;
-//    private double effectAmountBad;
+    /**
+     * Default store name.
+     */
+    public static final String DEFAULT_STORE_NAME = "Oishii ramen";
+
+    /**
+     * Default store owner name.
+     */
+    public static final String DEFAULT_OWNER_NAME = "Taisho";
     private String name;
     private final String ownerName;
     private String location;
@@ -28,18 +63,18 @@ public class Store {
     private double accumulatedCost;
     private double accumulatedSales;
 
-    Random random;
+    private final Random random;
 
     public Store(final String name, final String ownerName, final Location location, final int numberOfChair) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("The store name cannot be null.");
+            this.name = DEFAULT_STORE_NAME;
         } else {
             this.name = name.strip().substring(0, 1).toUpperCase()
                     + name.strip().substring(1).toLowerCase();
         }
 
         if (ownerName == null || ownerName.isBlank()) {
-            throw new IllegalArgumentException("The owner name cannot be null.");
+            this.ownerName = DEFAULT_OWNER_NAME;
         } else {
             this.ownerName = ownerName.strip().toLowerCase();
         }

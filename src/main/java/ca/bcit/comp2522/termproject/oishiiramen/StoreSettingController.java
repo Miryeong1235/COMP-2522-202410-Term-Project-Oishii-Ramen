@@ -46,10 +46,9 @@ public class StoreSettingController {
         int numberOfChair = 0;
         try {
             numberOfChair = Integer.parseInt(numberOfChairTextField.getText());
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("We could not convert to integer" + e.getMessage());
         }
-        int numberOfChair = Integer.parseInt(numberOfChairTextField.getText());
 
         RadioButton selectedRadioButton = (RadioButton) locationToggle.getSelectedToggle();
         Store.Location storeLocation = Store.Location.valueOf(selectedRadioButton.getText());
