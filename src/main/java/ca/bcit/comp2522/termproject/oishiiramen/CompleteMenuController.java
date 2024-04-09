@@ -20,16 +20,19 @@ import java.io.IOException;
  * @version 12-April-2024
  */
 public class CompleteMenuController {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     private ToggleGroup addMenuToggle;
 
-    public void switchStoreHome(ActionEvent event) throws IOException {
-
+    /**
+     * Moves to store home page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void switchStoreHome(final ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
 
         RadioButton selectedAddMenuRadioButton = (RadioButton) addMenuToggle.getSelectedToggle();
         String userWantsToAdd = selectedAddMenuRadioButton.getText();
@@ -49,7 +52,7 @@ public class CompleteMenuController {
             storeHomeController.displayStoreMenu(GameApplication.yourStore);
         }
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
