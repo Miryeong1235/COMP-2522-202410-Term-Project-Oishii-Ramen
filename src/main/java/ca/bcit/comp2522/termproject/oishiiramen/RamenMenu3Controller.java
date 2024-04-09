@@ -12,8 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static ca.bcit.comp2522.termproject.oishiiramen.RamenMenu1Controller.numberOfMenu;
-
 /**
  * Ramen menu 3 controller.
  *
@@ -51,14 +49,16 @@ public class RamenMenu3Controller {
         Parent root;
 
         int price = Integer.parseInt(ramenPriceTextField.getText());
-        GameApplication.yourStore.getMenu().get(numberOfMenu - 1).setPrice(price);
+
+        int indexOfMenu = RamenMenu1Controller.getNumberOfMenu() - 1;
+        GameApplication.yourStore.getMenu().get(indexOfMenu).setPrice(price);
         System.out.println("Ramen price was set as $"
-                + GameApplication.yourStore.getMenu().get(numberOfMenu - 1).getPrice());
+                + GameApplication.yourStore.getMenu().get(indexOfMenu).getPrice());
 
         String menuName = ramenNameTextField.getText();
-        GameApplication.yourStore.getMenu().get(numberOfMenu - 1).setName(menuName);
+        GameApplication.yourStore.getMenu().get(indexOfMenu).setName(menuName);
         System.out.println("Ramen name was set as "
-                + GameApplication.yourStore.getMenu().get(numberOfMenu - 1).getName());
+                + GameApplication.yourStore.getMenu().get(indexOfMenu).getName());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("completeMenu.fxml"));
         root = loader.load();

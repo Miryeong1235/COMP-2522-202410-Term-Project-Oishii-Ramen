@@ -28,7 +28,7 @@
       <Label fx:id="ownerNameLabel2" layoutX="159.0" layoutY="209.0" text="Store location:" />
       <Label fx:id="ownerNameLabel11" layoutX="100.0" layoutY="303.0" prefHeight="31.0" prefWidth="152.0" text="Number of chairs (5~30):" />
       <TextField fx:id="numberOfChairTextField" layoutX="253.0" layoutY="299.0" />
-      <RadioButton layoutX="254.0" layoutY="209.0" mnemonicParsing="false" text="Downtown">
+      <RadioButton layoutX="254.0" layoutY="209.0" mnemonicParsing="false" selected="true" text="Downtown">
          <toggleGroup>
             <ToggleGroup fx:id="locationToggle" />
          </toggleGroup>

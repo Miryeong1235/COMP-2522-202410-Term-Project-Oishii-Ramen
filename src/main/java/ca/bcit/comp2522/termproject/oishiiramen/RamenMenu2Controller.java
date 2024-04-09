@@ -13,8 +13,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static ca.bcit.comp2522.termproject.oishiiramen.RamenMenu1Controller.numberOfMenu;
-
 /**
  * Ramen menu 2 controller.
  *
@@ -38,7 +36,7 @@ public class RamenMenu2Controller {
      *
      * @param yourRamen as Menu
      */
-    public void displayMaterialPrice(Menu yourRamen) {
+    public void displayMaterialPrice(final Menu yourRamen) {
         String materialCostString = Double.toString(yourRamen.getMaterialCost());
         materialFeeLabel.setText(materialCostString);
     }
@@ -68,15 +66,16 @@ public class RamenMenu2Controller {
             toppingList.add(Menu.Topping.seaweed);
         }
 
-        GameApplication.yourStore.getMenu().get(numberOfMenu - 1).setToppings(toppingList); // change index depending
-        System.out.println(GameApplication.yourStore.getMenu().get(numberOfMenu - 1).getToppings());
+        int indexOfMenu = RamenMenu1Controller.getNumberOfMenu() - 1;
+        GameApplication.yourStore.getMenu().get(indexOfMenu).setToppings(toppingList); // change index depending
+        System.out.println(GameApplication.yourStore.getMenu().get(indexOfMenu).getToppings());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu3.fxml"));
         root = loader.load();
 
         // display new material price in RamenMenu3 page
         RamenMenu3Controller ramenMenu3Controller = loader.getController();
-        ramenMenu3Controller.displayMaterialPrice(GameApplication.yourStore.getMenu().get(numberOfMenu - 1));
+        ramenMenu3Controller.displayMaterialPrice(GameApplication.yourStore.getMenu().get(indexOfMenu));
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
