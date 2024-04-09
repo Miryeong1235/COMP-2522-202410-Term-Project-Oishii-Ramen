@@ -75,7 +75,7 @@ public class RamenMenu1Controller {
         RamenMenu2Controller ramenMenu2Controller = loader.getController();
         ramenMenu2Controller.displayMaterialPrice(yourRamen);
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
