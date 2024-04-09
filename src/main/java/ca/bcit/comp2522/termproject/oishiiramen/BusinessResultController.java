@@ -21,18 +21,18 @@ import java.util.Locale;
  * @version 12-April-2024
  */
 public class BusinessResultController {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     private Label revenueLabel;
 
     @FXML
     private Label detailsLabel;
 
-    public void displayResult(Store yourStore) {
+    /**
+     * Displays the financial result of the store, including accumulated revenue, cost, and sales.
+     *
+     * @param yourStore the Store object for which the financial result will be displayed
+     */
+    public void displayResult(final Store yourStore) {
         double revenue = yourStore.getAccumulatedRevenue();
         double cost = yourStore.getAccumulatedCost();
         double sales = yourStore.getAccumulatedSales();
@@ -49,7 +49,16 @@ public class BusinessResultController {
 
     }
 
-    public void backToStoreHome(ActionEvent event) throws IOException {
+    /**
+     * Moves to store home page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void backToStoreHome(final ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("storeHome.fxml"));
         root = loader.load();
 
@@ -60,7 +69,7 @@ public class BusinessResultController {
         // display store menu
         storeHomeController.displayStoreMenu(GameApplication.yourStore);
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
