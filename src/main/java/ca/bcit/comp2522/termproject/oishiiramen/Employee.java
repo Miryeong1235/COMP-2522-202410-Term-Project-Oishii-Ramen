@@ -7,19 +7,40 @@ package ca.bcit.comp2522.termproject.oishiiramen;
  * @version 12-April-2024
  */
 public class Employee {
-    public final double LEVEL1_HOURLY_WAGE = 20; // do we need several levels?
-    public final double LEVEL2_HOURLY_WAGE = 25;
-    public final double LEVEL3_HOURLY_WAGE = 30;
-    public final int MAX_LEVEL = 3;
-    public final int MIN_LEVEL = 1;
+    /**
+     * Hourly wage of level 1 employee.
+     */
+    public static final double LEVEL1_HOURLY_WAGE = 20; // do we need several levels?
+    /**
+     * Hourly wage of level 2 employee.
+     */
+    public static final double LEVEL2_HOURLY_WAGE = 25;
+    /**
+     * Hourly wage of level 3 employee.
+     */
+    public static final double LEVEL3_HOURLY_WAGE = 30;
+    /**
+     * Maximum level for employee.
+     */
+    public static final int MAX_LEVEL = 3;
+    /**
+     * Minimum level for employee.
+     */
+    public static final int MIN_LEVEL = 1;
 
+    private static int totalEmployeeNumber = 0;
     private final int employeeID;
     private String name;
     private int level;
     private double hourlyWage;
 
-    static int totalEmployeeNumber;
 
+    /**
+     * Constructs an Employee object.
+     *
+     * @param name a String
+     * @param level an int
+     */
     public Employee(final String name, final int level) {
         this.name = name;
         this.level = level;
@@ -34,31 +55,66 @@ public class Employee {
         this.employeeID = totalEmployeeNumber;
     }
 
+    /**
+     * Returns the employeeID of the employee as an int.
+     *
+     * @return the employeeID of the employee as an int
+     */
     public int getEmployeeID() {
         return employeeID;
     }
 
+    /**
+     * Returns the name of the employee as a String.
+     *
+     * @return the name of the employee as a String
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the level of the employee as an int.
+     *
+     * @return the level of the employee as an int
+     */
     public int getLevel() {
         return level;
     }
 
+    /**
+     * Returns the hourly wage of the employee as a double.
+     *
+     * @return the hourly wage of the employee as a double
+     */
     public double getHourlyWage() {
         return hourlyWage;
     }
 
+    /**
+     * Returns the number of total employees as an int.
+     *
+     * @return the number of total employees as an int
+     */
     public static int getTotalEmployeeNumber() {
         return totalEmployeeNumber;
     }
 
-    public void setName(String newName) {
+    /**
+     * Sets the new employee name if newName is valid.
+     *
+     * @param newName newName as a String
+     */
+    public void setName(final String newName) {
         this.name = newName;
     }
 
-    public void setLevel(int newLevel) {
+    /**
+     * Sets the new employee level.
+     *
+     * @param newLevel newName as an int
+     */
+    public void setLevel(final int newLevel) {
         if (newLevel >= MIN_LEVEL && newLevel <= MAX_LEVEL) {
             this.level = newLevel;
         } else if (newLevel < MIN_LEVEL) {
