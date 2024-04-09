@@ -22,10 +22,6 @@ import java.util.ArrayList;
  * @version 12-April-2024
  */
 public class StoreHomeController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     private Text storeNameText;
 
@@ -38,15 +34,29 @@ public class StoreHomeController {
     @FXML
     private Button exitButton;
 
-    public void finishGame(){
+    /**
+     * Closes the application window to finish the game.
+     */
+    public void finishGame() {
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
-    public void displayStoreName(String storeName) {
+    /**
+     * Displays the name of the store in the user interface.
+     *
+     * @param storeName the name of the store to be displayed
+     */
+    public void displayStoreName(final String storeName) {
         storeNameText.setText(storeName);
     }
-    public void displayStoreMenu(Store yourStore) {
+
+    /**
+     * Displays the menu of the store in the user interface.
+     *
+     * @param yourStore the store whose menu is to be displayed
+     */
+    public void displayStoreMenu(final Store yourStore) {
         StringBuilder menuText = new StringBuilder();
         ArrayList<Menu> menu =  yourStore.getMenu();
 
@@ -71,6 +81,9 @@ public class StoreHomeController {
      * @throws IOException when I/O operation is failed.
      */
     public void switchRunBusiness(final ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("runBusiness.fxml"));
         root = loader.load();
 
@@ -79,7 +92,7 @@ public class StoreHomeController {
         System.out.println(GameApplication.yourStore.getOwnerName() + " has run business for "
                 + durationToRunBusiness + " days");
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
