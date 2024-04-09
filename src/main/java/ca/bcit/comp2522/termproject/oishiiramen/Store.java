@@ -324,7 +324,7 @@ public class Store {
     /**
      * Removes employee from the Store.
      *
-     * @param firedEmployee the employee to be removed to the Store as an Employee.
+     * @param firedEmployee the employee to be removed from the Store as an Employee.
      * @return True if the employee was removed successfully, false if the input employee is null.
      */
     public boolean fireEmployee(final Employee firedEmployee) {
@@ -339,6 +339,12 @@ public class Store {
         return false;
     }
 
+    /**
+     * Adds a menu to the Store.
+     *
+     * @param newMenu the menu to be added to the Store as a Menu.
+     * @throws IllegalArgumentException if newMenu is null
+     */
     public void addMenu(final Menu newMenu) {
         if (newMenu == null) {
             throw new IllegalArgumentException("Menu was not inputted.");
@@ -347,6 +353,12 @@ public class Store {
         }
     }
 
+    /**
+     * Removes menu from the Menu.
+     *
+     * @param discontinueMenu the menu to be removed from the Store as a Menu.
+     * @return True if the menu was removed successfully, false if the input menu is null.
+     */
     public boolean removeMenu(final Menu discontinueMenu) {
         if (discontinueMenu != null) {
             for (Menu currentMenu : menu) {
@@ -358,8 +370,6 @@ public class Store {
         }
         return false;
     }
-
-
     private double calculateLabourCost(final int days) {
 
         double labourCost = 0.0;
@@ -368,7 +378,6 @@ public class Store {
         }
         return labourCost;
     }
-
     private double calculateRent(final int days) {
         double rentForDays = 0.0;
         final int daysPerMonth = 30;
@@ -396,6 +405,12 @@ public class Store {
         return customerCoefficient;
     }
 
+    /**
+     * Runs the business for the specified number of days.
+     *
+     * @param days the number of days the business will be run for
+     * @return the profit of the store during the specified number of days as a double
+     */
     public double runBusiness(final int days) {
         // calculate the sales and cost during the days
         double sales = 0.0;
