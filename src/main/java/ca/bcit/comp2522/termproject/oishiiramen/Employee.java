@@ -42,6 +42,7 @@ public class Employee {
      * @param level an int
      */
     public Employee(final String name, final int level) {
+        // error handling
         this.name = name;
         this.level = level;
         if (this.level == 1) {
