@@ -1,16 +1,12 @@
 package ca.bcit.comp2522.termproject.oishiiramen;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * Welcome controller.
@@ -19,9 +15,6 @@ import java.util.Objects;
  * @version 12-April-2024
  */
 public class WelcomeController {
-    @FXML
-    private Label welcomeText;
-
     /**
      * Moves to store setting page on our JavaFX UI.
      *
