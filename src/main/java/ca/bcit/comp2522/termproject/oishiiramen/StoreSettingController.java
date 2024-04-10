@@ -20,10 +20,6 @@ import java.io.IOException;
  * @version 12-April-2024
  */
 public class StoreSettingController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     private TextField ownerNameTextField;
 
@@ -36,12 +32,19 @@ public class StoreSettingController {
     @FXML
     private TextField numberOfChairTextField;
 
-
-    public void switchToHiringEmployee(ActionEvent event) throws IOException {
-//        root = FXMLLoader.load(getClass().getResource("hiringEmployee.fxml"));
+    /**
+     * Moves to hiring employee page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void switchToHiringEmployee(final ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
 
         String username = ownerNameTextField.getText();
-        String storename = storeNameTextField.getText();
+        String storeName = storeNameTextField.getText();
 
         int numberOfChair = 0;
         try {
@@ -60,10 +63,9 @@ public class StoreSettingController {
         HiringEmployeeController hiringEmployeeController = loader.getController();
         hiringEmployeeController.displayName(username);
 
-        GameApplication.initializeStore(storename, username, storeLocation, numberOfChair);
-//        System.out.println(yourStore.getName());
+        GameApplication.initializeStore(storeName, username, storeLocation, numberOfChair);
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
