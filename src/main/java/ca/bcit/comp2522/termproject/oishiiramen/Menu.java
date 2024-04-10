@@ -231,4 +231,50 @@ public abstract class Menu {
     public static int getNumberOfMenu() {
         return numberOfMenu;
     }
+
+    /**
+     * Evaluates if some other object if "equal" to this one.
+     *
+     * @param o the reference object with which to compare
+     * @return true if this object is equal to the o argument; false otherwise
+     */
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Menu menu = (Menu) o;
+        return Double.compare(getCostForRamen(), menu.getCostForRamen()) == 0 && getMenuID() == menu.getMenuID() && Double.compare(getPrice(), menu.getPrice()) == 0 && Double.compare(getMaterialCost(), menu.getMaterialCost()) == 0 && Objects.equals(getName(), menu.getName()) && Objects.equals(getToppings(), menu.getToppings()) && getSize() == menu.getSize();
+    }
+
+    /**
+     * Returns a hash code of this object.
+     *
+     * @return description as a String
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCostForRamen(), getMenuID(), getName(), getToppings(), getSize(), getPrice(), getMaterialCost());
+    }
+
+    /**
+     * Returns a String representation of this object.
+     *
+     * @return description as a String
+     */
+    @Override
+    public String toString() {
+        return "Menu{"
+                + "costForRamen=" + costForRamen
+                + ", menuID=" + menuID
+                + ", name='" + name + '\''
+                + ", toppings=" + toppings
+                + ", size=" + size
+                + ", price=" + price
+                + ", materialCost=" + materialCost
+                + '}';
+    }
 }

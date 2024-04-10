@@ -1,6 +1,7 @@
 package ca.bcit.comp2522.termproject.oishiiramen;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -446,5 +447,56 @@ public class Store {
 
         // return the profit, which is the difference of sales and cost
         return sales - cost;
+    }
+
+    /**
+     * Evaluates if some other object if "equal" to this one.
+     *
+     * @param o the reference object with which to compare
+     * @return true if this object is equal to the o argument; false otherwise
+     */
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Store store = (Store) o;
+        return getNumberOfChair() == store.getNumberOfChair() && Double.compare(getRent(), store.getRent()) == 0 && Double.compare(occupancyRateLower, store.occupancyRateLower) == 0 && Double.compare(occupancyRateUpper, store.occupancyRateUpper) == 0 && Double.compare(getAccumulatedCost(), store.getAccumulatedCost()) == 0 && Double.compare(getAccumulatedSales(), store.getAccumulatedSales()) == 0 && Objects.equals(getName(), store.getName()) && Objects.equals(getOwnerName(), store.getOwnerName()) && getLocation() == store.getLocation() && Objects.equals(getEmployees(), store.getEmployees()) && Objects.equals(getMenu(), store.getMenu()) && Objects.equals(random, store.random);
+    }
+
+    /**
+     * Returns a hash code of this object.
+     *
+     * @return description as a String
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getOwnerName(), getLocation(), getEmployees(), getNumberOfChair(), getRent(), occupancyRateLower, occupancyRateUpper, getMenu(), getAccumulatedCost(), getAccumulatedSales(), random);
+    }
+
+    /**
+     * Returns a String representation of this object.
+     *
+     * @return description as a String
+     */
+    @Override
+    public String toString() {
+        return "Store{"
+                + "name='" + name + '\''
+                + ", ownerName='" + ownerName + '\''
+                + ", location=" + location
+                + ", employees=" + employees
+                + ", numberOfChair=" + numberOfChair
+                + ", rent=" + rent
+                + ", occupancyRateLower=" + occupancyRateLower
+                + ", occupancyRateUpper=" + occupancyRateUpper
+                + ", menu=" + menu
+                + ", accumulatedCost=" + accumulatedCost
+                + ", accumulatedSales=" + accumulatedSales
+                + ", random=" + random
+                + '}';
     }
 }
