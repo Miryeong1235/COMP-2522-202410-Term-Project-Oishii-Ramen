@@ -36,7 +36,6 @@ public class RamenMenu3Controller {
         materialFeeWithToppingLabel.setText(materialCostString);
     }
 
-
     /**
      * Moves to run complete menu page on our JavaFX UI.
      *
@@ -63,7 +62,7 @@ public class RamenMenu3Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("completeMenu.fxml"));
         root = loader.load();
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

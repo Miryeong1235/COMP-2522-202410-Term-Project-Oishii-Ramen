@@ -77,7 +77,7 @@ public class RamenMenu2Controller {
         RamenMenu3Controller ramenMenu3Controller = loader.getController();
         ramenMenu3Controller.displayMaterialPrice(GameApplication.yourStore.getMenu().get(indexOfMenu));
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

@@ -19,35 +19,44 @@ import java.io.IOException;
  * @version 12-April-2024
  */
 public class HiringEmployeeController {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    // hiringEmployee
+        // hiringEmployee
     @FXML
     private Label ownerNameLabel;
 
     @FXML
     private TextField employeeNameTextField;
 
-    public void displayName(String username) {
+    /**
+     * Displays the username.
+     *
+     * @param username the owner name of the Store that will be displayed
+     */
+    public void displayName(final String username) {
         ownerNameLabel.setText("Hello, " + username);
     }
 
-    public void switchRamenMenu1(ActionEvent event) throws IOException {
+    /**
+     * Moves to ramen manu 1 page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void switchRamenMenu1(final ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
 
         String employeeName = employeeNameTextField.getText();
         int employeeLevel = 1;
         Employee yourEmployee = new Employee(employeeName, employeeLevel);
 //        yourStore.hireEmployee(yourEmployee);
 
-        System.out.println(GameApplication.yourStore.getName() +" "+ GameApplication.yourStore.getOwnerName());
+        System.out.println(GameApplication.yourStore.getName() + " " + GameApplication.yourStore.getOwnerName());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu1.fxml"));
         root = loader.load();
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
