@@ -38,31 +38,31 @@ public class Store {
     /**
      * Lower bound of occupancy rate for Downtown.
      */
-    public static final double OCCUPANCY_RATE_LOWER_DOWNTOWN = 0.8;
+    public static final double OCCUPANCY_RATE_LOWER_DOWNTOWN = 0.5;
 
     /**
      * Upper bound of occupancy rate for Downtown.
      */
-    public static final double OCCUPANCY_RATE_UPPER_DOWNTOWN = 1.4;
+    public static final double OCCUPANCY_RATE_UPPER_DOWNTOWN = 1.0;
 
     /**
      * Lower bound of occupancy rate for Richmond.
      */
-    public static final double OCCUPANCY_RATE_LOWER_RICHMOND = 0.7;
+    public static final double OCCUPANCY_RATE_LOWER_RICHMOND = 0.3;
 
     /**
      * Upper bound of occupancy rate for Richmond.
      */
-    public static final double OCCUPANCY_RATE_UPPER_RICHMOND = 1.3;
+    public static final double OCCUPANCY_RATE_UPPER_RICHMOND = 1.0;
 
     /**
      * Lower bound of occupancy rate for Metrotown.
      */
-    public static final double OCCUPANCY_RATE_LOWER_METROTOWN = 0.65;
+    public static final double OCCUPANCY_RATE_LOWER_METROTOWN = 0.4;
     /**
      * Upper bound of occupancy rate for Metrotown.
      */
-    public static final double OCCUPANCY_RATE_UPPER_METROTOWN = 1.2;
+    public static final double OCCUPANCY_RATE_UPPER_METROTOWN = 1.0;
 
     /**
      * Minimum number of chair.
@@ -309,14 +309,10 @@ public class Store {
      * Adds a fish to the pool.
      *
      * @param newEmployee the employee to be added to the Store as an Employee.
-     * @return True if the employee was added successfully, false if the input fish is null.
      */
-    public boolean hireEmployee(final Employee newEmployee) {
-        if (newEmployee == null) {
-            return false;
-        } else {
+    public void hireEmployee(final Employee newEmployee) {
+        if (newEmployee != null) {
             employees.add(newEmployee);
-            return true;
         }
     }
 
@@ -415,6 +411,11 @@ public class Store {
         double sales = 0.0;
         double cost = 0.0;
 
+
+        System.out.println("Labour cost: " + calculateLabourCost(days));
+        System.out.println("rent: " + calculateRent(days));
+
+
         // calculate labour cost and sum it up
         cost += calculateLabourCost(days);
 
@@ -433,11 +434,18 @@ public class Store {
         double averagePrice = sumOfPrice / menu.size();
         double customerCoefficient = setCustomerCoefficient(averagePrice);
 
+        System.out.println("order rate: " + orderRateSum);
+        System.out.println("sumOfPrice: " + sumOfPrice);
+        System.out.println("average price: " + sumOfPrice / menu.size());
+        System.out.println("customer coefficient: " + customerCoefficient);
+
         // calculate by days user want to run business for
         for (int i = 0; i < days; i++) {
             double occupancy = random.nextDouble(occupancyRateLower, occupancyRateUpper);
             // number of customers in a day
             int numberOfCustomers = (int) (occupancy * numberOfChair * OPERATION_HOURS * customerCoefficient);
+
+            System.out.println(i + " Occupancy: " + occupancy + " numberOfCustomers: " + numberOfCustomers);
 
             // Adjust the rate of order based on the average price
             // The rate for order for each ramen ＝ (1 / each menu's price) / orderRateSum
@@ -445,10 +453,19 @@ public class Store {
                 double orderRateForEachRamen = 1 / ramen.getPrice() / orderRateSum;
                 sales += numberOfCustomers * ramen.getPrice() * orderRateForEachRamen;
                 cost += numberOfCustomers * ramen.getMaterialCost() * orderRateForEachRamen;
+
+                System.out.println("orderRateForEachRamen: " + orderRateForEachRamen);
+                System.out.println("sales: " + sales);
+                System.out.println("cost: " + cost);
             }
         }
+
         this.accumulatedCost += cost;
         this.accumulatedSales += sales;
+
+        System.out.println(sales - cost);
+        System.out.println("=========================");
+
 
         // return the profit, which is the difference of sales and cost
         return sales - cost;

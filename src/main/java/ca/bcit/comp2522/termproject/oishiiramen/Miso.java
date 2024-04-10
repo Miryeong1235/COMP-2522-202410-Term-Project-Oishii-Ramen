@@ -10,7 +10,7 @@ public class Miso extends Menu {
     /**
      * Material cost for Miso ramen.
      */
-    public static final double COST_FOR_MISO = 4.50;
+    public static final double COST_FOR_MISO = 5.50;
 
     /**
      * Constructs an object of Miso with a parameter.

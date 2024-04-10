@@ -11,7 +11,7 @@ public class Shio extends Menu {
     /**
      * Material cost for Shio ramen.
      */
-    public static final double COST_FOR_SHIO = 3.00;
+    public static final double COST_FOR_SHIO = 4.00;
 
     /**
      * Constructs an object of Shio with a parameter.

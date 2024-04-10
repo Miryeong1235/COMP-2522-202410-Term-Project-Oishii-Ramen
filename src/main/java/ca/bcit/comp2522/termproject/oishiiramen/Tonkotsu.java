@@ -10,7 +10,7 @@ public class Tonkotsu extends Menu {
     /**
      * Material cost for Tonkotsu ramen.
      */
-    public static final double COST_FOR_TONKOTSU = 5.00;
+    public static final double COST_FOR_TONKOTSU = 5.50;
 
     /**
      * Constructs an object of Miso with a parameter.
