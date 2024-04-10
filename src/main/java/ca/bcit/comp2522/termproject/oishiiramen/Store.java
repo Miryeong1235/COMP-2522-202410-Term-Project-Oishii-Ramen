@@ -12,6 +12,15 @@ import java.util.Random;
 public class Store {
 
     /**
+     * The Location enum represents the possible locations where a store can be situated.
+     * It provides three options: Downtown, Richmond, and Metrotown.
+     */
+    public enum Location {
+        Downtown,
+        Richmond,
+        Metrotown
+    }
+    /**
      * Monthly Downtown rent.
      */
     public static final double DOWNTOWN_RENT = 10000.00;
@@ -50,11 +59,11 @@ public class Store {
      * Lower bound of occupancy rate for Metrotown.
      */
     public static final double OCCUPANCY_RATE_LOWER_METROTOWN = 0.65;
-
     /**
      * Upper bound of occupancy rate for Metrotown.
      */
     public static final double OCCUPANCY_RATE_UPPER_METROTOWN = 1.2;
+
     /**
      * Minimum number of chair.
      */
@@ -74,22 +83,22 @@ public class Store {
      * Default store name.
      */
     public static final String DEFAULT_STORE_NAME = "Oishii ramen";
-
     /**
      * Default store owner name.
      */
     public static final String DEFAULT_OWNER_NAME = "Taisho";
     private String name;
     private final String ownerName;
-    private String location;
+    private Location location;
     private final ArrayList<Employee> employees;
     private int numberOfChair;
     private double rent;
     private double occupancyRateLower;
     private double occupancyRateUpper;
-    private final ArrayList<Menu> menu;
 
+    private final ArrayList<Menu> menu;
     private double accumulatedCost;
+
     private double accumulatedSales;
 
     private final Random random;
@@ -120,13 +129,13 @@ public class Store {
             throw new IllegalArgumentException("Invalid location value. Valid values are Downtown, Richmond, "
                     + "and Metrotown");
         }
-        this.location = location.name();
+        this.location = location;
 
-        if (this.location.equals("Downtown")) {
+        if (this.location.equals(Location.Downtown)) {
             this.rent = DOWNTOWN_RENT;
             this.occupancyRateLower = OCCUPANCY_RATE_LOWER_DOWNTOWN;
             this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_DOWNTOWN;
-        } else if (this.location.equals("Richmond")) {
+        } else if (this.location.equals(Location.Richmond)) {
             this.rent = RICHMOND_RENT;
             this.occupancyRateLower = OCCUPANCY_RATE_LOWER_RICHMOND;
             this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_RICHMOND;
@@ -152,16 +161,6 @@ public class Store {
     }
 
     /**
-     * The Location enum represents the possible locations where a store can be situated.
-     * It provides three options: Downtown, Richmond, and Metrotown.
-     */
-    public enum Location {
-        Downtown,
-        Richmond,
-        Metrotown
-    }
-
-    /**
      * Returns the name of this store as a String.
      *
      * @return the name of this store as a String
@@ -184,7 +183,7 @@ public class Store {
      *
      * @return the location of the store as a Location
      */
-    public String getLocation() {
+    public Location getLocation() {
         return this.location;
     }
 
@@ -274,14 +273,14 @@ public class Store {
             throw new IllegalArgumentException("Invalid location value. Valid values are Downtown, Richmond, "
                     + "and Metrotown");
         }
-        this.location = newLocation.name();
+        this.location = newLocation;
 
         // the rent will be changed as the location is changed
-        if (this.location.equals("Downtown")) {
+        if (this.location.equals(Location.Downtown)) {
             this.rent = DOWNTOWN_RENT;
             this.occupancyRateLower = OCCUPANCY_RATE_LOWER_DOWNTOWN;
             this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_DOWNTOWN;
-        } else if (this.location.equals("Richmond")) {
+        } else if (this.location.equals(Location.Richmond)) {
             this.rent = RICHMOND_RENT;
             this.occupancyRateLower = OCCUPANCY_RATE_LOWER_RICHMOND;
             this.occupancyRateUpper = OCCUPANCY_RATE_UPPER_RICHMOND;
@@ -381,9 +380,9 @@ public class Store {
     private double calculateRent(final int days) {
         double rentForDays = 0.0;
         final int daysPerMonth = 30;
-        if (location.equals("Downtown")) {
+        if (location.equals(Location.Downtown)) {
             rentForDays += DOWNTOWN_RENT * days / daysPerMonth;
-        } else if (location.equals("Richmond")) {
+        } else if (location.equals(Location.Richmond)) {
             rentForDays += RICHMOND_RENT * days / daysPerMonth;
         } else {
             rentForDays += METROTOWN_RENT * days / daysPerMonth;
