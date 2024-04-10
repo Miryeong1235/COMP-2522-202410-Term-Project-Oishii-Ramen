@@ -29,7 +29,10 @@ public class Employee {
      * Minimum level for employee.
      */
     public static final int MIN_LEVEL = 1;
-
+    /**
+     * Default employee name.
+     */
+    public static final String DEFAULT_EMPLOYEE_NAME = "Kenta";
     private static int totalEmployeeNumber = 0;
     private final int employeeID;
     private String name;
@@ -44,9 +47,18 @@ public class Employee {
      * @param level an int
      */
     public Employee(final String name, final int level) {
-        // error handling
-        this.name = name;
-        this.level = level;
+        if (name == null || name.isBlank()) {
+            this.name = DEFAULT_EMPLOYEE_NAME;
+        } else {
+            this.name = name.strip().substring(0, 1).toUpperCase() + name.strip().substring(1).toLowerCase();
+        }
+
+        if (level < MIN_LEVEL) {
+            this.level = MIN_LEVEL;
+        } else {
+            this.level = Math.min(level, MAX_LEVEL);
+        }
+
         if (this.level == 1) {
             this.hourlyWage = LEVEL1_HOURLY_WAGE;
         } else if (this.level == 2) {
@@ -109,7 +121,10 @@ public class Employee {
      * @param newName newName as a String
      */
     public void setName(final String newName) {
-        this.name = newName;
+        if (newName != null && newName.isBlank()) {
+            this.name = newName.strip().substring(0, 1).toUpperCase()
+                    + newName.strip().substring(1).toLowerCase();
+        }
     }
 
     /**
