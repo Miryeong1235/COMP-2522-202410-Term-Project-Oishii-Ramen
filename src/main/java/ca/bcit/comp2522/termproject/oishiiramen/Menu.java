@@ -1,6 +1,7 @@
 package ca.bcit.comp2522.termproject.oishiiramen;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Menu class.
@@ -9,6 +10,23 @@ import java.util.ArrayList;
  * @version 12-April-2024
  */
 public abstract class Menu {
+    /**
+     * The Topping enum represents the possible toppings which a menu object can have.
+     * It provides four options: chashu, corn, tamago, and seaweed.
+     */
+    public enum Topping {
+        chashu,
+        corn,
+        tamago,
+        seaweed,
+    }
+    /**
+     * The RamenSize enum represents the possible size of the ramen.
+     * It provides three options: large and medium.
+     */
+    public enum RamenSize {
+        large, medium
+    }
 
     /**
      * Material cost for chashu.
@@ -63,7 +81,7 @@ public abstract class Menu {
     /**
      * Size for the menu.
      */
-    protected final String size;
+    protected final RamenSize size;
 
     /**
      * Price for the menu.
@@ -76,36 +94,17 @@ public abstract class Menu {
     protected double materialCost;
 
     /**
-     * The Topping enum represents the possible toppings which a menu object can have.
-     * It provides four options: chashu, corn, tamago, and seaweed.
-     */
-    public enum Topping {
-        chashu,
-        corn,
-        tamago,
-        seaweed,
-    }
-
-    /**
-     * The RamenSize enum represents the possible size of the ramen.
-     * It provides three options: large and medium.
-     */
-    public enum RamenSize {
-        large, medium
-    }
-
-    /**
      * Constructs a Menu object with a parameter.
      *
-     * @param size as a String
+     * @param size as a RamenSizes
      */
-    public Menu(String size) {
+    public Menu(final RamenSize size) {
         numberOfMenu++;
         this.menuID = numberOfMenu;
-        this.size = size; // error handling
+        this.size = Objects.requireNonNullElse(size, RamenSize.medium);
 
         // calculate material cost for this menu and ramen itself
-        if (this.size.equals("large")) {
+        if (this.size.equals(RamenSize.large)) {
             this.materialCost = getCostForRamen() * LARGE_SIZE_COEFFICIENT;
             this.costForRamen = getCostForRamen() * LARGE_SIZE_COEFFICIENT;
         } else {
@@ -122,7 +121,7 @@ public abstract class Menu {
      * @return costForRamen as a double
      */
     public double getCostForRamen() {
-        return costForRamen;
+        return this.costForRamen;
     }
 
     /**
@@ -131,7 +130,7 @@ public abstract class Menu {
      * @return menuID as an int
      */
     public int getMenuID() {
-        return menuID;
+        return this.menuID;
     }
 
     /**
@@ -140,7 +139,7 @@ public abstract class Menu {
      * @return name as a String
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -149,7 +148,7 @@ public abstract class Menu {
      * @return toppings as an ArrayList
      */
     public ArrayList<Topping> getToppings() {
-        return toppings;
+        return this.toppings;
     }
 
     /**
@@ -157,8 +156,8 @@ public abstract class Menu {
      *
      * @return size as a String
      */
-    public String getSize() {
-        return size;
+    public RamenSize getSize() {
+        return this.size;
     }
 
     /**
@@ -167,7 +166,7 @@ public abstract class Menu {
      * @return price as a double
      */
     public double getPrice() {
-        return price;
+        return this.price;
     }
 
     /**
@@ -180,21 +179,24 @@ public abstract class Menu {
     }
 
     /**
-     * Sets name.
+     * Sets name if valid.
      *
      * @param newName as a String
      */
     public void setName(final String newName) {
-        this.name = newName;
+        if (newName != null && !newName.isBlank()) {
+            this.name = newName.strip().substring(0, 1).toUpperCase()
+                    + newName.strip().substring(1).toLowerCase();
+        }
     }
-
-
-    //今のままだとtoppingを一度addしたら変えられないかも
-    public void setToppings(ArrayList<Topping> toppings) {
+    /**
+     * Sets the toppings for the ramen and updates the material cost accordingly.
+     *
+     * @param toppings the list of toppings to be added as an ArrayList
+     */
+    public void setToppings(final ArrayList<Topping> toppings) {
         this.toppings = toppings;
-
         // setting new material cost with toppings
-        // enumの使い方がいまいちわからない
         for (Topping topping : toppings) {
             if (topping.equals(Topping.chashu)) {
                 addToppingMaterialCost(COST_FOR_CHASHU);
@@ -208,14 +210,24 @@ public abstract class Menu {
         }
     }
 
-    public void addToppingMaterialCost(double addingCost){
+    private void addToppingMaterialCost(final double addingCost) {
         this.materialCost += addingCost;
-    };
+    }
 
-    public void setPrice(double newPrice) {
+    /**
+     * Sets the new price if newName is valid.
+     *
+     * @param newPrice newName as a double
+     */
+    public void setPrice(final double newPrice) {
         this.price = newPrice; // Add some logic
     }
 
+    /**
+     * Returns the number of the menu as an int.
+     *
+     * @return the number of the menu as an int
+     */
     public static int getNumberOfMenu() {
         return numberOfMenu;
     }
