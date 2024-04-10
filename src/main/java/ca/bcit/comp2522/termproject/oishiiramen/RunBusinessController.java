@@ -26,7 +26,7 @@ public class RunBusinessController {
     /**
      * Duration per single movement.
      */
-    public static final double MOVE_DISTANCE_IN_PIXCEL = 30.0;
+    public static final double MOVE_DISTANCE_IN_PIXEL = 30.0;
 
     /**
      * Duration per single movement.
@@ -44,7 +44,8 @@ public class RunBusinessController {
         // move an ImageView to the right and the left
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, e -> yugiri.setTranslateX(0)), // initial position
-                new KeyFrame(Duration.seconds(MOVE_DURATION_IN_SECOND), e -> yugiri.setTranslateX(MOVE_DISTANCE_IN_PIXCEL)) // move right
+                new KeyFrame(Duration.seconds(MOVE_DURATION_IN_SECOND),
+                        e -> yugiri.setTranslateX(MOVE_DISTANCE_IN_PIXEL)) // move right
         );
         timeline.setAutoReverse(true); // go back to left
         timeline.setCycleCount(NUMBER_OF_MOVEMENT);
@@ -54,7 +55,6 @@ public class RunBusinessController {
             System.out.println("Run Finished");
             loadNextFXML();
         });
-
         timeline.play();
     }
 
@@ -77,7 +77,7 @@ public class RunBusinessController {
             stage.setScene(nextScene);
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("IOException is caught during loading next fxml page.");
         }
     }
 }
