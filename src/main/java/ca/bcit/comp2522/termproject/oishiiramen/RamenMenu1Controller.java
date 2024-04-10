@@ -70,7 +70,7 @@ public class RamenMenu1Controller {
         root = loader.load();
 
         Menu yourRamen = instantiateMenu(ramenFlavour, ramenSize);
-        GameApplication.yourStore.addMenu(yourRamen);
+        GameApplication.getYourStore().addMenu(yourRamen);
 
         RamenMenu2Controller ramenMenu2Controller = loader.getController();
         ramenMenu2Controller.displayMaterialPrice(yourRamen);

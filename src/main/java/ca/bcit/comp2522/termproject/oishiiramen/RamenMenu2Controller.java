@@ -67,15 +67,15 @@ public class RamenMenu2Controller {
         }
 
         int indexOfMenu = RamenMenu1Controller.getNumberOfMenu() - 1;
-        GameApplication.yourStore.getMenu().get(indexOfMenu).setToppings(toppingList); // change index depending
-        System.out.println(GameApplication.yourStore.getMenu().get(indexOfMenu).getToppings());
+        GameApplication.getYourStore().getMenu().get(indexOfMenu).setToppings(toppingList); // change index depending
+        System.out.println(GameApplication.getYourStore().getMenu().get(indexOfMenu).getToppings());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu3.fxml"));
         root = loader.load();
 
         // display new material price in RamenMenu3 page
         RamenMenu3Controller ramenMenu3Controller = loader.getController();
-        ramenMenu3Controller.displayMaterialPrice(GameApplication.yourStore.getMenu().get(indexOfMenu));
+        ramenMenu3Controller.displayMaterialPrice(GameApplication.getYourStore().getMenu().get(indexOfMenu));
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

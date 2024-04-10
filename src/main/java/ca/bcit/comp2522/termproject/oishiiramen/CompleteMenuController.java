@@ -46,10 +46,10 @@ public class CompleteMenuController {
 
             // display store name
             StoreHomeController storeHomeController = loader.getController();
-            storeHomeController.displayStoreName(GameApplication.yourStore.getName());
+            storeHomeController.displayStoreName(GameApplication.getYourStore().getName());
 
             // display store menu
-            storeHomeController.displayStoreMenu(GameApplication.yourStore);
+            storeHomeController.displayStoreMenu(GameApplication.getYourStore());
         }
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

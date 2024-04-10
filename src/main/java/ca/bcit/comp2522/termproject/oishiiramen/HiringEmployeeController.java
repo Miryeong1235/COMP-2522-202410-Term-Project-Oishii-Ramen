@@ -49,9 +49,10 @@ public class HiringEmployeeController {
         String employeeName = employeeNameTextField.getText();
         int employeeLevel = 1;
         Employee yourEmployee = new Employee(employeeName, employeeLevel);
-//        yourStore.hireEmployee(yourEmployee);
+        GameApplication.getYourStore().hireEmployee(yourEmployee);
 
-        System.out.println(GameApplication.yourStore.getName() + " " + GameApplication.yourStore.getOwnerName());
+        System.out.println(GameApplication.getYourStore().getName()
+                + " " + GameApplication.getYourStore().getOwnerName());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu1.fxml"));
         root = loader.load();

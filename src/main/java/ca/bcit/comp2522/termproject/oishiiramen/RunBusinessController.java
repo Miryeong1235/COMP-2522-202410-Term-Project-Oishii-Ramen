@@ -68,7 +68,7 @@ public class RunBusinessController {
 
             // display result
             BusinessResultController businessResultController = loader.getController();
-            businessResultController.displayResult(GameApplication.yourStore);
+            businessResultController.displayResult(GameApplication.getYourStore());
 
             Scene scene = yugiri.getScene();
             Scene nextScene = new Scene(root);

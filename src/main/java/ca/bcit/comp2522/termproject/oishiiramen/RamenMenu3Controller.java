@@ -50,14 +50,14 @@ public class RamenMenu3Controller {
         int price = Integer.parseInt(ramenPriceTextField.getText());
 
         int indexOfMenu = RamenMenu1Controller.getNumberOfMenu() - 1;
-        GameApplication.yourStore.getMenu().get(indexOfMenu).setPrice(price);
+        GameApplication.getYourStore().getMenu().get(indexOfMenu).setPrice(price);
         System.out.println("Ramen price was set as $"
-                + GameApplication.yourStore.getMenu().get(indexOfMenu).getPrice());
+                + GameApplication.getYourStore().getMenu().get(indexOfMenu).getPrice());
 
         String menuName = ramenNameTextField.getText();
-        GameApplication.yourStore.getMenu().get(indexOfMenu).setName(menuName);
+        GameApplication.getYourStore().getMenu().get(indexOfMenu).setName(menuName);
         System.out.println("Ramen name was set as "
-                + GameApplication.yourStore.getMenu().get(indexOfMenu).getName());
+                + GameApplication.getYourStore().getMenu().get(indexOfMenu).getName());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("completeMenu.fxml"));
         root = loader.load();

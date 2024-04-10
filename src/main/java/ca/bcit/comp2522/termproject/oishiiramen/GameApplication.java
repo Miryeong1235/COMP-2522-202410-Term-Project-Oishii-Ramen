@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class GameApplication extends Application {
 
-    public static Store yourStore;
+    private static Store yourStore;
 
     /**
      * Starts the application by loading the welcome screen.
@@ -57,4 +57,7 @@ public class GameApplication extends Application {
         return yourStore;
     }
 
+    public static Store getYourStore() {
+        return yourStore;
+    }
 }
