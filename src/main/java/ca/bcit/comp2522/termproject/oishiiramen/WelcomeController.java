@@ -1,14 +1,11 @@
 package ca.bcit.comp2522.termproject.oishiiramen;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /**
@@ -18,9 +15,6 @@ import java.io.IOException;
  * @version 12-April-2024
  */
 public class WelcomeController {
-    @FXML
-    private Label welcomeText;
-
     /**
      * Moves to store setting page on our JavaFX UI.
      *
@@ -32,7 +26,9 @@ public class WelcomeController {
         Scene scene;
         Parent root;
 
-        root = FXMLLoader.load(getClass().getResource("storeSetting.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("storeSetting.fxml"));
+        root = loader.load();
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -40,3 +36,6 @@ public class WelcomeController {
 
     }
 }
+
+
+

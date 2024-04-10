@@ -38,31 +38,31 @@ public class Store {
     /**
      * Lower bound of occupancy rate for Downtown.
      */
-    public static final double OCCUPANCY_RATE_LOWER_DOWNTOWN = 0.8;
+    public static final double OCCUPANCY_RATE_LOWER_DOWNTOWN = 0.5;
 
     /**
      * Upper bound of occupancy rate for Downtown.
      */
-    public static final double OCCUPANCY_RATE_UPPER_DOWNTOWN = 1.4;
+    public static final double OCCUPANCY_RATE_UPPER_DOWNTOWN = 1.0;
 
     /**
      * Lower bound of occupancy rate for Richmond.
      */
-    public static final double OCCUPANCY_RATE_LOWER_RICHMOND = 0.7;
+    public static final double OCCUPANCY_RATE_LOWER_RICHMOND = 0.3;
 
     /**
      * Upper bound of occupancy rate for Richmond.
      */
-    public static final double OCCUPANCY_RATE_UPPER_RICHMOND = 1.3;
+    public static final double OCCUPANCY_RATE_UPPER_RICHMOND = 1.0;
 
     /**
      * Lower bound of occupancy rate for Metrotown.
      */
-    public static final double OCCUPANCY_RATE_LOWER_METROTOWN = 0.65;
+    public static final double OCCUPANCY_RATE_LOWER_METROTOWN = 0.4;
     /**
      * Upper bound of occupancy rate for Metrotown.
      */
-    public static final double OCCUPANCY_RATE_UPPER_METROTOWN = 1.2;
+    public static final double OCCUPANCY_RATE_UPPER_METROTOWN = 1.0;
 
     /**
      * Minimum number of chair.
@@ -309,14 +309,10 @@ public class Store {
      * Adds a fish to the pool.
      *
      * @param newEmployee the employee to be added to the Store as an Employee.
-     * @return True if the employee was added successfully, false if the input fish is null.
      */
-    public boolean hireEmployee(final Employee newEmployee) {
-        if (newEmployee == null) {
-            return false;
-        } else {
+    public void hireEmployee(final Employee newEmployee) {
+        if (newEmployee != null) {
             employees.add(newEmployee);
-            return true;
         }
     }
 
@@ -411,14 +407,11 @@ public class Store {
      * @return the profit of the store during the specified number of days as a double
      */
     public double runBusiness(final int days) {
-        // calculate the sales and cost during the days
         double sales = 0.0;
         double cost = 0.0;
 
-        // calculate labour cost and sum it up
+        // calculate labour cost and rent, sum it up
         cost += calculateLabourCost(days);
-
-        // calculate rent
         cost += calculateRent(days);
 
         // calculate sum of orderRate
@@ -447,6 +440,7 @@ public class Store {
                 cost += numberOfCustomers * ramen.getMaterialCost() * orderRateForEachRamen;
             }
         }
+
         this.accumulatedCost += cost;
         this.accumulatedSales += sales;
 

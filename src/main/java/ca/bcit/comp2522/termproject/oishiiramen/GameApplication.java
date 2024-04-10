@@ -57,6 +57,11 @@ public class GameApplication extends Application {
         return yourStore;
     }
 
+    /**
+     * Returns yourStore.
+     *
+     * @return a static variable yourStore as a Store object
+     */
     public static Store getYourStore() {
         return yourStore;
     }

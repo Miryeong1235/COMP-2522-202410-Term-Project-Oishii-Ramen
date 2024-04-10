@@ -10,7 +10,7 @@ public class Shoyu extends Menu {
     /**
      * Material cost for Shoyu ramen.
      */
-    public static final double COST_FOR_SHOYU = 3.50;
+    public static final double COST_FOR_SHOYU = 4.50;
 
     /**
      * Constructs an object of Miso with a parameter.
