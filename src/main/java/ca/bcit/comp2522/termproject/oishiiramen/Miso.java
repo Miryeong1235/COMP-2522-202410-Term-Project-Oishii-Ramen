@@ -17,7 +17,7 @@ public class Miso extends Menu {
      *
      * @param size as a String
      */
-    public Miso(final String size) {
+    public Miso(final RamenSize size) {
         super(size);
     }
 

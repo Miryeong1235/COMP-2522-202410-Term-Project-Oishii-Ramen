@@ -17,7 +17,7 @@ public class Shoyu extends Menu {
      *
      * @param size as a Sting
      */
-    public Shoyu(final String size) {
+    public Shoyu(final RamenSize size) {
         super(size);
     }
 

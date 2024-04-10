@@ -18,7 +18,7 @@ public class Shio extends Menu {
      *
      * @param size as a String
      */
-    public Shio(final String size) {
+    public Shio(final RamenSize size) {
         super(size);
     }
 

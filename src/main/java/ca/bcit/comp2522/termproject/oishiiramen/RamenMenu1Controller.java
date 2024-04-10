@@ -24,7 +24,7 @@ public class RamenMenu1Controller {
     @FXML
     private ToggleGroup size;
 
-    private Menu instantiateMenu(final String newFlavour, final String newSize) {
+    private Menu instantiateMenu(final String newFlavour, final Menu.RamenSize newSize) {
         Menu yourRamen;
 
         switch (newFlavour) {
@@ -69,7 +69,7 @@ public class RamenMenu1Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ramenMenu2.fxml"));
         root = loader.load();
 
-        Menu yourRamen = instantiateMenu(ramenFlavour, ramenSize);
+        Menu yourRamen = instantiateMenu(ramenFlavour, Menu.RamenSize.valueOf(ramenSize));
         GameApplication.getYourStore().addMenu(yourRamen);
 
         RamenMenu2Controller ramenMenu2Controller = loader.getController();

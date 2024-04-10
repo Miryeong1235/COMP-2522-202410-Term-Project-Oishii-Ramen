@@ -17,7 +17,7 @@ public class Tonkotsu extends Menu {
      *
      * @param size as a String
      */
-    public Tonkotsu(final String size) {
+    public Tonkotsu(final RamenSize size) {
         super(size);
     }
 
