@@ -154,6 +154,13 @@ public class Employee {
     }
 
     /**
+     * Resets the total number of employees to zero.
+     */
+    public static void resetTotalEmployeeNumber() {
+        totalEmployeeNumber = 0;
+    }
+
+    /**
      * Evaluates if some other object if "equal" to this one.
      *
      * @param o the reference object with which to compare
