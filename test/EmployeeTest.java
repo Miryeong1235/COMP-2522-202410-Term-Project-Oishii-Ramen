@@ -8,13 +8,41 @@ class EmployeeTest {
 
     @BeforeEach
     public void setUp() {
+        Employee.resetTotalEmployeeNumber();
         testEmployee = new Employee(  "Taro", 1);
     }
 
     @Test
     public void containConstantCalledLEVEL_1_HOURLY_WAGE() {
-        assertEquals(20, Employee.LEVEL1_HOURLY_WAGE);
+        assertEquals(20.0, Employee.LEVEL1_HOURLY_WAGE);
     }
+
+    @Test
+    public void containConstantCalledLEVEL_2_HOURLY_WAGE() {
+        assertEquals(25.0, Employee.LEVEL2_HOURLY_WAGE);
+    }
+
+    @Test
+    public void containConstantCalledLEVEL_3_HOURLY_WAGE() {
+        assertEquals(30.0, Employee.LEVEL3_HOURLY_WAGE);
+    }
+
+    @Test
+    public void containConstantCalledMAX_LEVEL() {
+        assertEquals(3, Employee.MAX_LEVEL);
+    }
+
+    @Test
+    public void containConstantCalledMIN_LEVEL() {
+        assertEquals(1, Employee.MIN_LEVEL);
+    }
+
+    @Test
+    public void containConstantCalledDEFAULT_EMPLOYEE_NAME() {
+        assertEquals("Kenta", Employee.DEFAULT_EMPLOYEE_NAME);
+    }
+
+
 
     @Test
     public void staticEmployeeCounterIsCorrectlyTrackingNumberOfEmployee() {
