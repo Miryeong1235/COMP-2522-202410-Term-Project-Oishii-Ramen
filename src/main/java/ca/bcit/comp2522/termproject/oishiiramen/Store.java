@@ -307,7 +307,7 @@ public class Store {
     }
 
     /**
-     * Adds a fish to the pool.
+     * Adds an Employee to the employees array.
      *
      * @param newEmployee the employee to be added to the Store as an Employee.
      */
@@ -342,9 +342,7 @@ public class Store {
      * @throws IllegalArgumentException if newMenu is null
      */
     public void addMenu(final Menu newMenu) {
-        if (newMenu == null) {
-            throw new IllegalArgumentException("Menu was not inputted.");
-        } else {
+        if (newMenu != null) {
             menu.add(newMenu);
         }
     }
