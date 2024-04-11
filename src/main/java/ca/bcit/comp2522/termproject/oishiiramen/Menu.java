@@ -25,7 +25,7 @@ public abstract class Menu {
      * It provides three options: large and medium.
      */
     public enum RamenSize {
-        large, medium
+        Large, Medium
     }
 
     /**
@@ -101,10 +101,10 @@ public abstract class Menu {
     public Menu(final RamenSize size) {
         numberOfMenu++;
         this.menuID = numberOfMenu;
-        this.size = Objects.requireNonNullElse(size, RamenSize.medium);
+        this.size = Objects.requireNonNullElse(size, RamenSize.Medium);
 
         // calculate material cost for this menu and ramen itself
-        if (this.size.equals(RamenSize.large)) {
+        if (this.size.equals(RamenSize.Large)) {
             this.materialCost = getCostForRamen() * LARGE_SIZE_COEFFICIENT;
             this.costForRamen = getCostForRamen() * LARGE_SIZE_COEFFICIENT;
         } else {
