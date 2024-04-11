@@ -76,7 +76,7 @@ public class Employee {
      * @return the employeeID of the employee as an int
      */
     public int getEmployeeID() {
-        return employeeID;
+        return this.employeeID;
     }
 
     /**
@@ -121,7 +121,7 @@ public class Employee {
      * @param newName newName as a String
      */
     public void setName(final String newName) {
-        if (newName != null && newName.isBlank()) {
+        if (newName != null && !newName.isBlank()) {
             this.name = newName.strip().substring(0, 1).toUpperCase()
                     + newName.strip().substring(1).toLowerCase();
         }
@@ -168,7 +168,9 @@ public class Employee {
             return false;
         }
         Employee employee = (Employee) o;
-        return getEmployeeID() == employee.getEmployeeID() && getLevel() == employee.getLevel() && Double.compare(getHourlyWage(), employee.getHourlyWage()) == 0 && Objects.equals(getName(), employee.getName());
+        return getEmployeeID() == employee.getEmployeeID() && getLevel() == employee.getLevel()
+                && Double.compare(getHourlyWage(), employee.getHourlyWage()) == 0
+                && Objects.equals(getName(), employee.getName());
     }
 
     /**

@@ -1,7 +1,6 @@
 import ca.bcit.comp2522.termproject.oishiiramen.Employee;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTest {
@@ -47,50 +46,80 @@ class EmployeeTest {
     }
 
     @Test
-    public void genusAndSpeciesAreCorrectlyFormattedAndStored() {
-        Employee newEmployee = new Employee("  jiro    ", 5
-);
+    public void employeeNameIsCorrectlyFormatted() {
+        Employee newEmployee = new Employee("  jiRo    ", 2);
         assertEquals("Jiro", newEmployee.getName());
-        assertEquals(3, newEmployee.getLevel());
     }
 
-//    @Test
-//    public void nullSpeciesThrowsIllegalArgumentException() {
-//        // check if default value is used when null
-//        assertThrows(IllegalArgumentException.class, () -> new Guppy("a", null, 0, true, 0 , 0.5));
-//    }
-//
-//    @Test
-//    public void negativeAgeInWeeksBecomesZero() {
-//        // the level is not valid (0, 4)
-//        Guppy fry = new Guppy("a",
-//                "b",
-//                -1,
-//                true,
-//                0 ,
-//                0.5);
-//        assertEquals(0, fry.getAgeInWeeks());
-//    }
-//
-//
-//
-//    public void setName(final String newName) {
-//        this.name = newName;
-//    }
-//    // null, valid, blank
-//
-//    public void setLevel(final int newLevel) {
-//        if (newLevel >= MIN_LEVEL && newLevel <= MAX_LEVEL) {
-//            this.level = newLevel;
-//        } else if (newLevel < MIN_LEVEL) {
-//            this.level = MIN_LEVEL;
-//        } else {
-//            this.level = MAX_LEVEL;
-//        }
-//        setHourlyWage();
-//    }
-//    // valid value, 0, 4
-//
-//    // toString test
+    @Test
+    public void nullNameThrownThenDefaultValueIsUsed() {
+        Employee nullNameEmployee = new Employee(null, 2);
+        assertEquals("Kenta", nullNameEmployee.getName());
+    }
+
+    @Test
+    public void employeeLevelIsCorrectlySetIfItIsTooHigh() {
+        Employee newEmployee = new Employee("Yusuke", 4);
+        assertEquals(3, newEmployee.getLevel());
+        assertEquals(30.0, newEmployee.getHourlyWage());
+    }
+
+    @Test
+    public void employeeLevelIsCorrectlySetIfItIsTooLow() {
+        Employee newEmployee = new Employee("Yusuke", 0);
+        assertEquals(1, newEmployee.getLevel());
+        assertEquals(20.0, newEmployee.getHourlyWage());
+    }
+
+    @Test
+    public void testSetNameValid() {
+        testEmployee.setName("Gojiro");
+        assertEquals("Gojiro", testEmployee.getName());
+    }
+    @Test
+    public void testSetNameNull() {
+        testEmployee.setName(null);
+        assertEquals("Taro", testEmployee.getName());
+    }
+
+    @Test
+    public void testSetNameBlank() {
+        testEmployee.setName("  ");
+        assertEquals("Taro", testEmployee.getName());
+    }
+
+    @Test
+    public void testSetLevelValid() {
+        testEmployee.setLevel(3);
+        assertEquals(3, testEmployee.getLevel());
+        assertEquals(30.0, testEmployee.getHourlyWage());
+    }
+
+    @Test
+    public void testSetLevelTooHigh() {
+        testEmployee.setLevel(5);
+        assertEquals(3, testEmployee.getLevel());
+        assertEquals(30.0, testEmployee.getHourlyWage());
+    }
+
+    @Test
+    public void testSetLevelTooLow() {
+        testEmployee.setLevel(0);
+        assertEquals(1, testEmployee.getLevel());
+        assertEquals(20.0, testEmployee.getHourlyWage());
+    }
+
+    @Test
+    public void testToString() {
+        Employee newEmployee = new Employee("Sakura", 1);
+        final int numberAlreadyCreated = Employee.getTotalEmployeeNumber();
+        final String expected = "Employee{"
+                + "employeeID=" + numberAlreadyCreated
+                + ", name='Sakura'"
+                + ", level=1"
+                + ", hourlyWage=20.0}";
+        final String actual = newEmployee.toString();
+        assertEquals(expected, actual);
+    }
 
 }
