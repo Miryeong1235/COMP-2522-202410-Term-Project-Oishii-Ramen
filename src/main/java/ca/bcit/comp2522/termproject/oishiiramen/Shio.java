@@ -14,6 +14,11 @@ public class Shio extends Menu {
     public static final double COST_FOR_SHIO = 4.00;
 
     /**
+     * Default name for Shio ramen.
+     */
+    public static final String DEFAULT_NAME = "Shio Ramen";
+
+    /**
      * Constructs an object of Shio with a parameter.
      *
      * @param size as a String

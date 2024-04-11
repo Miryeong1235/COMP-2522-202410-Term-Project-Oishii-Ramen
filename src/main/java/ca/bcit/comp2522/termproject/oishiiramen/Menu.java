@@ -105,10 +105,10 @@ public abstract class Menu {
 
         // calculate material cost for this menu and ramen itself
         if (this.size.equals(RamenSize.Large)) {
-            this.materialCost = getCostForRamen() * LARGE_SIZE_COEFFICIENT;
+            this.materialCost = getMaterialCost() * LARGE_SIZE_COEFFICIENT;
             this.costForRamen = getCostForRamen() * LARGE_SIZE_COEFFICIENT;
         } else {
-            this.materialCost = getCostForRamen();
+            this.materialCost = getMaterialCost();
             this.costForRamen = getCostForRamen();
         }
 
@@ -120,9 +120,7 @@ public abstract class Menu {
      *
      * @return costForRamen as a double
      */
-    public double getCostForRamen() {
-        return this.costForRamen;
-    }
+    public abstract double getCostForRamen();
 
     /**
      * Returns menuID.
@@ -175,8 +173,14 @@ public abstract class Menu {
      * @return materialCost as a double
      */
     public double getMaterialCost() {
-        return materialCost;
-    }
+        double costForTopping;
+        for (int i =0; i <  toppings.size(); i++) {
+            costForTopping += toppings.get(i).
+
+        }
+
+        return
+    };
 
     /**
      * Sets name if valid.

@@ -13,6 +13,11 @@ public class Shoyu extends Menu {
     public static final double COST_FOR_SHOYU = 4.50;
 
     /**
+     * Default name for Shoyu ramen.
+     */
+    public static final String DEFAULT_NAME = "Shoyu Ramen";
+
+    /**
      * Constructs an object of Miso with a parameter.
      *
      * @param size as a Sting

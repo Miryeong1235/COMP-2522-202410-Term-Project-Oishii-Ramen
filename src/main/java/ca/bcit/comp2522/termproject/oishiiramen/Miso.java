@@ -13,6 +13,11 @@ public class Miso extends Menu {
     public static final double COST_FOR_MISO = 5.50;
 
     /**
+     * Default name for Miso ramen.
+     */
+    public static final String DEFAULT_NAME = "Miso Ramen";
+
+    /**
      * Constructs an object of Miso with a parameter.
      *
      * @param size as a String

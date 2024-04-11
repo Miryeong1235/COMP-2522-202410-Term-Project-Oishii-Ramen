@@ -13,20 +13,17 @@ public class Tonkotsu extends Menu {
     public static final double COST_FOR_TONKOTSU = 5.50;
 
     /**
+     * Default name for Tonkotsu ramen.
+     */
+    public static final String DEFAULT_NAME = "Tonkotsu Ramen";
+
+    /**
      * Constructs an object of Miso with a parameter.
      *
      * @param size as a String
      */
     public Tonkotsu(final RamenSize size) {
         super(size);
-    }
-
-
-    /**
-     * Returns a cost for a Tonkotsu ramen.
-     * @return COST_FOR_TONKOTSU as a double
-     */
-    public double getCostForRamen() {
-        return COST_FOR_TONKOTSU;
+        this.name = DEFAULT_NAME;
     }
 }
