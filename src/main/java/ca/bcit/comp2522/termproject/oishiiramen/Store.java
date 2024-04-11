@@ -128,8 +128,7 @@ public class Store {
         }
 
         if (location == null) {
-            throw new IllegalArgumentException("Invalid location value. Valid values are Downtown, Richmond, "
-                    + "and Metrotown");
+            throw new IllegalArgumentException("Valid values are Downtown, Richmond, and Metrotown");
         }
         this.location = location;
 
@@ -465,7 +464,14 @@ public class Store {
             return false;
         }
         Store store = (Store) o;
-        return getNumberOfChair() == store.getNumberOfChair() && Double.compare(getRent(), store.getRent()) == 0 && Double.compare(occupancyRateLower, store.occupancyRateLower) == 0 && Double.compare(occupancyRateUpper, store.occupancyRateUpper) == 0 && Double.compare(getAccumulatedCost(), store.getAccumulatedCost()) == 0 && Double.compare(getAccumulatedSales(), store.getAccumulatedSales()) == 0 && Objects.equals(getName(), store.getName()) && Objects.equals(getOwnerName(), store.getOwnerName()) && getLocation() == store.getLocation() && Objects.equals(getEmployees(), store.getEmployees()) && Objects.equals(getMenu(), store.getMenu()) && Objects.equals(random, store.random);
+        return getNumberOfChair() == store.getNumberOfChair() && Double.compare(getRent(), store.getRent()) == 0
+                && Double.compare(occupancyRateLower, store.occupancyRateLower) == 0
+                && Double.compare(occupancyRateUpper, store.occupancyRateUpper) == 0
+                && Double.compare(getAccumulatedCost(), store.getAccumulatedCost()) == 0
+                && Double.compare(getAccumulatedSales(), store.getAccumulatedSales()) == 0
+                && Objects.equals(getName(), store.getName()) && Objects.equals(getOwnerName(), store.getOwnerName())
+                && getLocation() == store.getLocation() && Objects.equals(getEmployees(), store.getEmployees())
+                && Objects.equals(getMenu(), store.getMenu()) && Objects.equals(random, store.random);
     }
 
     /**
@@ -475,7 +481,8 @@ public class Store {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getOwnerName(), getLocation(), getEmployees(), getNumberOfChair(), getRent(), occupancyRateLower, occupancyRateUpper, getMenu(), getAccumulatedCost(), getAccumulatedSales(), random);
+        return Objects.hash(getName(), getOwnerName(), getLocation(), getEmployees(), getNumberOfChair(), getRent(),
+                occupancyRateLower, occupancyRateUpper, getMenu(), getAccumulatedCost(), getAccumulatedSales(), random);
     }
 
     /**
