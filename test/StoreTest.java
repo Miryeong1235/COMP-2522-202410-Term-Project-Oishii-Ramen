@@ -120,5 +120,17 @@ public class StoreTest {
         assertEquals("Taisho", newStore.getOwnerName());
     }
 
+    @Test
+    public void lowNumberOfChairBecomesFive() {
+        Store newStore = new Store("a", "b", Store.Location.Downtown, 4);
+        assertEquals(5, newStore.getNumberOfChair());
+    }
+
+    @Test
+    public void highNumberOfChairBecomesThirty() {
+        Store newStore = new Store("a", "b", Store.Location.Downtown, 31);
+        assertEquals(30, newStore.getNumberOfChair());
+    }
+
 
 }
