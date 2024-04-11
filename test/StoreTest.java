@@ -1,4 +1,3 @@
-import ca.bcit.comp2522.termproject.oishiiramen.Employee;
 import ca.bcit.comp2522.termproject.oishiiramen.Store;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -77,6 +76,48 @@ public class StoreTest {
     @Test
     public void containConstantCalledDEFAULT_OWNER_NAME() {
         assertEquals("Taisho", Store.DEFAULT_OWNER_NAME);
+    }
+
+    @Test
+    public void storeIsSetToCorrectValues() {
+        assertEquals("Ichiban", testStore.getName());
+        assertEquals("Taichi", testStore.getOwnerName());
+        assertEquals(Store.Location.Downtown, testStore.getLocation());
+        assertEquals(10000.00, testStore.getRent());
+        assertEquals(10, testStore.getNumberOfChair());
+        assertEquals(0, testStore.getAccumulatedCost());
+        assertEquals(0, testStore.getAccumulatedSales());
+    }
+
+    @Test
+    public void storeNameAndOwnerNameAreCorrectlyFormatted() {
+        Store newStore = new Store("  ichiBanYa    ", "  rOkI    ", Store.Location.Downtown, 10);
+        assertEquals("Ichibanya", newStore.getName());
+        assertEquals("Roki", newStore.getOwnerName());
+    }
+
+    @Test
+    public void nullStoreNameThrownThenDefaultValueIsUsed() {
+        Store newStore = new Store(null, "a", Store.Location.Downtown, 10);
+        assertEquals("Oishii ramen", newStore.getName());
+    }
+
+    @Test
+    public void emptyStoreNameThrownThenDefaultValueIsUsed() {
+        Store newStore = new Store(" ", "a", Store.Location.Downtown, 10);
+        assertEquals("Oishii ramen", newStore.getName());
+    }
+
+    @Test
+    public void nullOwnerNameThrownThenDefaultValueIsUsed() {
+        Store newStore = new Store("a", null, Store.Location.Downtown, 10);
+        assertEquals("Taisho", newStore.getOwnerName());
+    }
+
+    @Test
+    public void emptyOwnerNameThrownThenDefaultValueIsUsed() {
+        Store newStore = new Store("a", "    ", Store.Location.Downtown, 10);
+        assertEquals("Taisho", newStore.getOwnerName());
     }
 
 
