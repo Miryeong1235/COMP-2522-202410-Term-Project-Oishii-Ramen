@@ -404,8 +404,12 @@ public class Store {
      *
      * @param days the number of days the business will be run for
      * @return the profit of the store during the specified number of days as a double
+     * @throws IllegalArgumentException iif the days is equal to or less than zero
      */
     public double runBusiness(final int days) {
+        if (days <= 0) {
+            throw new IllegalArgumentException("The days must be greater than zero.");
+        }
         double sales = 0.0;
         double cost = 0.0;
 
