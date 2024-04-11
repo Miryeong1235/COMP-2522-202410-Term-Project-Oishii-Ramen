@@ -123,7 +123,8 @@ public class Store {
         if (ownerName == null || ownerName.isBlank()) {
             this.ownerName = DEFAULT_OWNER_NAME;
         } else {
-            this.ownerName = ownerName.strip().toLowerCase();
+            this.ownerName = ownerName.strip().substring(0, 1).toUpperCase()
+                    + ownerName.strip().substring(1).toLowerCase();
         }
 
         if (location == null) {
