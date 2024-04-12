@@ -20,7 +20,7 @@ public class Miso extends Menu {
     /**
      * Constructs an object of Miso with a parameter.
      *
-     * @param size as a String
+     * @param size as a RamenSize
      */
     public Miso(final RamenSize size) {
         super(size);

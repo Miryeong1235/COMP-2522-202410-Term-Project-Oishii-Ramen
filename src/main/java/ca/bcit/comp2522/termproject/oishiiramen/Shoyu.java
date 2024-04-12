@@ -18,9 +18,9 @@ public class Shoyu extends Menu {
     public static final String DEFAULT_NAME = "Shoyu ramen";
 
     /**
-     * Constructs an object of Miso with a parameter.
+     * Constructs an object of Shoyu with a parameter.
      *
-     * @param size as a Sting
+     * @param size as a RamenSize
      */
     public Shoyu(final RamenSize size) {
         super(size);

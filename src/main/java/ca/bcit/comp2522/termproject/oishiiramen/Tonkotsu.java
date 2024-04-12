@@ -18,9 +18,9 @@ public class Tonkotsu extends Menu {
     public static final String DEFAULT_NAME = "Tonkotsu ramen";
 
     /**
-     * Constructs an object of Miso with a parameter.
+     * Constructs an object of Tonkotsu with a parameter.
      *
-     * @param size as a String
+     * @param size as a RamenSize
      */
     public Tonkotsu(final RamenSize size) {
         super(size);
