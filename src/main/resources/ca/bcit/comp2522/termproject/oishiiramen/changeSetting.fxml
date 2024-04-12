@@ -5,6 +5,8 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -19,14 +21,14 @@
       <Label layoutX="117.0" layoutY="130.0" text="Number of chairs:" />
       <Label layoutX="117.0" layoutY="210.0" text="Location:" />
       <TextField fx:id="newNumberOfChairTextField" layoutX="445.0" layoutY="153.0" prefHeight="26.0" prefWidth="54.0" />
-      <Label layoutX="179.0" layoutY="207.0" text="Your Store's Location">
+      <Label fx:id="storeLocationLabel" layoutX="179.0" layoutY="207.0" text="Your Store's Location">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <Label layoutX="117.0" layoutY="157.0" text="If you want to change it, type the number of chairs. (5~30)" />
       <Label layoutX="116.0" layoutY="239.0" text="If you want to change it, select one of the below." />
-      <Label layoutX="225.0" layoutY="125.0" text="Your Store's #">
+      <Label fx:id="numberOfChairLabel" layoutX="225.0" layoutY="125.0" text="Your Store's #">
          <font>
             <Font size="18.0" />
          </font>
@@ -37,5 +39,10 @@
          </toggleGroup></RadioButton>
       <RadioButton layoutX="245.0" layoutY="268.0" mnemonicParsing="false" text="Richmond" toggleGroup="$locationGroup" />
       <RadioButton layoutX="341.0" layoutY="268.0" mnemonicParsing="false" text="Metrotown" toggleGroup="$locationGroup" />
+      <ImageView fitHeight="86.0" fitWidth="134.0" layoutX="456.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@haguruma_gear_set.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
