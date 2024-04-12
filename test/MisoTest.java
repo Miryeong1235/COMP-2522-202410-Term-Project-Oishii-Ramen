@@ -1,6 +1,9 @@
+import ca.bcit.comp2522.termproject.oishiiramen.Menu;
 import ca.bcit.comp2522.termproject.oishiiramen.Miso;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.ArrayList;
 
 import static ca.bcit.comp2522.termproject.oishiiramen.Menu.RamenSize;
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +13,7 @@ class MisoTest {
 
     @BeforeEach
     public void setUp() {
+        Menu.resetNumberOfMenu();
         testMiso = new Miso(RamenSize.Large);
     }
 
@@ -49,17 +53,16 @@ class MisoTest {
         assertEquals(numberAlreadyCreated + numberCreated, Miso.getNumberOfMenu());
     }
 
-//    @Test
-//    public void MisoIsSetToCorrectValues() {
-//        assertEquals(Miso.COST_FOR_Miso, testMiso.getCostForRamen());
-//        assertEquals(1, testMiso.getMenuID());
-//        assertEquals("Miso ramen", testMiso.getName());
-//        assertNull(testMiso.getToppings());
-//        assertEquals(RamenSize.Large, testMiso.getSize());
-//        assertEquals(0, testMiso.getPrice());
-//        assertEquals(Miso.COST_FOR_Miso * Menu.LARGE_SIZE_COEFFICIENT, testMiso.getMaterialCost());
-//
-//    }
+    @Test
+    public void MisoIsSetToCorrectValues() {
+        assertEquals(Miso.COST_FOR_MISO, testMiso.getCostForRamen());
+        assertEquals(1, testMiso.getMenuID());
+        assertEquals("Miso ramen", testMiso.getName());
+        assertNull(testMiso.getToppings());
+        assertEquals(RamenSize.Large, testMiso.getSize());
+        assertEquals(0, testMiso.getPrice());
+        assertEquals(Miso.COST_FOR_MISO * Menu.LARGE_SIZE_COEFFICIENT, testMiso.getMaterialCost());
+    }
 
     @Test
     public void identificationNumbersAreSequentialAndUniqueInMultiParamConstruction() {
@@ -72,6 +75,7 @@ class MisoTest {
         }
     }
 
+    // set name
     @Test
     public void testSetNameValid() {
         testMiso.setName("Taisho special");
@@ -95,6 +99,7 @@ class MisoTest {
         assertEquals("New ramen", testMiso.getName());
     }
 
+    // set price
     @Test
     public void testSetPriceValid() {
         testMiso.setPrice(10.0);
@@ -108,13 +113,28 @@ class MisoTest {
     }
 
     // set topping
+    @Test
+    public void testSetToppingValid() {
+        ArrayList<Menu.Topping> newToppings = new ArrayList<>();
+        newToppings.add(Menu.Topping.corn);
+        newToppings.add(Menu.Topping.chashu);
+        testMiso.setToppings(newToppings);
+        assertTrue(testMiso.getToppings().contains(Menu.Topping.corn));
+        assertTrue(testMiso.getToppings().contains(Menu.Topping.chashu));
+    }
 
+    @Test
+    public void testSetToppingNull() {
+        ArrayList<Menu.Topping> newToppings = new ArrayList<>();
+        testMiso.setToppings(newToppings);
+        assertTrue(testMiso.getToppings().isEmpty());
+    }
 
     @Test
     public void testToString() {
         final String expected = "Menu{"
                 + "costForRamen=7.15"
-                + ", menuID=" + testMiso.getMenuID()
+                + ", menuID=1"
                 + ", name='Miso ramen'"
                 + ", toppings=null"
                 + ", size=Large"

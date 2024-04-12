@@ -1,6 +1,9 @@
+import ca.bcit.comp2522.termproject.oishiiramen.Menu;
 import ca.bcit.comp2522.termproject.oishiiramen.Shoyu;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.ArrayList;
 
 import static ca.bcit.comp2522.termproject.oishiiramen.Menu.RamenSize;
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +13,7 @@ class ShoyuTest {
 
     @BeforeEach
     public void setUp() {
+        Menu.resetNumberOfMenu();
         testShoyu = new Shoyu(RamenSize.Large);
     }
 
@@ -49,17 +53,16 @@ class ShoyuTest {
         assertEquals(numberAlreadyCreated + numberCreated, Shoyu.getNumberOfMenu());
     }
 
-//    @Test
-//    public void ShoyuIsSetToCorrectValues() {
-//        assertEquals(Shoyu.COST_FOR_Shoyu, testShoyu.getCostForRamen());
-//        assertEquals(1, testShoyu.getMenuID());
-//        assertEquals("Shoyu ramen", testShoyu.getName());
-//        assertNull(testShoyu.getToppings());
-//        assertEquals(RamenSize.Large, testShoyu.getSize());
-//        assertEquals(0, testShoyu.getPrice());
-//        assertEquals(Shoyu.COST_FOR_Shoyu * Menu.LARGE_SIZE_COEFFICIENT, testShoyu.getMaterialCost());
-//
-//    }
+    @Test
+    public void ShoyuIsSetToCorrectValues() {
+        assertEquals(Shoyu.COST_FOR_SHOYU, testShoyu.getCostForRamen());
+        assertEquals(1, testShoyu.getMenuID());
+        assertEquals("Shoyu ramen", testShoyu.getName());
+        assertNull(testShoyu.getToppings());
+        assertEquals(RamenSize.Large, testShoyu.getSize());
+        assertEquals(0, testShoyu.getPrice());
+        assertEquals(Shoyu.COST_FOR_SHOYU * Menu.LARGE_SIZE_COEFFICIENT, testShoyu.getMaterialCost());
+    }
 
     @Test
     public void identificationNumbersAreSequentialAndUniqueInMultiParamConstruction() {
@@ -72,6 +75,7 @@ class ShoyuTest {
         }
     }
 
+    // set name
     @Test
     public void testSetNameValid() {
         testShoyu.setName("Taisho special");
@@ -95,6 +99,7 @@ class ShoyuTest {
         assertEquals("New ramen", testShoyu.getName());
     }
 
+    // set price
     @Test
     public void testSetPriceValid() {
         testShoyu.setPrice(10.0);
@@ -108,13 +113,28 @@ class ShoyuTest {
     }
 
     // set topping
+    @Test
+    public void testSetToppingValid() {
+        ArrayList<Menu.Topping> newToppings = new ArrayList<>();
+        newToppings.add(Menu.Topping.corn);
+        newToppings.add(Menu.Topping.chashu);
+        testShoyu.setToppings(newToppings);
+        assertTrue(testShoyu.getToppings().contains(Menu.Topping.corn));
+        assertTrue(testShoyu.getToppings().contains(Menu.Topping.chashu));
+    }
 
+    @Test
+    public void testSetToppingNull() {
+        ArrayList<Menu.Topping> newToppings = new ArrayList<>();
+        testShoyu.setToppings(newToppings);
+        assertTrue(testShoyu.getToppings().isEmpty());
+    }
 
     @Test
     public void testToString() {
         final String expected = "Menu{"
                 + "costForRamen=5.85"
-                + ", menuID=" + testShoyu.getMenuID()
+                + ", menuID=1"
                 + ", name='Shoyu ramen'"
                 + ", toppings=null"
                 + ", size=Large"

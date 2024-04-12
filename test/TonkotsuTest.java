@@ -3,6 +3,8 @@ import ca.bcit.comp2522.termproject.oishiiramen.Tonkotsu;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.ArrayList;
+
 import static ca.bcit.comp2522.termproject.oishiiramen.Menu.RamenSize;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -73,6 +75,7 @@ class TonkotsuTest {
         }
     }
 
+    // set name
     @Test
     public void testSetNameValid() {
         testTonkotsu.setName("Taisho special");
@@ -96,6 +99,7 @@ class TonkotsuTest {
         assertEquals("New ramen", testTonkotsu.getName());
     }
 
+    // set price
     @Test
     public void testSetPriceValid() {
         testTonkotsu.setPrice(10.0);
@@ -109,7 +113,22 @@ class TonkotsuTest {
     }
 
     // set topping
+    @Test
+    public void testSetToppingValid() {
+        ArrayList<Menu.Topping> newToppings = new ArrayList<>();
+        newToppings.add(Menu.Topping.corn);
+        newToppings.add(Menu.Topping.chashu);
+        testTonkotsu.setToppings(newToppings);
+        assertTrue(testTonkotsu.getToppings().contains(Menu.Topping.corn));
+        assertTrue(testTonkotsu.getToppings().contains(Menu.Topping.chashu));
+    }
 
+    @Test
+    public void testSetToppingNull() {
+        ArrayList<Menu.Topping> newToppings = new ArrayList<>();
+        testTonkotsu.setToppings(newToppings);
+        assertTrue(testTonkotsu.getToppings().isEmpty());
+    }
 
     @Test
     public void testToString() {

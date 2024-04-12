@@ -1,6 +1,9 @@
+import ca.bcit.comp2522.termproject.oishiiramen.Menu;
 import ca.bcit.comp2522.termproject.oishiiramen.Shio;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.ArrayList;
 
 import static ca.bcit.comp2522.termproject.oishiiramen.Menu.RamenSize;
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +13,7 @@ class ShioTest {
 
     @BeforeEach
     public void setUp() {
+        Menu.resetNumberOfMenu();
         testShio = new Shio(RamenSize.Large);
     }
 
@@ -49,17 +53,16 @@ class ShioTest {
         assertEquals(numberAlreadyCreated + numberCreated, Shio.getNumberOfMenu());
     }
 
-//    @Test
-//    public void ShioIsSetToCorrectValues() {
-//        assertEquals(Shio.COST_FOR_Shio, testShio.getCostForRamen());
-//        assertEquals(1, testShio.getMenuID());
-//        assertEquals("Shio ramen", testShio.getName());
-//        assertNull(testShio.getToppings());
-//        assertEquals(RamenSize.Large, testShio.getSize());
-//        assertEquals(0, testShio.getPrice());
-//        assertEquals(Shio.COST_FOR_Shio * Menu.LARGE_SIZE_COEFFICIENT, testShio.getMaterialCost());
-//
-//    }
+    @Test
+    public void ShioIsSetToCorrectValues() {
+        assertEquals(Shio.COST_FOR_SHIO, testShio.getCostForRamen());
+        assertEquals(1, testShio.getMenuID());
+        assertEquals("Shio ramen", testShio.getName());
+        assertNull(testShio.getToppings());
+        assertEquals(RamenSize.Large, testShio.getSize());
+        assertEquals(0, testShio.getPrice());
+        assertEquals(Shio.COST_FOR_SHIO * Menu.LARGE_SIZE_COEFFICIENT, testShio.getMaterialCost());
+    }
 
     @Test
     public void identificationNumbersAreSequentialAndUniqueInMultiParamConstruction() {
@@ -72,6 +75,7 @@ class ShioTest {
         }
     }
 
+    // set name
     @Test
     public void testSetNameValid() {
         testShio.setName("Taisho special");
@@ -95,6 +99,7 @@ class ShioTest {
         assertEquals("New ramen", testShio.getName());
     }
 
+    // set price
     @Test
     public void testSetPriceValid() {
         testShio.setPrice(10.0);
@@ -108,13 +113,28 @@ class ShioTest {
     }
 
     // set topping
+    @Test
+    public void testSetToppingValid() {
+        ArrayList<Menu.Topping> newToppings = new ArrayList<>();
+        newToppings.add(Menu.Topping.corn);
+        newToppings.add(Menu.Topping.chashu);
+        testShio.setToppings(newToppings);
+        assertTrue(testShio.getToppings().contains(Menu.Topping.corn));
+        assertTrue(testShio.getToppings().contains(Menu.Topping.chashu));
+    }
 
+    @Test
+    public void testSetToppingNull() {
+        ArrayList<Menu.Topping> newToppings = new ArrayList<>();
+        testShio.setToppings(newToppings);
+        assertTrue(testShio.getToppings().isEmpty());
+    }
 
     @Test
     public void testToString() {
         final String expected = "Menu{"
                 + "costForRamen=5.2"
-                + ", menuID=" + testShio.getMenuID()
+                + ", menuID=1"
                 + ", name='Shio ramen'"
                 + ", toppings=null"
                 + ", size=Large"

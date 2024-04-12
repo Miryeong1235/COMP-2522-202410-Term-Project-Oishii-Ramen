@@ -193,7 +193,7 @@ public abstract class Menu {
      * @param toppings the list of toppings to be added as an ArrayList
      */
     public void setToppings(final ArrayList<Topping> toppings) {
-        this.toppings = toppings;
+            this.toppings = toppings;
         // setting new material cost with toppings
         for (Topping topping : toppings) {
             if (topping.equals(Topping.chashu)) {
