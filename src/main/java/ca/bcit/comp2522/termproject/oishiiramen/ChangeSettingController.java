@@ -6,12 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * Change setting controller.
@@ -26,6 +29,21 @@ public class ChangeSettingController {
     @FXML
     private TextField newNumberOfChairTextField;
 
+    @FXML
+    private Label numberOfChairLabel;
+    @FXML
+    private Label storeLocationLabel;
+
+    /**
+     * Displays store location and number of chairs.
+     *
+     * @param yourStore as Menu
+     */
+    public void displayStoreSetting(final Store yourStore) {
+        storeLocationLabel.setText(GameApplication.getYourStore().getLocation().toString());
+        numberOfChairLabel.setText(String.valueOf(GameApplication.getYourStore().getNumberOfChair()));
+    }
+
     /**
      * Moves to store home page on our JavaFX UI.
      *
@@ -37,14 +55,15 @@ public class ChangeSettingController {
         Scene scene;
         Parent root;
 
-        String newNumberOfChair = newNumberOfChairTextField.getText();
-        int newNumberOfChairInt = Integer.parseInt(newNumberOfChair);
-        GameApplication.getYourStore().setNumberOfChair(newNumberOfChairInt);
+        if (!newNumberOfChairTextField.getText().isEmpty()) {
+            int newPrice = Integer.parseInt(newNumberOfChairTextField.getText());
+            GameApplication.getYourStore().setNumberOfChair(newPrice);
+        }
 
         RadioButton selectedSizeRadioButton = (RadioButton) locationGroup.getSelectedToggle();
         String newLocation = selectedSizeRadioButton.getText();
 
-        if (newLocation != null) {
+        if (newLocation != null && !newLocation.isEmpty()) {
             GameApplication.getYourStore().setLocation(Store.Location.valueOf(newLocation));
         }
 
