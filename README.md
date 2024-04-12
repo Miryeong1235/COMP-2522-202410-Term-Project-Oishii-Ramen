@@ -16,3 +16,7 @@ atsukof
 
 ## 2. How the game progresses
 ## 3. Requirements
+
+| Element                          | Functions/Description                                                                    |
+|----------------------------------|------------------------------------------------------------------------------------------|
+| Element                          | Functions/Description                                                                    |
