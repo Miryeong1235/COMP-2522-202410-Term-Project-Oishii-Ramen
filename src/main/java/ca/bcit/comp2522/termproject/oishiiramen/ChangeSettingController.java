@@ -61,9 +61,8 @@ public class ChangeSettingController {
         }
 
         RadioButton selectedSizeRadioButton = (RadioButton) locationGroup.getSelectedToggle();
-        String newLocation = selectedSizeRadioButton.getText();
-
-        if (newLocation != null && !newLocation.isEmpty()) {
+        if (selectedSizeRadioButton != null) {
+            String newLocation = selectedSizeRadioButton.getText();
             GameApplication.getYourStore().setLocation(Store.Location.valueOf(newLocation));
         }
 
