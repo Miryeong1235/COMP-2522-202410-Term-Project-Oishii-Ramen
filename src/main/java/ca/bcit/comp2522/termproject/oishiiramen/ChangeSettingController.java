@@ -1,10 +1,14 @@
 package ca.bcit.comp2522.termproject.oishiiramen;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,6 +20,12 @@ import java.io.IOException;
  * @version 12-April-2024
  */
 public class ChangeSettingController {
+    @FXML
+    private ToggleGroup locationGroup;
+
+    @FXML
+    private TextField newNumberOfChairTextField;
+
     /**
      * Moves to store home page on our JavaFX UI.
      *
@@ -26,6 +36,17 @@ public class ChangeSettingController {
         Stage stage;
         Scene scene;
         Parent root;
+
+        String newNumberOfChair = newNumberOfChairTextField.getText();
+        int newNumberOfChairInt = Integer.parseInt(newNumberOfChair);
+        GameApplication.getYourStore().setNumberOfChair(newNumberOfChairInt);
+
+        RadioButton selectedSizeRadioButton = (RadioButton) locationGroup.getSelectedToggle();
+        String newLocation = selectedSizeRadioButton.getText();
+
+        if (newLocation != null) {
+            GameApplication.getYourStore().setLocation(Store.Location.valueOf(newLocation));
+        }
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("storeHome.fxml"));
         root = loader.load();
