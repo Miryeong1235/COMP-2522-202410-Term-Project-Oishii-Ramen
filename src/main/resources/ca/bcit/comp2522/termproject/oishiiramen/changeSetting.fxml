@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.ChangeSettingController">
    <children>
-      <Button layoutX="273.0" layoutY="341.0" mnemonicParsing="false" text="OK" />
+      <Button layoutX="273.0" layoutY="341.0" mnemonicParsing="false" onAction="#backToStoreHome" text="OK" />
       <Label layoutX="163.0" layoutY="50.0" text="Your Store Setting">
          <font>
             <Font size="36.0" />
@@ -18,7 +18,7 @@
       </Label>
       <Label layoutX="117.0" layoutY="130.0" text="Number of chairs:" />
       <Label layoutX="117.0" layoutY="210.0" text="Location:" />
-      <TextField layoutX="445.0" layoutY="153.0" prefHeight="26.0" prefWidth="54.0" />
+      <TextField fx:id="newNumberOfChairTextField" layoutX="445.0" layoutY="153.0" prefHeight="26.0" prefWidth="54.0" />
       <Label layoutX="179.0" layoutY="207.0" text="Your Store's Location">
          <font>
             <Font size="18.0" />
