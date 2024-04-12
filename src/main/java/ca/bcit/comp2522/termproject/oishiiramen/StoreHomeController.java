@@ -75,6 +75,14 @@ public class StoreHomeController {
     }
 
     /**
+     * Initializes the page.
+     */
+    public void initialize() {
+        displayStoreName(GameApplication.getYourStore().getName());
+        displayStoreMenu(GameApplication.getYourStore());
+    }
+
+    /**
      * Moves to run business page on our JavaFX UI.
      *
      * @param event as ActionEvent
