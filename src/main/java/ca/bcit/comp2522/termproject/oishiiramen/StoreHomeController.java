@@ -97,4 +97,23 @@ public class StoreHomeController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Moves to change setting page on our JavaFX UI.
+     *
+     * @param event as ActionEvent
+     * @throws IOException when I/O operation is failed.
+     */
+    public void switchChangeSetting(final ActionEvent event) throws  IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("changeSetting.fxml"));
+        root = loader.load();
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
