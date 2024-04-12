@@ -1,7 +1,14 @@
+import ca.bcit.comp2522.termproject.oishiiramen.Employee;
+import ca.bcit.comp2522.termproject.oishiiramen.Menu;
 import ca.bcit.comp2522.termproject.oishiiramen.Store;
+import ca.bcit.comp2522.termproject.oishiiramen.Tonkotsu;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 
 public class StoreTest {
     private Store testStore;
@@ -131,6 +138,127 @@ public class StoreTest {
         Store newStore = new Store("a", "b", Store.Location.Downtown, 31);
         assertEquals(30, newStore.getNumberOfChair());
     }
+
+    @Test
+    public void testSetStoreNameValid() {
+        testStore.setName("Hello world");
+        assertEquals("Hello world", testStore.getName());
+    }
+
+    @Test
+    public void testSetStoreNameNull() {
+        testStore.setName(null);
+        assertEquals("Ichiban", testStore.getName());
+    }
+
+    @Test
+    public void testSetStoreNameBlank() {
+        testStore.setName("    ");
+        assertEquals("Ichiban", testStore.getName());
+    }
+
+    @Test
+    public void testSetStoreLocationValid() {
+        testStore.setLocation(Store.Location.Metrotown);
+        assertEquals(Store.Location.Metrotown, testStore.getLocation());
+    }
+
+    @Test
+    public void testSetStoreLocationNullThenThrowsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> testStore.setLocation(null));
+    }
+
+    @Test
+    public void testSetNumberOfChairValid() {
+        testStore.setNumberOfChair(25);
+        assertEquals(25, testStore.getNumberOfChair());
+    }
+
+    @Test
+    public void testSetNumberOfChairTooLowBecomesMinimum() {
+        testStore.setNumberOfChair(3);
+        assertEquals(5, testStore.getNumberOfChair());
+    }
+
+    @Test
+    public void testSetNumberOfChairTooHighBecomesMaximum() {
+        testStore.setNumberOfChair(50);
+        assertEquals(30, testStore.getNumberOfChair());
+    }
+
+    @Test
+    public void testHireEmployeeCorrectly() {
+        Employee newEmployee = new Employee("Toru", 2);
+        testStore.hireEmployee(newEmployee);
+        assertTrue(testStore.getEmployees().contains(newEmployee));
+    }
+
+    @Test
+    public void testHireEmployeeWithNullThenNothingIsAdded() {
+        testStore.hireEmployee(null);
+        assertEquals(0, testStore.getEmployees().size());
+    }
+
+    @Test
+    public void testFireEmployeeCorrectly() {
+        Employee someEmployee = new Employee("Shota", 1);
+        testStore.hireEmployee(someEmployee);
+        assertTrue(testStore.fireEmployee(someEmployee));
+    }
+
+    @Test
+    public void testAddMenuCorrectly() {
+        Menu newMenu = new Tonkotsu(Menu.RamenSize.Medium);
+        testStore.addMenu(newMenu);
+        assertTrue(testStore.getMenu().contains(newMenu));
+    }
+
+    @Test
+    public void testAddMenuWithNullThenNothingIsAdded() {
+        testStore.addMenu(null);
+        assertEquals(0, testStore.getEmployees().size());
+    }
+
+    @Test
+    public void testRemoveMenuCorrectly() {
+        Menu someMenu = new Tonkotsu(Menu.RamenSize.Medium);
+        testStore.addMenu(someMenu);
+        assertTrue(testStore.removeMenu(someMenu));
+    }
+
+//    @Test
+//    public void testRunBusinessWIthValidDays() {
+//
+//    }
+
+
+//    @Test
+//    public void testRunBusinessForZeroDays() {
+//
+//    }
+
+
+
+//    @Test
+//    public void testToString() {
+//        Store newStore = new Store("Umai ramen", "Taiyo", Store.Location.Richmond, 15);
+//        final String expected = "Store{"
+//                + "name='Umai ramen'"
+//                + ", ownerName='Taiyo'"
+//                + ", location=" + "Richmond"
+//                + ", employees=[]"
+//                + ", numberOfChair=15"
+//                + ", rent=9000.0"
+//                + ", occupancyRateLower=0.3"
+//                + ", occupancyRateUpper=1.0"
+//                + ", menu=[]"
+//                + ", accumulatedCost=0.0"
+//                + ", accumulatedSales=0.0"
+//                + ", random=java.util.Random@3c0be339"
+//                + "}";
+//        final String actual = newStore.toString();
+//        assertEquals(expected, actual);
+//    }
 
 
 }
