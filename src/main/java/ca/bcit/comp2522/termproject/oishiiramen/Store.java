@@ -10,7 +10,7 @@ import java.util.Random;
  * @author Atsuko Uemura, Misuzu Taniguchi
  * @version 12-April-2024
  */
-public class Store {
+public class Store implements EmployeeManagement {
 
     /**
      * The Location enum represents the possible locations where a store can be situated.
