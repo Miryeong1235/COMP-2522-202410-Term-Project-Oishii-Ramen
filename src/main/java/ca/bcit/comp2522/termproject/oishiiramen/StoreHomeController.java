@@ -89,21 +89,27 @@ public class StoreHomeController {
      * @throws IOException when I/O operation is failed.
      */
     public void switchRunBusiness(final ActionEvent event) throws IOException {
-        Stage stage;
-        Scene scene;
-        Parent root;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("runBusiness.fxml"));
-        root = loader.load();
+        String durationText = businessDuration.getText();
 
-        int durationToRunBusiness = Integer.parseInt(businessDuration.getText());
-        double revenueThisTime = GameApplication.getYourStore().runBusiness(durationToRunBusiness);
-        System.out.println(GameApplication.getYourStore().getOwnerName() + " has run business for "
-                + durationToRunBusiness + " days.\nRevenue this time is " + revenueThisTime);
+        if (durationText != null && !durationText.isEmpty() && durationText.matches("\\d+")) {
+            int duration = Integer.parseInt(durationText);
 
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            Stage stage;
+            Scene scene;
+            Parent root;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("runBusiness.fxml"));
+            root = loader.load();
+
+            double revenueThisTime = GameApplication.getYourStore().runBusiness(duration);
+            System.out.println(GameApplication.getYourStore().getOwnerName() + " has run business for "
+                    + duration + " days.\nRevenue this time is " + revenueThisTime);
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
     }
 
     /**
