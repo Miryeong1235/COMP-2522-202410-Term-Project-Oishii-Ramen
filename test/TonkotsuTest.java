@@ -1,3 +1,4 @@
+import ca.bcit.comp2522.termproject.oishiiramen.Menu;
 import ca.bcit.comp2522.termproject.oishiiramen.Tonkotsu;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +11,7 @@ class TonkotsuTest {
 
     @BeforeEach
     public void setUp() {
-        testTonkotsu = new Tonkotsu(RamenSize.Medium);
+        testTonkotsu = new Tonkotsu(RamenSize.Large);
     }
 
     @Test
@@ -49,103 +50,78 @@ class TonkotsuTest {
         assertEquals(numberAlreadyCreated + numberCreated, Tonkotsu.getNumberOfMenu());
     }
 
-    @Test
-    public void TonkotsuIsSetToCorrectValues() {
-        assertEquals(5.50, testTonkotsu.getCostForRamen());
-        assertEquals(1, testTonkotsu.getMenuID());
-        assertEquals("Tonkotsu Ramen", testTonkotsu.getName());
-        assertNull(testTonkotsu.getToppings());
-        assertEquals(RamenSize.Medium, testTonkotsu.getSize());
-        assertEquals(0, testTonkotsu.getPrice());
-        assertEquals(5.50, testTonkotsu.getMaterialCost());
+//    @Test
+//    public void TonkotsuIsSetToCorrectValues() {
+//        assertEquals(Tonkotsu.COST_FOR_TONKOTSU, testTonkotsu.getCostForRamen());
+//        assertEquals(1, testTonkotsu.getMenuID());
+//        assertEquals("Tonkotsu ramen", testTonkotsu.getName());
+//        assertNull(testTonkotsu.getToppings());
+//        assertEquals(RamenSize.Large, testTonkotsu.getSize());
+//        assertEquals(0, testTonkotsu.getPrice());
+//        assertEquals(Tonkotsu.COST_FOR_TONKOTSU * Menu.LARGE_SIZE_COEFFICIENT, testTonkotsu.getMaterialCost());
+//
+//    }
 
+    @Test
+    public void identificationNumbersAreSequentialAndUniqueInMultiParamConstruction() {
+        Tonkotsu first = new Tonkotsu(RamenSize.Large);
+        int firstID = first.getMenuID() + 1;
+        int numberCreated = 100;
+        for (int i = 0; i < numberCreated; ++i) {
+            Tonkotsu Tonkotsu = new Tonkotsu(RamenSize.Large);
+            assertEquals(firstID + i, Tonkotsu.getMenuID());
+        }
     }
 
-//    @Test
-//    public void identificationNumbersAreSequentialAndUniqueInMultiParamConstruction() {
-//        Tonkotsu first = new Tonkotsu("Ichiro", 1);
-//        int firstID = first.getTonkotsuID() + 1;
-//        int numberCreated = 100;
-//        for (int i = 0; i < numberCreated; ++i) {
-//            Tonkotsu Tonkotsu = new Tonkotsu("Shohei", 3);
-//            assertEquals(firstID + i, Tonkotsu.getTonkotsuID());
-//        }
-//    }
-//
-//    @Test
-//    public void TonkotsuNameIsCorrectlyFormatted() {
-//        Tonkotsu newTonkotsu = new Tonkotsu("  jiRo    ", 2);
-//        assertEquals("Jiro", newTonkotsu.getName());
-//    }
-//
-//    @Test
-//    public void nullNameThrownThenDefaultValueIsUsed() {
-//        Tonkotsu nullNameTonkotsu = new Tonkotsu(null, 2);
-//        assertEquals("Kenta", nullNameTonkotsu.getName());
-//    }
-//
-//    @Test
-//    public void TonkotsuLevelIsCorrectlySetIfItIsTooHigh() {
-//        Tonkotsu newTonkotsu = new Tonkotsu("Yusuke", 4);
-//        assertEquals(3, newTonkotsu.getLevel());
-//        assertEquals(30.0, newTonkotsu.getHourlyWage());
-//    }
-//
-//    @Test
-//    public void TonkotsuLevelIsCorrectlySetIfItIsTooLow() {
-//        Tonkotsu newTonkotsu = new Tonkotsu("Yusuke", 0);
-//        assertEquals(1, newTonkotsu.getLevel());
-//        assertEquals(20.0, newTonkotsu.getHourlyWage());
-//    }
-//
-//    @Test
-//    public void testSetNameValid() {
-//        testTonkotsu.setName("Gojiro");
-//        assertEquals("Gojiro", testTonkotsu.getName());
-//    }
-//    @Test
-//    public void testSetNameNull() {
-//        testTonkotsu.setName(null);
-//        assertEquals("Taro", testTonkotsu.getName());
-//    }
-//
-//    @Test
-//    public void testSetNameBlank() {
-//        testTonkotsu.setName("  ");
-//        assertEquals("Taro", testTonkotsu.getName());
-//    }
-//
-//    @Test
-//    public void testSetLevelValid() {
-//        testTonkotsu.setLevel(3);
-//        assertEquals(3, testTonkotsu.getLevel());
-//        assertEquals(30.0, testTonkotsu.getHourlyWage());
-//    }
-//
-//    @Test
-//    public void testSetLevelTooHigh() {
-//        testTonkotsu.setLevel(5);
-//        assertEquals(3, testTonkotsu.getLevel());
-//        assertEquals(30.0, testTonkotsu.getHourlyWage());
-//    }
-//
-//    @Test
-//    public void testSetLevelTooLow() {
-//        testTonkotsu.setLevel(0);
-//        assertEquals(1, testTonkotsu.getLevel());
-//        assertEquals(20.0, testTonkotsu.getHourlyWage());
-//    }
-//
-//    @Test
-//    public void testToString() {
-//        Tonkotsu newTonkotsu = new Tonkotsu("Sakura", 1);
-//        final int numberAlreadyCreated = Tonkotsu.getTotalTonkotsuNumber();
-//        final String expected = "Tonkotsu{"
-//                + "TonkotsuID=" + numberAlreadyCreated
-//                + ", name='Sakura'"
-//                + ", level=1"
-//                + ", hourlyWage=20.0}";
-//        final String actual = newTonkotsu.toString();
-//        assertEquals(expected, actual);
-//    }
+    @Test
+    public void testSetNameValid() {
+        testTonkotsu.setName("Taisho special");
+        assertEquals("Taisho special", testTonkotsu.getName());
+    }
+    @Test
+    public void testSetNameNull() {
+        testTonkotsu.setName(null);
+        assertEquals("Tonkotsu ramen", testTonkotsu.getName());
+    }
+
+    @Test
+    public void testSetNameBlank() {
+        testTonkotsu.setName("  ");
+        assertEquals("Tonkotsu ramen", testTonkotsu.getName());
+    }
+
+    @Test
+    public void testSetNameUpperCase() {
+        testTonkotsu.setName("NEW RAMEN");
+        assertEquals("New ramen", testTonkotsu.getName());
+    }
+
+    @Test
+    public void testSetPriceValid() {
+        testTonkotsu.setPrice(10.0);
+        assertEquals(10.0, testTonkotsu.getPrice());
+    }
+
+    @Test
+    public void testSetPriceNegative() {
+        testTonkotsu.setPrice(-5.0);
+        assertEquals(0, testTonkotsu.getPrice());
+    }
+
+    // set topping
+
+
+    @Test
+    public void testToString() {
+        final String expected = "Menu{"
+                + "costForRamen=7.15"
+                + ", menuID=1"
+                + ", name='Tonkotsu ramen'"
+                + ", toppings=null"
+                + ", size=Large"
+                + ", price=0.0"
+                + ", materialCost=7.15}";
+        final String actual = testTonkotsu.toString();
+        assertEquals(expected, actual);
+    }
 }

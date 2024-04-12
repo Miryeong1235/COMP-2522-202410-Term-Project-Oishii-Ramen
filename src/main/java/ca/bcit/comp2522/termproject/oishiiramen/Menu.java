@@ -202,6 +202,7 @@ public abstract class Menu {
                     + newName.strip().substring(1).toLowerCase();
         }
     }
+
     /**
      * Sets the toppings for the ramen and updates the material cost accordingly.
      *
@@ -233,7 +234,9 @@ public abstract class Menu {
      * @param newPrice newName as a double
      */
     public void setPrice(final double newPrice) {
-        this.price = newPrice; // Add some logic
+        if (newPrice > 0) {
+            this.price = newPrice;
+        }
     }
 
     /**
