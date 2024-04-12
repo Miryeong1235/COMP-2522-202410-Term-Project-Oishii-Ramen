@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.ChangeSettingController">
-   <children>
       <Button layoutX="273.0" layoutY="341.0" mnemonicParsing="false" onAction="#backToStoreHome" text="OK" />
       <Label layoutX="163.0" layoutY="50.0" text="Your Store Setting">
          <font>
@@ -40,9 +39,6 @@
       <RadioButton layoutX="245.0" layoutY="268.0" mnemonicParsing="false" text="Richmond" toggleGroup="$locationGroup" />
       <RadioButton layoutX="341.0" layoutY="268.0" mnemonicParsing="false" text="Metrotown" toggleGroup="$locationGroup" />
       <ImageView fitHeight="86.0" fitWidth="134.0" layoutX="456.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-         <image>
             <Image url="@haguruma_gear_set.png" />
-         </image>
       </ImageView>
-   </children>
 </AnchorPane>
