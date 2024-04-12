@@ -173,7 +173,7 @@ public abstract class Menu {
      */
     public double getMaterialCost() {
        return this.materialCost;
-    };
+    }
 
     /**
      * Sets name if valid.
@@ -254,7 +254,11 @@ public abstract class Menu {
             return false;
         }
         Menu menu = (Menu) o;
-        return Double.compare(getCostForRamen(), menu.getCostForRamen()) == 0 && getMenuID() == menu.getMenuID() && Double.compare(getPrice(), menu.getPrice()) == 0 && Double.compare(getMaterialCost(), menu.getMaterialCost()) == 0 && Objects.equals(getName(), menu.getName()) && Objects.equals(getToppings(), menu.getToppings()) && getSize() == menu.getSize();
+        return Double.compare(getCostForRamen(), menu.getCostForRamen()) == 0 && getMenuID() == menu.getMenuID()
+                && Double.compare(getPrice(), menu.getPrice()) == 0
+                && Double.compare(getMaterialCost(), menu.getMaterialCost()) == 0
+                && Objects.equals(getName(), menu.getName()) && Objects.equals(getToppings(), menu.getToppings())
+                && getSize() == menu.getSize();
     }
 
     /**
@@ -264,7 +268,8 @@ public abstract class Menu {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(getCostForRamen(), getMenuID(), getName(), getToppings(), getSize(), getPrice(), getMaterialCost());
+        return Objects.hash(getCostForRamen(), getMenuID(), getName(), getToppings(),
+                getSize(), getPrice(), getMaterialCost());
     }
 
     /**
