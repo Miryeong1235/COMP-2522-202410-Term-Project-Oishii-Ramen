@@ -48,13 +48,11 @@ public class GameApplication extends Application {
      * @param username       the owner name
      * @param storeLocation  the location of the Store (Downtown, Richmond, or Metrotown)
      * @param numberOfChair  the number of chairs in the Store
-     * @return the initialized Store
      * @throws IllegalArgumentException if the location is invalid
      */
-    public static Store initializeStore(final String storeName, final String username,
+    public static void initializeStore(final String storeName, final String username,
                                         final Store.Location storeLocation, final int numberOfChair) {
         yourStore = new Store(storeName, username, storeLocation, numberOfChair);
-        return yourStore;
     }
 
     /**
