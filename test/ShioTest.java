@@ -109,7 +109,7 @@ class ShioTest {
     @Test
     public void testSetPriceNegative() {
         testShio.setPrice(-5.0);
-        assertEquals(0, testShio.getPrice());
+        assertEquals(testShio.getMaterialCost(), testShio.getPrice());
     }
 
     // set topping

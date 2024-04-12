@@ -109,7 +109,7 @@ class MisoTest {
     @Test
     public void testSetPriceNegative() {
         testMiso.setPrice(-5.0);
-        assertEquals(0, testMiso.getPrice());
+        assertEquals(testMiso.getMaterialCost(), testMiso.getPrice());
     }
 
     // set topping

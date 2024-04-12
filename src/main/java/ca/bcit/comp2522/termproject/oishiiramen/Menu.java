@@ -218,9 +218,7 @@ public abstract class Menu {
      * @param newPrice newName as a double
      */
     public void setPrice(final double newPrice) {
-        if (newPrice > 0) {
-            this.price = newPrice;
-        }
+        this.price = Math.max(newPrice, this.materialCost);
     }
 
     /**

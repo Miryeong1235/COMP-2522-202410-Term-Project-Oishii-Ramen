@@ -109,7 +109,7 @@ class TonkotsuTest {
     @Test
     public void testSetPriceNegative() {
         testTonkotsu.setPrice(-5.0);
-        assertEquals(0, testTonkotsu.getPrice());
+        assertEquals(testTonkotsu.getMaterialCost(), testTonkotsu.getPrice());
     }
 
     // set topping

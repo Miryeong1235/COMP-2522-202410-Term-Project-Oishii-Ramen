@@ -109,7 +109,7 @@ class ShoyuTest {
     @Test
     public void testSetPriceNegative() {
         testShoyu.setPrice(-5.0);
-        assertEquals(0, testShoyu.getPrice());
+        assertEquals(testShoyu.getMaterialCost(), testShoyu.getPrice());
     }
 
     // set topping
