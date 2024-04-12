@@ -5,8 +5,6 @@ import ca.bcit.comp2522.termproject.oishiiramen.Tonkotsu;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -161,6 +159,7 @@ public class StoreTest {
     public void testSetStoreLocationValid() {
         testStore.setLocation(Store.Location.Metrotown);
         assertEquals(Store.Location.Metrotown, testStore.getLocation());
+        assertEquals(8000.00, testStore.getRent());
     }
 
     @Test
@@ -226,39 +225,41 @@ public class StoreTest {
         assertTrue(testStore.removeMenu(someMenu));
     }
 
-//    @Test
-//    public void testRunBusinessWIthValidDays() {
-//
-//    }
+    @Test
+    public void testRunBusinessWIthValidDaysThenCostsAndSalesWillBeIncreased() {
+        Menu someMenu = new Tonkotsu(Menu.RamenSize.Large);
+        testStore.addMenu(someMenu);
+        testStore.runBusiness(1);
+        assertNotEquals(0, testStore.getAccumulatedCost());
+        assertNotEquals(0, testStore.getAccumulatedSales());
+    }
+
+    @Test
+    public void testRunBusinessForZeroDaysThenThrowsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> testStore.runBusiness(0));
+    }
 
 
-//    @Test
-//    public void testRunBusinessForZeroDays() {
-//
-//    }
 
-
-
-//    @Test
-//    public void testToString() {
-//        Store newStore = new Store("Umai ramen", "Taiyo", Store.Location.Richmond, 15);
-//        final String expected = "Store{"
-//                + "name='Umai ramen'"
-//                + ", ownerName='Taiyo'"
-//                + ", location=" + "Richmond"
-//                + ", employees=[]"
-//                + ", numberOfChair=15"
-//                + ", rent=9000.0"
-//                + ", occupancyRateLower=0.3"
-//                + ", occupancyRateUpper=1.0"
-//                + ", menu=[]"
-//                + ", accumulatedCost=0.0"
-//                + ", accumulatedSales=0.0"
-//                + ", random=java.util.Random@3c0be339"
-//                + "}";
-//        final String actual = newStore.toString();
-//        assertEquals(expected, actual);
-//    }
+    @Test
+    public void testToString() {
+        Store newStore = new Store("Umai ramen", "Taiyo", Store.Location.Richmond, 15);
+        final String expected = "Store{"
+                + "name='Umai ramen'"
+                + ", ownerName='Taiyo'"
+                + ", location=" + "Richmond"
+                + ", employees=[]"
+                + ", numberOfChair=15"
+                + ", rent=9000.0"
+                + ", occupancyRateLower=0.3"
+                + ", occupancyRateUpper=1.0"
+                + ", menu=[]"
+                + ", accumulatedCost=0.0"
+                + ", accumulatedSales=0.0"
+                + "}";
+        final String actual = newStore.toString();
+        assertEquals(expected, actual);
+    }
 
 
 }
