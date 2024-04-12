@@ -113,13 +113,13 @@ class ShoyuTest {
     @Test
     public void testToString() {
         final String expected = "Menu{"
-                + "costForRamen=7.15"
+                + "costForRamen=5.85"
                 + ", menuID=" + testShoyu.getMenuID()
                 + ", name='Shoyu ramen'"
                 + ", toppings=null"
                 + ", size=Large"
                 + ", price=0.0"
-                + ", materialCost=7.15}";
+                + ", materialCost=5.85}";
         final String actual = testShoyu.toString();
         assertEquals(expected, actual);
     }

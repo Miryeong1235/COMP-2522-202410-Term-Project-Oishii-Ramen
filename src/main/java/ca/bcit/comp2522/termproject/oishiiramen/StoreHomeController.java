@@ -88,9 +88,9 @@ public class StoreHomeController {
         root = loader.load();
 
         int durationToRunBusiness = Integer.parseInt(businessDuration.getText());
-        GameApplication.getYourStore().runBusiness(durationToRunBusiness);
+        double revenueThisTime = GameApplication.getYourStore().runBusiness(durationToRunBusiness);
         System.out.println(GameApplication.getYourStore().getOwnerName() + " has run business for "
-                + durationToRunBusiness + " days");
+                + durationToRunBusiness + " days.\nRevenue this time is " + revenueThisTime);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

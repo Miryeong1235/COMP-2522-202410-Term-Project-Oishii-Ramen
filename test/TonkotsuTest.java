@@ -11,6 +11,7 @@ class TonkotsuTest {
 
     @BeforeEach
     public void setUp() {
+        Menu.resetNumberOfMenu();
         testTonkotsu = new Tonkotsu(RamenSize.Large);
     }
 
@@ -50,17 +51,16 @@ class TonkotsuTest {
         assertEquals(numberAlreadyCreated + numberCreated, Tonkotsu.getNumberOfMenu());
     }
 
-//    @Test
-//    public void TonkotsuIsSetToCorrectValues() {
-//        assertEquals(Tonkotsu.COST_FOR_TONKOTSU, testTonkotsu.getCostForRamen());
-//        assertEquals(1, testTonkotsu.getMenuID());
-//        assertEquals("Tonkotsu ramen", testTonkotsu.getName());
-//        assertNull(testTonkotsu.getToppings());
-//        assertEquals(RamenSize.Large, testTonkotsu.getSize());
-//        assertEquals(0, testTonkotsu.getPrice());
-//        assertEquals(Tonkotsu.COST_FOR_TONKOTSU * Menu.LARGE_SIZE_COEFFICIENT, testTonkotsu.getMaterialCost());
-//
-//    }
+    @Test
+    public void TonkotsuIsSetToCorrectValues() {
+        assertEquals(Tonkotsu.COST_FOR_TONKOTSU, testTonkotsu.getCostForRamen());
+        assertEquals(1, testTonkotsu.getMenuID());
+        assertEquals("Tonkotsu ramen", testTonkotsu.getName());
+        assertNull(testTonkotsu.getToppings());
+        assertEquals(RamenSize.Large, testTonkotsu.getSize());
+        assertEquals(0, testTonkotsu.getPrice());
+        assertEquals(Tonkotsu.COST_FOR_TONKOTSU * Menu.LARGE_SIZE_COEFFICIENT, testTonkotsu.getMaterialCost());
+    }
 
     @Test
     public void identificationNumbersAreSequentialAndUniqueInMultiParamConstruction() {
@@ -115,7 +115,7 @@ class TonkotsuTest {
     public void testToString() {
         final String expected = "Menu{"
                 + "costForRamen=7.15"
-                + ", menuID=" + testTonkotsu.getMenuID()
+                + ", menuID=1"
                 + ", name='Tonkotsu ramen'"
                 + ", toppings=null"
                 + ", size=Large"

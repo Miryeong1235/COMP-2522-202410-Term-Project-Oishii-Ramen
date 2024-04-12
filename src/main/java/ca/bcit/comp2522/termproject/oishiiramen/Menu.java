@@ -1,6 +1,8 @@
 package ca.bcit.comp2522.termproject.oishiiramen;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -103,17 +105,13 @@ public abstract class Menu {
         this.menuID = numberOfMenu;
         this.size = Objects.requireNonNullElse(size, RamenSize.Medium);
         this.costForRamen = getCostForRamen();
+        this.materialCost = this.costForRamen;
 
         // calculate material cost for this menu and ramen itself
         if (this.size.equals(RamenSize.Large)) {
-            this.materialCost = getMaterialCost() * LARGE_SIZE_COEFFICIENT;
-            this.costForRamen = getCostForRamen() * LARGE_SIZE_COEFFICIENT;
-        } else {
-            this.materialCost = getMaterialCost();
-            this.costForRamen = getCostForRamen();
+            this.materialCost *= LARGE_SIZE_COEFFICIENT;
+            this.costForRamen *= LARGE_SIZE_COEFFICIENT;
         }
-
-//        this.name = this.getClass().getName() + " " + this.getSize();
     }
 
     /**
@@ -174,21 +172,7 @@ public abstract class Menu {
      * @return totalCost as a double
      */
     public double getMaterialCost() {
-        double totalCost = getCostForRamen();
-        if (this.toppings != null) {
-            for (Topping topping : toppings) {
-                if (topping.equals(Topping.tamago)) {
-                    materialCost += COST_FOR_TAMAGO;
-                } else if (topping.equals(Topping.chashu)) {
-                    materialCost += COST_FOR_CHASHU;
-                } else if (topping.equals(Topping.seaweed)) {
-                    materialCost += COST_FOR_SEAWEED;
-                } else if (topping.equals(Topping.corn)) {
-                    materialCost += COST_FOR_CORN;
-                }
-            }
-        }
-        return totalCost;
+       return this.materialCost;
     };
 
     /**
@@ -240,6 +224,13 @@ public abstract class Menu {
     }
 
     /**
+     * Resets the total number of menu to zero.
+     */
+    public static void resetNumberOfMenu() {
+        numberOfMenu = 0;
+    }
+
+    /**
      * Returns the number of the menu as an int.
      *
      * @return the number of the menu as an int
@@ -283,14 +274,16 @@ public abstract class Menu {
      */
     @Override
     public String toString() {
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.CANADA);
+        numberFormat.setMaximumFractionDigits(2);
         return "Menu{"
-                + "costForRamen=" + costForRamen
+                + "costForRamen=" + numberFormat.format(costForRamen)
                 + ", menuID=" + menuID
                 + ", name='" + name + '\''
                 + ", toppings=" + toppings
                 + ", size=" + size
                 + ", price=" + price
-                + ", materialCost=" + materialCost
+                + ", materialCost=" + numberFormat.format(materialCost)
                 + '}';
     }
 }
