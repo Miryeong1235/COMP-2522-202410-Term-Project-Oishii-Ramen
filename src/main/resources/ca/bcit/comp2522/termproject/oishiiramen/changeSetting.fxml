@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.ChangeSettingController">
    <children>
@@ -17,22 +17,25 @@
          </font>
       </Label>
       <Label layoutX="117.0" layoutY="130.0" text="Number of chairs:" />
-      <Label layoutX="117.0" layoutY="199.0" text="Location:" />
+      <Label layoutX="117.0" layoutY="210.0" text="Location:" />
       <TextField layoutX="445.0" layoutY="153.0" prefHeight="26.0" prefWidth="54.0" />
-      <Label layoutX="179.0" layoutY="196.0" text="Your Store's Location">
+      <Label layoutX="179.0" layoutY="207.0" text="Your Store's Location">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <Label layoutX="117.0" layoutY="157.0" text="If you want to change it, type the number of chairs. (5~30)" />
-      <Label layoutX="116.0" layoutY="228.0" text="If you want to change it, select one of the below." />
+      <Label layoutX="116.0" layoutY="239.0" text="If you want to change it, select one of the below." />
       <Label layoutX="225.0" layoutY="125.0" text="Your Store's #">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <RadioButton layoutX="228.0" layoutY="253.0" mnemonicParsing="false" text="Downtown" />
-      <RadioButton layoutX="228.0" layoutY="276.0" mnemonicParsing="false" text="Richmond" />
-      <RadioButton layoutX="228.0" layoutY="300.0" mnemonicParsing="false" text="Metrotown" />
+      <RadioButton layoutX="143.0" layoutY="268.0" mnemonicParsing="false" text="Downtown">
+         <toggleGroup>
+            <ToggleGroup fx:id="locationGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton layoutX="245.0" layoutY="268.0" mnemonicParsing="false" text="Richmond" toggleGroup="$locationGroup" />
+      <RadioButton layoutX="341.0" layoutY="268.0" mnemonicParsing="false" text="Metrotown" toggleGroup="$locationGroup" />
    </children>
 </AnchorPane>
