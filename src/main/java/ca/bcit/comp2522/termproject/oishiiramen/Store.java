@@ -506,7 +506,6 @@ public class Store {
                 + ", menu=" + menu
                 + ", accumulatedCost=" + accumulatedCost
                 + ", accumulatedSales=" + accumulatedSales
-                + ", random=" + random
                 + '}';
     }
 }
