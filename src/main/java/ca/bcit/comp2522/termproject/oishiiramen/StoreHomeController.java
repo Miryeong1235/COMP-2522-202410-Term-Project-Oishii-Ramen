@@ -111,6 +111,9 @@ public class StoreHomeController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("changeSetting.fxml"));
         root = loader.load();
 
+        ChangeSettingController changeSettingController = loader.getController();
+        changeSettingController.displayStoreSetting(GameApplication.getYourStore());
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
