@@ -50,14 +50,20 @@ public class RamenMenu3Controller {
         Scene scene;
         Parent root;
 
-        int price = Integer.parseInt(ramenPriceTextField.getText());
+        int price = 0;
+        if (ramenNameTextField != null && !ramenNameTextField.getText().isEmpty()) {
+            price = Integer.parseInt(ramenPriceTextField.getText());
+        }
 
         int indexOfMenu = RamenMenu1Controller.getNumberOfMenu() - 1;
         GameApplication.getYourStore().getMenu().get(indexOfMenu).setPrice(price);
         System.out.println("Ramen price was set as $"
                 + GameApplication.getYourStore().getMenu().get(indexOfMenu).getPrice());
 
-        String menuName = ramenNameTextField.getText();
+        String menuName = "";
+        if (ramenNameTextField != null) {
+            menuName = ramenNameTextField.getText();
+        }
         GameApplication.getYourStore().getMenu().get(indexOfMenu).setName(menuName);
         System.out.println("Ramen name was set as "
                 + GameApplication.getYourStore().getMenu().get(indexOfMenu).getName());
