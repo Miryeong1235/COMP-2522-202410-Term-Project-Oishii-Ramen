@@ -115,7 +115,7 @@ class TonkotsuTest {
     public void testToString() {
         final String expected = "Menu{"
                 + "costForRamen=7.15"
-                + ", menuID=1"
+                + ", menuID=" + testTonkotsu.getMenuID()
                 + ", name='Tonkotsu ramen'"
                 + ", toppings=null"
                 + ", size=Large"

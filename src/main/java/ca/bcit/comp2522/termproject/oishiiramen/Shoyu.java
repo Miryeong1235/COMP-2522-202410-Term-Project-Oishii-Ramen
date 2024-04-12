@@ -15,7 +15,7 @@ public class Shoyu extends Menu {
     /**
      * Default name for Shoyu ramen.
      */
-    public static final String DEFAULT_NAME = "Shoyu Ramen";
+    public static final String DEFAULT_NAME = "Shoyu ramen";
 
     /**
      * Constructs an object of Miso with a parameter.
@@ -24,6 +24,7 @@ public class Shoyu extends Menu {
      */
     public Shoyu(final RamenSize size) {
         super(size);
+        this.name = DEFAULT_NAME;
     }
 
     /**

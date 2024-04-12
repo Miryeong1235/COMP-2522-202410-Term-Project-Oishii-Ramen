@@ -16,7 +16,7 @@ public class Shio extends Menu {
     /**
      * Default name for Shio ramen.
      */
-    public static final String DEFAULT_NAME = "Shio Ramen";
+    public static final String DEFAULT_NAME = "Shio ramen";
 
     /**
      * Constructs an object of Shio with a parameter.
@@ -25,6 +25,7 @@ public class Shio extends Menu {
      */
     public Shio(final RamenSize size) {
         super(size);
+        this.name = DEFAULT_NAME;
     }
 
     /**
