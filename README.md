@@ -4,10 +4,12 @@
 
 ### Name:
 Misuzu Taniguchi
+
 Atsuko Uemura
 
 ### GitHub username:
 Miryoeng1235
+
 atsukof
 
 ## 1. Introduction
