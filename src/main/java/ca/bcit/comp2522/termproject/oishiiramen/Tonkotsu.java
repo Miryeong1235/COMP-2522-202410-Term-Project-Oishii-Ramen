@@ -26,4 +26,13 @@ public class Tonkotsu extends Menu {
         super(size);
         this.name = DEFAULT_NAME;
     }
+
+    /**
+     * Returns a cost for the menu.
+     *
+     * @return costForRamen as a double
+     */
+    public double getCostForRamen() {
+        return COST_FOR_TONKOTSU;
+    }
 }

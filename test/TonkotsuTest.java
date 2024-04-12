@@ -40,7 +40,7 @@ class TonkotsuTest {
 
 
     @Test
-    public void staticCounterIsCorrectlyTrackinggetNumberOfMenu() {
+    public void staticCounterIsCorrectlyTrackingGetNumberOfMenu() {
         final int numberAlreadyCreated = Tonkotsu.getNumberOfMenu();
         final int numberCreated = 100;
         for (int i = 0; i < numberCreated; ++i) {

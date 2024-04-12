@@ -102,6 +102,7 @@ public abstract class Menu {
         numberOfMenu++;
         this.menuID = numberOfMenu;
         this.size = Objects.requireNonNullElse(size, RamenSize.Medium);
+        this.costForRamen = getCostForRamen();
 
         // calculate material cost for this menu and ramen itself
         if (this.size.equals(RamenSize.Large)) {
@@ -112,7 +113,7 @@ public abstract class Menu {
             this.costForRamen = getCostForRamen();
         }
 
-        this.name = this.getClass().getName() + this.getSize();
+//        this.name = this.getClass().getName() + " " + this.getSize();
     }
 
     /**
@@ -170,16 +171,24 @@ public abstract class Menu {
     /**
      * Returns a material cost for the menu.
      *
-     * @return materialCost as a double
+     * @return totalCost as a double
      */
     public double getMaterialCost() {
-        double costForTopping;
-        for (int i =0; i <  toppings.size(); i++) {
-            costForTopping += toppings.get(i).
-
+        double totalCost = getCostForRamen();
+        if (this.toppings != null) {
+            for (Topping topping : toppings) {
+                if (topping.equals(Topping.tamago)) {
+                    materialCost += COST_FOR_TAMAGO;
+                } else if (topping.equals(Topping.chashu)) {
+                    materialCost += COST_FOR_CHASHU;
+                } else if (topping.equals(Topping.seaweed)) {
+                    materialCost += COST_FOR_SEAWEED;
+                } else if (topping.equals(Topping.corn)) {
+                    materialCost += COST_FOR_CORN;
+                }
+            }
         }
-
-        return
+        return totalCost;
     };
 
     /**
