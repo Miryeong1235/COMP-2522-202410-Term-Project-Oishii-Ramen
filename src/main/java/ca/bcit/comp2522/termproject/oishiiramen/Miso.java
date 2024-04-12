@@ -15,7 +15,7 @@ public class Miso extends Menu {
     /**
      * Default name for Miso ramen.
      */
-    public static final String DEFAULT_NAME = "Miso Ramen";
+    public static final String DEFAULT_NAME = "Miso ramen";
 
     /**
      * Constructs an object of Miso with a parameter.
@@ -24,6 +24,7 @@ public class Miso extends Menu {
      */
     public Miso(final RamenSize size) {
         super(size);
+        this.name = DEFAULT_NAME;
     }
 
     /**
