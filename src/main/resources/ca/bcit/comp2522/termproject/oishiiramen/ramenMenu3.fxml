@@ -10,12 +10,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.RamenMenu3Controller">
    <children>
-       <Label layoutX="72.0" layoutY="66.0" text="Ramen Meterial Fee: $">
+       <Label layoutX="72.0" layoutY="66.0" text="Ramen Meterial Cost: $">
            <font>
                <Font size="36.0" />
            </font>
        </Label>
-       <Label fx:id="materialFeeWithToppingLabel" layoutX="408.0" layoutY="66.0" text="priceWithTopping">
+       <Label fx:id="materialFeeWithToppingLabel" layoutX="422.0" layoutY="64.0" text="priceWithTopping">
            <font>
                <Font size="36.0" />
            </font>
@@ -37,6 +37,6 @@
          </font>
       </Label>
       <TextField fx:id="ramenNameTextField" layoutX="282.0" layoutY="239.0" prefHeight="17.0" prefWidth="113.0" />
-      <Button fx:id="finishRamenMenuButton" layoutX="266.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchCompleteMenu" text="Decided" />
+      <Button fx:id="finishRamenMenuButton" layoutX="320.0" layoutY="328.0" mnemonicParsing="false" onAction="#switchCompleteMenu" text="OK" />
    </children>
 </AnchorPane>
