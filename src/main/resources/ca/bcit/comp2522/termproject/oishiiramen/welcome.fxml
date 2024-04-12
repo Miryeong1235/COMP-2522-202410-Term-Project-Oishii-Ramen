@@ -6,17 +6,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.WelcomeController">
-   <children>
-      <Button layoutX="244.0" layoutY="338.0" mnemonicParsing="false" onAction="#switchToStoreSetting" text="Start business🍜" />
-      <ImageView fitHeight="138.0" fitWidth="91.0" layoutX="258.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@ramen_tenin2.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@oishii_ramen_logo.png" />
-         </image>
-      </ImageView>
-   </children>
+
+   <Button layoutX="244.0" layoutY="338.0" mnemonicParsing="false" onAction="#switchToStoreSetting" text="Start business🍜" />
+   <ImageView fitHeight="138.0" fitWidth="91.0" layoutX="258.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@ramen_tenin2.png" />
+   </ImageView>
+   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@oishii_ramen_logo.png" />
+   </ImageView>
+
 </AnchorPane>

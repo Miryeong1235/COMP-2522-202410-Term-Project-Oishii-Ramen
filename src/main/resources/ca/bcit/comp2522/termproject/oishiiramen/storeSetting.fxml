@@ -9,31 +9,31 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.bcit.comp2522.termproject.oishiiramen.StoreSettingController">
-   <children>
-      <Label layoutX="189.0" layoutY="26.0" prefHeight="54.0" prefWidth="264.0" text="Store Setting">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Label fx:id="ownerNameLabel" layoutX="173.0" layoutY="123.0" text="Store name:" />
-      <TextField fx:id="storeNameTextField" layoutX="253.0" layoutY="118.0" />
-      <Button layoutX="264.0" layoutY="343.0" mnemonicParsing="false" onAction="#switchToHiringEmployee" text="OK" />
-      <Label layoutX="98.0" layoutY="94.0" prefHeight="26.0" prefWidth="264.0" text="Enter your store information.">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="ownerNameLabel1" layoutX="168.0" layoutY="167.0" text="Owner name:" />
-      <TextField fx:id="ownerNameTextField" layoutX="253.0" layoutY="163.0" />
-      <Label fx:id="ownerNameLabel2" layoutX="159.0" layoutY="209.0" text="Store location:" />
-      <Label fx:id="ownerNameLabel11" layoutX="100.0" layoutY="303.0" prefHeight="31.0" prefWidth="152.0" text="Number of chairs (5~30):" />
-      <TextField fx:id="numberOfChairTextField" layoutX="253.0" layoutY="299.0" />
-      <RadioButton layoutX="254.0" layoutY="209.0" mnemonicParsing="false" selected="true" text="Downtown">
-         <toggleGroup>
-            <ToggleGroup fx:id="locationToggle" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton layoutX="254.0" layoutY="235.0" mnemonicParsing="false" text="Richmond" toggleGroup="$locationToggle" />
-      <RadioButton layoutX="254.0" layoutY="262.0" mnemonicParsing="false" text="Metrotown" toggleGroup="$locationToggle" />
-   </children>
+
+   <Label layoutX="189.0" layoutY="26.0" prefHeight="54.0" prefWidth="264.0" text="Store Setting">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
+   <Label layoutX="173.0" layoutY="123.0" text="Store name:" />
+   <TextField fx:id="storeNameTextField" layoutX="253.0" layoutY="118.0" />
+   <Button layoutX="264.0" layoutY="343.0" mnemonicParsing="false" onAction="#switchToHiringEmployee" text="OK" />
+   <Label layoutX="98.0" layoutY="94.0" prefHeight="26.0" prefWidth="264.0" text="Enter your store information.">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
+   <Label layoutX="168.0" layoutY="167.0" text="Owner name:" />
+   <TextField fx:id="ownerNameTextField" layoutX="253.0" layoutY="163.0" />
+   <Label layoutX="159.0" layoutY="209.0" text="Store location:" />
+   <Label layoutX="100.0" layoutY="303.0" prefHeight="31.0" prefWidth="152.0" text="Number of chairs (5~30):" />
+   <TextField fx:id="numberOfChairTextField" layoutX="253.0" layoutY="299.0" />
+   <RadioButton layoutX="254.0" layoutY="209.0" mnemonicParsing="false" selected="true" text="Downtown">
+      <toggleGroup>
+         <ToggleGroup fx:id="locationToggle" />
+      </toggleGroup>
+   </RadioButton>
+   <RadioButton layoutX="254.0" layoutY="235.0" mnemonicParsing="false" text="Richmond" toggleGroup="$locationToggle" />
+   <RadioButton layoutX="254.0" layoutY="262.0" mnemonicParsing="false" text="Metrotown" toggleGroup="$locationToggle" />
+
 </AnchorPane>
