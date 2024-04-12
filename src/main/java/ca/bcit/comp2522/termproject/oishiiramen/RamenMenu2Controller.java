@@ -11,7 +11,9 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Ramen menu 2 controller.
@@ -37,8 +39,10 @@ public class RamenMenu2Controller {
      * @param yourRamen as Menu
      */
     public void displayMaterialPrice(final Menu yourRamen) {
-        String materialCostString = Double.toString(yourRamen.getMaterialCost());
-        materialFeeLabel.setText(materialCostString);
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.CANADA);
+        numberFormat.setMaximumFractionDigits(2);
+        materialFeeLabel.setText(numberFormat.format(yourRamen.getMaterialCost()));
+
     }
 
     /**
